@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.kohlschutter</groupId>
   <artifactId>kohlschutter-parent</artifactId>
-  <version>1.3.0</version>
+  <version>1.3.1</version>
   <packaging>pom</packaging>
   <name>kohlschutter-parent</name>
   <inceptionYear>2014</inceptionYear>
@@ -69,7 +69,6 @@
     <checkstyle.disabled>false</checkstyle.disabled>
     <checkstyle.strict>false</checkstyle.strict>
 
-    <spotbugs.version>3.1.10</spotbugs.version>
     <spotbugs.exclude.file>${coding.style.eclipse.dir}/spotbugs-exclude.xml</spotbugs.exclude.file>
     <spotbugs.disabled>false</spotbugs.disabled>
     <spotbugs.strict>false</spotbugs.strict>
@@ -84,7 +83,7 @@
     <!-- Only upgrade to the latest version you can have in Eclipse, no later
       versions -->
     <!-- Otherwise, you may not be able to run checks in Eclipse -->
-    <pmdVersion>6.10.0</pmdVersion>
+    <pmdVersion>6.19.0</pmdVersion>
   </properties>
   <profiles>
     <profile>
@@ -739,7 +738,7 @@
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>3.0.5</version>
+                  <version>3.3.9</version>
                 </requireMavenVersion>
               </rules>
             </configuration>
@@ -826,7 +825,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>3.0.0</version>
+          <version>3.1.0</version>
           <dependencies>
             <dependency>
               <!-- We should use the same checkstyle version as in eclipse-cs -->
@@ -848,14 +847,14 @@
             <dependency>
               <groupId>org.apache.maven.skins</groupId>
               <artifactId>maven-fluido-skin</artifactId>
-              <version>1.7</version>
+              <version>1.8</version>
             </dependency>
           </dependencies>
         </plugin>
         <plugin>
           <groupId>com.github.spotbugs</groupId>
           <artifactId>spotbugs-maven-plugin</artifactId>
-          <version>${spotbugs.version}</version>
+          <version>3.1.12.2</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -880,11 +879,18 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.0.1</version>
+          <version>3.1.1</version>
           <configuration>
             <links>
               <link>https://docs.oracle.com/en/java/javase/11/docs/api/</link>
             </links>
+            <javaApiLinks>
+              <property>
+                <!-- Workaround for "javadoc: error - The code being documented uses modules but the packages defined in https://docs.oracle.com/javase/9/docs/api/ are in the unnamed module." -->
+                <name>api_9</name>
+                <value></value>
+              </property>
+            </javaApiLinks>
           </configuration>
         </plugin>
         <plugin>
@@ -962,7 +968,7 @@
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
-          <version>0.8.2</version>
+          <version>0.8.5</version>
         </plugin>
         <plugin>
           <groupId>com.coderplus.maven.plugins</groupId>
@@ -984,11 +990,6 @@
           <artifactId>forbiddenapis</artifactId>
           <version>${forbiddenapis.version}</version>
         </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>versions-maven-plugin</artifactId>
-          <version>2.7</version>
-        </plugin>
       </plugins>
     </pluginManagement>
   </build>
@@ -1003,7 +1004,7 @@
     <dependency>
       <groupId>com.github.spotbugs</groupId>
       <artifactId>spotbugs-annotations</artifactId>
-      <version>${spotbugs.version}</version>
+      <version>3.1.12</version>
       <optional>true</optional>
     </dependency>
   </dependencies>

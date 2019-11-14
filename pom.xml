@@ -58,14 +58,14 @@
     <kohlschutter.parent.directory>${project.basedir}</kohlschutter.parent.directory>
     <kohlschutter.maven.version.min>3.0.5</kohlschutter.maven.version.min>
 
-    <coding.style.version>1.2.0</coding.style.version>
+    <coding.style.version>1.2.1</coding.style.version>
     <coding.style.dirname>coding-style/${coding.style.version}</coding.style.dirname>
     <coding.style.eclipse.dir>${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse</coding.style.eclipse.dir>
     <eclipse.jdt.core.prefs>${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>
     <eclipse.formatter.config>${coding.style.eclipse.dir}/eclipse-formatter-config.xml</eclipse.formatter.config>
     <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
 
-    <checkstyle.version>8.23</checkstyle.version>
+    <checkstyle.version>8.26</checkstyle.version>
     <checkstyle.disabled>false</checkstyle.disabled>
     <checkstyle.strict>false</checkstyle.strict>
 

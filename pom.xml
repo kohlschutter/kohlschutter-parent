@@ -842,12 +842,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.7.1</version>
+          <version>3.8.2</version>
           <dependencies>
             <dependency>
               <groupId>org.apache.maven.skins</groupId>
               <artifactId>maven-fluido-skin</artifactId>
-              <version>1.8</version>
+              <version>1.7</version>
             </dependency>
           </dependencies>
         </plugin>
@@ -879,14 +879,17 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.1.1</version>
+          <!-- Updating is blocked on "mvn site" failing on newer versions -->
+          <version>3.0.1</version>
           <configuration>
             <links>
               <link>https://docs.oracle.com/en/java/javase/11/docs/api/</link>
             </links>
             <javaApiLinks>
               <property>
-                <!-- Workaround for "javadoc: error - The code being documented uses modules but the packages defined in https://docs.oracle.com/javase/9/docs/api/ are in the unnamed module." -->
+                <!-- Workaround for "javadoc: error - The code being documented
+                  uses modules but the packages defined in https://docs.oracle.com/javase/9/docs/api/
+                  are in the unnamed module." -->
                 <name>api_9</name>
                 <value></value>
               </property>

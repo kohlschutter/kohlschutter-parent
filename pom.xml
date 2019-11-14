@@ -65,7 +65,7 @@
     <eclipse.formatter.config>${coding.style.eclipse.dir}/eclipse-formatter-config.xml</eclipse.formatter.config>
     <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
 
-    <checkstyle.version>8.17</checkstyle.version>
+    <checkstyle.version>8.23</checkstyle.version>
     <checkstyle.disabled>false</checkstyle.disabled>
     <checkstyle.strict>false</checkstyle.strict>
 

@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.kohlschutter</groupId>
   <artifactId>kohlschutter-parent</artifactId>
-  <version>1.3.1</version>
+  <version>1.3.2</version>
   <packaging>pom</packaging>
   <name>kohlschutter-parent</name>
   <inceptionYear>2014</inceptionYear>
@@ -58,7 +58,7 @@
     <kohlschutter.parent.directory>${project.basedir}</kohlschutter.parent.directory>
     <kohlschutter.maven.version.min>3.0.5</kohlschutter.maven.version.min>
 
-    <coding.style.version>1.2.1</coding.style.version>
+    <coding.style.version>1.2.2</coding.style.version>
     <coding.style.dirname>coding-style/${coding.style.version}</coding.style.dirname>
     <coding.style.eclipse.dir>${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse</coding.style.eclipse.dir>
     <eclipse.jdt.core.prefs>${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>

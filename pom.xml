@@ -65,7 +65,7 @@
     <eclipse.formatter.config>${coding.style.eclipse.dir}/eclipse-formatter-config.xml</eclipse.formatter.config>
     <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
 
-    <checkstyle.version>8.26</checkstyle.version>
+    <checkstyle.version>8.27</checkstyle.version>
     <checkstyle.disabled>false</checkstyle.disabled>
     <checkstyle.strict>false</checkstyle.strict>
 
@@ -83,7 +83,7 @@
     <!-- Only upgrade to the latest version you can have in Eclipse, no later
       versions -->
     <!-- Otherwise, you may not be able to run checks in Eclipse -->
-    <pmdVersion>6.19.0</pmdVersion>
+    <pmdVersion>6.20.0</pmdVersion>
   </properties>
   <profiles>
     <profile>
@@ -577,7 +577,6 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-pmd-plugin</artifactId>
-            <version>3.11.0</version>
             <configuration>
               <rulesets>
                 <ruleset>${coding.style.eclipse.dir}/pmd-ruleset.xml</ruleset>
@@ -967,6 +966,11 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
           <version>3.0.0-M1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-pmd-plugin</artifactId>
+          <version>3.12.0</version>
         </plugin>
         <plugin>
           <groupId>org.jacoco</groupId>

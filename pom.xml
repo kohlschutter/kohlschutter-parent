@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.kohlschutter</groupId>
   <artifactId>kohlschutter-parent</artifactId>
-  <version>1.3.4</version>
+  <version>1.3.5</version>
   <packaging>pom</packaging>
   <name>kohlschutter-parent</name>
   <inceptionYear>2014</inceptionYear>
@@ -79,6 +79,8 @@
     <jacoco.disabled>false</jacoco.disabled>
     <jacoco.strict>true</jacoco.strict>
     <jacoco.coverage.min>0.0</jacoco.coverage.min>
+    
+    <pmd.strict>false</pmd.strict>
 
     <!-- Only upgrade to the latest version you can have in Eclipse, no later
       versions -->
@@ -93,6 +95,7 @@
         <spotbugs.strict>true</spotbugs.strict>
         <forbiddenapis.strict>true</forbiddenapis.strict>
         <jacoco.strict>true</jacoco.strict>
+        <pmd.strict>true</pmd.strict>
       </properties>
     </profile>
     <profile>
@@ -580,7 +583,7 @@
               <rulesets>
                 <ruleset>${coding.style.eclipse.dir}/pmd-ruleset.xml</ruleset>
               </rulesets>
-              <failOnViolation>true</failOnViolation>
+              <failOnViolation>${pmd.strict}</failOnViolation>
               <printFailingErrors>true</printFailingErrors>
             </configuration>
             <executions>
@@ -627,7 +630,7 @@
             <groupId>com.mycila</groupId>
             <artifactId>license-maven-plugin</artifactId>
             <configuration>
-              <header>${kohlschutter.project.base.directory}/LICENSE</header>
+              <header>${kohlschutter.project.base.directory}/NOTICE</header>
               <includes>
                 <include>src/main/java/org/newsclub/**/*.java</include>
                 <include>src/test/java/org/newsclub/**/*.java</include>

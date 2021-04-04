@@ -856,37 +856,7 @@
         <plugin>
           <groupId>com.github.spotbugs</groupId>
           <artifactId>spotbugs-maven-plugin</artifactId>
-          <version>3.1.12.2</version>
-          <dependencies>
-            <!-- NOTE: Workaround to allow compiling on Java 15 -->
-            <!-- Fixes "Unsupported class file major version 59" in org.objectweb.asm.ClassReader/edu.umd.cs.findbugs.asm.FBClassReader -->
-            <!-- FIXME: Revisit when updating spotbugs-maven-plugin -->
-            <dependency>
-              <groupId>org.ow2.asm</groupId>
-              <artifactId>asm</artifactId>
-              <version>7.3.1</version>
-            </dependency>
-            <dependency>
-              <groupId>org.ow2.asm</groupId>
-              <artifactId>asm-analysis</artifactId>
-              <version>7.3.1</version>
-            </dependency>
-            <dependency>
-              <groupId>org.ow2.asm</groupId>
-              <artifactId>asm-commons</artifactId>
-              <version>7.3.1</version>
-            </dependency>
-            <dependency>
-              <groupId>org.ow2.asm</groupId>
-              <artifactId>asm-tree</artifactId>
-              <version>7.3.1</version>
-            </dependency>
-            <dependency>
-              <groupId>org.ow2.asm</groupId>
-              <artifactId>asm-util</artifactId>
-              <version>7.3.1</version>
-            </dependency>
-          </dependencies>
+          <version>4.2.2</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -1044,7 +1014,7 @@
     <dependency>
       <groupId>com.github.spotbugs</groupId>
       <artifactId>spotbugs-annotations</artifactId>
-      <version>3.1.12</version>
+      <version>4.2.2</version>
       <optional>true</optional>
     </dependency>
   </dependencies>

@@ -1029,6 +1029,11 @@
               <artifactId>xstream</artifactId>
               <version>1.4.16</version>
             </dependency>
+            <dependency><!-- needed by xstream 1.4.16 -->
+              <groupId>xpp3</groupId>
+              <artifactId>xpp3</artifactId>
+              <version>1.1.4c</version>
+            </dependency>
             <dependency>
               <groupId>org.apache.httpcomponents</groupId>
               <artifactId>httpclient</artifactId>

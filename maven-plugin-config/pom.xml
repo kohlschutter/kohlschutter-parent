@@ -45,6 +45,4 @@
     <kohlschutter.project.base.directory>${project.basedir}</kohlschutter.project.base.directory>
     <kohlschutter.parent.directory>${project.parent.basedir}</kohlschutter.parent.directory>
   </properties>
-  <build>
-  </build>
 </project>

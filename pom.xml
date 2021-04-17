@@ -458,85 +458,18 @@
     <!-- END: coding-style specific profiles -->
 
     <profile>
-      <id>code-quality</id>
+      <id>unit-tests</id>
       <activation>
         <property>
           <name>ignorant</name>
           <value>!true</value>
         </property>
+        <file>
+          <exists>src/test</exists>
+        </file>
       </activation>
       <build>
         <plugins>
-          <plugin>
-            <groupId>com.github.spotbugs</groupId>
-            <artifactId>spotbugs-maven-plugin</artifactId>
-            <configuration>
-              <excludeFilterFile>${spotbugs.exclude.file}</excludeFilterFile>
-            </configuration>
-            <executions>
-              <execution>
-                <id>spotbugs-during-install</id>
-                <phase>install</phase>
-                <goals>
-                  <goal>check</goal>
-                </goals>
-                <configuration>
-                  <skip>${spotbugs.disabled}</skip>
-                  <failOnError>${spotbugs.strict}</failOnError>
-                  <jvmArgs>-XX:+TieredCompilation
-                    -XX:TieredStopAtLevel=1</jvmArgs>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>de.thetaphi</groupId>
-            <artifactId>forbiddenapis</artifactId>
-            <configuration>
-              <!-- if the used Java version is too new, don't fail, just
-                do nothing -->
-              <failOnUnsupportedJava>false</failOnUnsupportedJava>
-              <excludes>
-                <exclude>**/module-info.class</exclude>
-              </excludes>
-              <bundledSignatures>
-                <bundledSignature>jdk-unsafe</bundledSignature>
-                <bundledSignature>jdk-deprecated</bundledSignature>
-                <bundledSignature>jdk-non-portable</bundledSignature>
-              </bundledSignatures>
-              <!-- <signaturesFiles> <signaturesFile>./rel/path/to/signatures.txt</signaturesFile>
-                </signaturesFiles> -->
-            </configuration>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>check</goal>
-                  <goal>testCheck</goal>
-                </goals>
-                <configuration>
-                  <failOnViolation>${forbiddenapis.strict}</failOnViolation>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-checkstyle-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>checkstyle-during-compile</id>
-                <phase>compile</phase>
-                <goals>
-                  <goal>check</goal>
-                </goals>
-                <configuration>
-                  <consoleOutput>true</consoleOutput>
-                  <skip>${checkstyle.disabled}</skip>
-                  <failOnViolation>${checkstyle.strict}</failOnViolation>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
           <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
@@ -582,6 +515,108 @@
           </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+              <argLine>-Dfile.encoding=UTF-8 -XX:+TieredCompilation
+                -XX:TieredStopAtLevel=1 ${surefireJacocoArgLine}</argLine>
+            </configuration>
+            <executions>
+              <execution>
+                <id>default-test</id>
+                <phase>test</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>code-quality</id>
+      <activation>
+        <property>
+          <name>ignorant</name>
+          <value>!true</value>
+        </property>
+        <file>
+          <exists>src/main/java</exists>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-maven-plugin</artifactId>
+            <configuration>
+              <excludeFilterFile>${spotbugs.exclude.file}</excludeFilterFile>
+            </configuration>
+            <executions>
+              <execution>
+                <id>spotbugs-during-install</id>
+                <phase>install</phase>
+                <goals>
+                  <goal>check</goal>
+                </goals>
+                <configuration>
+                  <skip>${spotbugs.disabled}</skip>
+                  <failOnError>${spotbugs.strict}</failOnError>
+                  <jvmArgs>-XX:+TieredCompilation
+                    -XX:TieredStopAtLevel=1</jvmArgs>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>de.thetaphi</groupId>
+            <artifactId>forbiddenapis</artifactId>
+            <configuration>
+              <!-- if the used Java version is too new, don't fail, just
+                do nothing -->
+              <failOnUnsupportedJava>false</failOnUnsupportedJava>
+              <excludes>
+                <exclude>**/module-info.class</exclude>
+              </excludes>
+              <bundledSignatures>
+                <bundledSignature>jdk-unsafe</bundledSignature>
+                <bundledSignature>jdk-deprecated</bundledSignature>
+                <bundledSignature>jdk-non-portable</bundledSignature>
+              </bundledSignatures>
+              <!-- <signaturesFiles> <signaturesFile>./rel/path/to/signatures.txt</signaturesFile>
+                </signaturesFiles> -->
+            </configuration>
+            <executions>
+              <execution>
+                <id>default</id>
+                <goals>
+                  <goal>check</goal>
+                  <goal>testCheck</goal>
+                </goals>
+                <configuration>
+                  <failOnViolation>${forbiddenapis.strict}</failOnViolation>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>checkstyle-during-compile</id>
+                <phase>compile</phase>
+                <goals>
+                  <goal>check</goal>
+                </goals>
+                <configuration>
+                  <consoleOutput>true</consoleOutput>
+                  <skip>${checkstyle.disabled}</skip>
+                  <failOnViolation>${checkstyle.strict}</failOnViolation>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-pmd-plugin</artifactId>
             <configuration>
               <rulesets>
@@ -592,6 +627,7 @@
             </configuration>
             <executions>
               <execution>
+                <id>default</id>
                 <goals>
                   <goal>check</goal>
                   <goal>cpd-check</goal>
@@ -620,14 +656,6 @@
                 <version>${pmdVersion}</version>
               </dependency>
             </dependencies>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <configuration>
-              <argLine>-Dfile.encoding=UTF-8 -XX:+TieredCompilation
-                -XX:TieredStopAtLevel=1 ${surefireJacocoArgLine}</argLine>
-            </configuration>
           </plugin>
           <plugin>
             <!-- invoke with: mvn license:format -->
@@ -697,6 +725,37 @@
           <name>ignorant</name>
           <value>!true</value>
         </property>
+        <file>
+          <exists>src/main/java</exists>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>sources</id>
+      <activation>
+        <property>
+          <name>ignorant</name>
+          <value>!true</value>
+        </property>
+        <file>
+          <exists>src</exists>
+        </file>
       </activation>
       <build>
         <plugins>
@@ -711,18 +770,6 @@
               </execution>
             </executions>
             <inherited>true</inherited>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>attach-javadocs</id>
-                <goals>
-                  <goal>jar</goal>
-                </goals>
-              </execution>
-            </executions>
           </plugin>
         </plugins>
       </build>
@@ -791,6 +838,12 @@
           <argLine>-Dfile.encoding=UTF-8 -XX:+TieredCompilation
             -XX:TieredStopAtLevel=1</argLine>
         </configuration>
+        <executions>
+          <execution>
+            <id>default-test</id>
+            <phase>none</phase>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <!-- invoke with: mvn formatter:format -->

@@ -24,7 +24,7 @@
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
@@ -56,7 +56,10 @@
     <!-- Projects must define the following property -->
     <kohlschutter.project.base.directory>${project.basedir}</kohlschutter.project.base.directory>
     <kohlschutter.parent.directory>${project.basedir}</kohlschutter.parent.directory>
-    <kohlschutter.maven.version.min>3.0.5</kohlschutter.maven.version.min>
+
+    <!-- Please keep this version in lockstep with the version declared above -->
+    <kohlschutter.parent.version>1.3.7</kohlschutter.parent.version>
+    <kohlschutter.maven.version.min>3.6.0</kohlschutter.maven.version.min>
 
     <coding.style.version>1.2.3</coding.style.version>
     <coding.style.dirname>coding-style/${coding.style.version}</coding.style.dirname>
@@ -1007,7 +1010,7 @@
             <dependency>
               <groupId>com.kohlschutter</groupId>
               <artifactId>maven-plugin-config</artifactId>
-              <version>${project.version}</version>
+              <version>${kohlschutter.parent.version}</version>
             </dependency>
           </dependencies>
         </plugin>

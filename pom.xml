@@ -529,6 +529,29 @@
           </plugin>
         </plugins>
       </build>
+      <reporting>
+        <plugins>
+          <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <configuration>
+              <skip>${jacoco.disabled}</skip>
+              <haltOnFailure>${jacoco.strict}</haltOnFailure>
+              <excludes>
+                <!-- Jacoco doesn't support multi-release JARs -->
+                <exclude>**/META-INF/versions/**/*</exclude>
+              </excludes>
+            </configuration>
+            <reportSets>
+              <reportSet>
+                <reports>
+                  <report>report</report>
+                </reports>
+              </reportSet>
+            </reportSets>
+          </plugin>
+        </plugins>
+      </reporting>
     </profile>
 
     <profile>
@@ -742,9 +765,29 @@
                 </goals>
               </execution>
             </executions>
+            <configuration>
+              <detectOfflineLinks>false</detectOfflineLinks> <!-- MJAVADOC-523 -->
+              <quiet>true</quiet>
+            </configuration>
           </plugin>
         </plugins>
       </build>
+      <reporting>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <reportSets>
+              <reportSet>
+                <id>default</id>
+                <reports>
+                  <report>javadoc</report>
+                </reports>
+              </reportSet>
+            </reportSets>
+          </plugin>
+        </plugins>
+      </reporting>
     </profile>
     <profile>
       <id>sources</id>
@@ -836,7 +879,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
           <argLine>-Dfile.encoding=UTF-8 -XX:+TieredCompilation
-            -XX:TieredStopAtLevel=1</argLine>
+            -XX:TieredStopAtLevel=1 ${surefireJacocoArgLine}</argLine>
         </configuration>
         <executions>
           <execution>
@@ -1138,39 +1181,8 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <reportSets>
-          <reportSet>
-            <id>default</id>
-            <reports>
-              <report>javadoc</report>
-            </reports>
-          </reportSet>
-        </reportSets>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
         <version>3.0.0</version>
-      </plugin>
-      <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <configuration>
-          <skip>${jacoco.disabled}</skip>
-          <haltOnFailure>${jacoco.strict}</haltOnFailure>
-          <excludes>
-            <!-- Jacoco doesn't support multi-release JARs -->
-            <exclude>**/META-INF/versions/**/*</exclude>
-          </excludes>
-        </configuration>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>report</report>
-            </reports>
-          </reportSet>
-        </reportSets>
       </plugin>
     </plugins>
   </reporting>

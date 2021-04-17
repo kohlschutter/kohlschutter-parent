@@ -1002,7 +1002,7 @@
             update your Java SDK -->
           <version>3.2.0</version>
           <configuration>
-            <detectLinks>true</detectLinks>
+            <detectOfflineLinks>false</detectOfflineLinks>
             <quiet>true</quiet>
           </configuration>
         </plugin>
@@ -1181,7 +1181,22 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>3.1.0</version>
+        <!--
+          using "jxr-no-fork" prevents "module not found" errors:
+          https://maven.apache.org/components/jxr-archives/jxr-LATEST/maven-jxr-plugin/examples/nofork.html
+
+          Important: For unknown reasons, maxen-jxr-plugin 3.1.0
+          is not in Maven Central; obtain from https://github.com/apache/maven-jxr
+        -->
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>jxr-no-fork</report>
+              <report>test-jxr-no-fork</report>
+            </reports>
+          </reportSet>
+        </reportSets>
       </plugin>
     </plugins>
   </reporting>

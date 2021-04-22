@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>kohlschutter-parent-multirelease</artifactId>
+  <packaging>pom</packaging>
+  <parent>
+    <groupId>com.kohlschutter</groupId>
+    <artifactId>kohlschutter-parent</artifactId>
+    <version>1.4.0</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <name>kohlschutter-parent-multirelease</name>
+  <description>Parent POM for multi-release jar projects</description>
+  <properties>
+    <kohlschutter.project.base.directory>${project.basedir}/..</kohlschutter.project.base.directory>
+    <kohlschutter.parent.directory>${project.basedir}/..</kohlschutter.parent.directory>
+    <kohlschutter.project.notice.file>${kohlschutter.parent.directory}/NOTICE</kohlschutter.project.notice.file>
+
+    <!-- The most-recent java release this project supports (at least 9) -->
+    <kohlschutter.multirelease.java.release>9</kohlschutter.multirelease.java.release>
+
+    <!-- The Java release we should use for Java 8 (usually 8, but use any
+      lower version to force compiling against something ancient, e.g., 7) -->
+    <kohlschutter.multirelease.java8.release>8</kohlschutter.multirelease.java8.release>
+
+    <maven.compiler.source>${kohlschutter.multirelease.java.release}</maven.compiler.source>
+    <maven.compiler.target>${kohlschutter.multirelease.java.release}</maven.compiler.target>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Multi-Release>true</Multi-Release>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <release>${kohlschutter.multirelease.java.release}</release>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>multirelease</id>
+      <!-- Java 8 / multi-release jar support is enabled by default, unless
+        you're in Eclipse, which doesn't support compiling with multiple
+        compilers -->
+      <activation>
+        <property>
+          <name>!m2e.version</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>java8-compile</id>
+                <goals>
+                  <goal>compile</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>${project.build.outputDirectory}/../classes-multirelease</outputDirectory>
+                  <target>1.${kohlschutter.multirelease.java8.release}</target>
+                  <release>${kohlschutter.multirelease.java8.release}</release>
+                  <multiReleaseOutput>false</multiReleaseOutput>
+                  <excludes>
+                    <exclude>module-info.java</exclude>
+                  </excludes>
+                  <testExcludes>
+                    <testExclude>**/*</testExclude>
+                  </testExcludes>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>copy-default-compile-classes-to-multirelease</id>
+                <phase>compile</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/${kohlschutter.multirelease.java.release}</outputDirectory>
+                  <resources>
+                    <resource>
+                      <directory>${project.build.outputDirectory}</directory>
+                      <includes>
+                        <include>**</include>
+                      </includes>
+                    </resource>
+                  </resources>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+              <archive>
+                <manifestEntries>
+                  <Multi-Release>true</Multi-Release>
+                </manifestEntries>
+              </archive>
+              <classesDirectory>${project.build.outputDirectory}/../classes-multirelease</classesDirectory>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

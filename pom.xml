@@ -165,6 +165,10 @@
           <name>m2e.version</name>
         </property>
       </activation>
+      <properties>
+        <!-- Ignore Eclipse's nar-maven-plugin integration -->
+        <nar.skip>true</nar.skip>
+      </properties>
       <build>
         <directory>target-eclipse</directory>
       </build>

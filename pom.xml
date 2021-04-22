@@ -473,14 +473,6 @@
           <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
-            <configuration>
-              <skip>${jacoco.disabled}</skip>
-              <haltOnFailure>${jacoco.strict}</haltOnFailure>
-              <excludes>
-                <!-- Jacoco doesn't support multi-release JARs -->
-                <exclude>**/META-INF/versions/**/*</exclude>
-              </excludes>
-            </configuration>
             <executions>
               <execution>
                 <id>default-prepare-agent</id>
@@ -517,8 +509,8 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
             <configuration>
-              <argLine>-Dfile.encoding=UTF-8 -XX:+TieredCompilation
-                -XX:TieredStopAtLevel=1 ${surefireJacocoArgLine}</argLine>
+              <argLine>${surefireJacocoArgLine} -Dfile.encoding=UTF-8
+                -XX:+TieredCompilation -XX:TieredStopAtLevel=1</argLine>
             </configuration>
             <executions>
               <execution>
@@ -534,14 +526,6 @@
           <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
-            <configuration>
-              <skip>${jacoco.disabled}</skip>
-              <haltOnFailure>${jacoco.strict}</haltOnFailure>
-              <excludes>
-                <!-- Jacoco doesn't support multi-release JARs -->
-                <exclude>**/META-INF/versions/**/*</exclude>
-              </excludes>
-            </configuration>
             <reportSets>
               <reportSet>
                 <reports>
@@ -650,9 +634,14 @@
             </configuration>
             <executions>
               <execution>
-                <id>default</id>
+                <id>default-check</id>
                 <goals>
                   <goal>check</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>default-cpd-check</id>
+                <goals>
                   <goal>cpd-check</goal>
                 </goals>
               </execution>
@@ -875,15 +864,16 @@
         <configuration>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.target}</target>
+          <compilerArgs>
+            <!-- Prevent recompilation due to "Stale source detected: .../package-info.java" -->
+            <arg>-Xpkginfo:always</arg>
+          </compilerArgs>
+          <useIncrementalCompilation>false</useIncrementalCompilation>
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <argLine>-Dfile.encoding=UTF-8 -XX:+TieredCompilation
-            -XX:TieredStopAtLevel=1 ${surefireJacocoArgLine}</argLine>
-        </configuration>
         <executions>
           <execution>
             <id>default-test</id>
@@ -995,6 +985,11 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.1.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
           <!-- https://bugs.openjdk.java.net/browse/JDK-8240169
             If you get an error like "The code being documented uses modules
@@ -1003,6 +998,7 @@
           <version>3.2.0</version>
           <configuration>
             <detectOfflineLinks>false</detectOfflineLinks>
+            <detectJavaApiLink>false</detectJavaApiLink>
             <quiet>true</quiet>
           </configuration>
         </plugin>
@@ -1035,11 +1031,6 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-install-plugin</artifactId>
           <version>3.0.0-M1</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.1.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -1132,6 +1123,27 @@
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
           <version>0.8.6</version>
+          <configuration>
+            <skip>${jacoco.disabled}</skip>
+            <excludes>
+              <!-- Do not instrument classes that are outside of our control -->
+              <exclude>org/apache/maven/**</exclude>
+              <exclude>org/junit/**</exclude>
+              <exclude>org/apiguardian/**</exclude>
+            </excludes>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.jacoco</groupId>
+              <artifactId>org.jacoco.core</artifactId>
+              <version>0.8.6</version>
+            </dependency>
+            <dependency><!-- Fix "Unsupported api 589824" error -->
+              <groupId>org.apache.bcel</groupId>
+              <artifactId>bcel</artifactId>
+              <version>6.5.0</version>
+            </dependency>
+          </dependencies>
         </plugin>
         <plugin>
           <groupId>com.coderplus.maven.plugins</groupId>
@@ -1181,13 +1193,13 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>3.1.1</version>
         <!--
           using "jxr-no-fork" prevents "module not found" errors:
           https://maven.apache.org/components/jxr-archives/jxr-LATEST/maven-jxr-plugin/examples/nofork.html
 
-          Important: For unknown reasons, maxen-jxr-plugin 3.1.0
-          is not in Maven Central; obtain from https://github.com/apache/maven-jxr
+          Important: maxen-jxr-plugin 3.1.1 may not yet be in Maven Central;
+          obtain from https://github.com/apache/maven-jxr
         -->
         <reportSets>
           <reportSet>

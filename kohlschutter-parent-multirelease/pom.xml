@@ -25,25 +25,14 @@
       lower version to force compiling against something ancient, e.g., 7) -->
     <kohlschutter.multirelease.java8.release>8</kohlschutter.multirelease.java8.release>
 
+    <kohlschutter.multirelease.jar.phase>package</kohlschutter.multirelease.jar.phase>
+    <kohlschutter.singlerelease.jar.phase>none</kohlschutter.singlerelease.jar.phase>
+
     <maven.compiler.source>${kohlschutter.multirelease.java.release}</maven.compiler.source>
     <maven.compiler.target>${kohlschutter.multirelease.java.release}</maven.compiler.target>
   </properties>
 
   <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifestEntries>
-              <Multi-Release>true</Multi-Release>
-            </manifestEntries>
-          </archive>
-        </configuration>
-      </plugin>
-    </plugins>
-
     <pluginManagement>
       <plugins>
         <plugin>
@@ -78,6 +67,9 @@
                   <goal>compile</goal>
                 </goals>
                 <configuration>
+                  <compileSourceRoots>
+                    <compileSourceRoot>${project.build.directory}/sources-java8</compileSourceRoot>
+                  </compileSourceRoots>
                   <outputDirectory>${project.build.outputDirectory}/../classes-multirelease</outputDirectory>
                   <target>1.${kohlschutter.multirelease.java8.release}</target>
                   <release>${kohlschutter.multirelease.java8.release}</release>
@@ -96,6 +88,34 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-resources-plugin</artifactId>
             <executions>
+              <execution>
+                <id>copy-source-files-java8</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>${project.build.directory}/sources-java8</outputDirectory>
+                  <includeEmptyDirs>true</includeEmptyDirs>
+                  <resources>
+                    <resource>
+                      <directory>src/main/java</directory>
+                      <includes>
+                        <include>**</include>
+                      </includes>
+                    </resource>
+                    <resource>
+                      <!-- src/main/java8 should contain only classes that
+                        override behavior of those in src/main/java -->
+                      <directory>src/main/java8</directory>
+                      <includes>
+                        <include>**</include>
+                      </includes>
+                    </resource>
+                  </resources>
+                  <overwrite>true</overwrite>
+                </configuration>
+              </execution>
               <execution>
                 <id>copy-default-compile-classes-to-multirelease</id>
                 <phase>compile</phase>
@@ -119,14 +139,98 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>
-            <configuration>
-              <archive>
-                <manifestEntries>
-                  <Multi-Release>true</Multi-Release>
-                </manifestEntries>
-              </archive>
-              <classesDirectory>${project.build.outputDirectory}/../classes-multirelease</classesDirectory>
-            </configuration>
+            <executions>
+              <execution>
+                <id>default-jar</id>
+                <phase>${kohlschutter.singlerelease.jar.phase}</phase>
+              </execution>
+              <execution>
+                <id>multirelease-jar</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+                <phase>${kohlschutter.multirelease.jar.phase}</phase>
+                <configuration>
+                  <archive>
+                    <manifestEntries>
+                      <Multi-Release>true</Multi-Release>
+                    </manifestEntries>
+                  </archive>
+                  <classesDirectory>${project.build.outputDirectory}/../classes-multirelease</classesDirectory>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>multirelease-java9</id>
+      <activation>
+        <property>
+          <name>kohlschutter.multirelease.java.release</name>
+          <value>!9</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>copy-source-files-java9</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>${project.build.directory}/sources-java9</outputDirectory>
+                  <includeEmptyDirs>true</includeEmptyDirs>
+                  <resources>
+                    <resource>
+                      <directory>src/main/java</directory>
+                      <includes>
+                        <include>**</include>
+                      </includes>
+                    </resource>
+                    <resource>
+                      <!-- src/main/java9 should contain only classes that
+                        override behavior of those in src/main/java -->
+                      <directory>src/main/java9</directory>
+                      <includes>
+                        <include>**</include>
+                      </includes>
+                    </resource>
+                  </resources>
+                  <overwrite>true</overwrite>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>java9-compile</id>
+                <goals>
+                  <goal>compile</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/9</outputDirectory>
+                  <target>9</target>
+                  <release>9</release>
+                  <multiReleaseOutput>false</multiReleaseOutput>
+                  <compileSourceRoots>
+                    <compileSourceRoot>${project.build.directory}/sources-java9</compileSourceRoot>
+                  </compileSourceRoots>
+                  <testExcludes>
+                    <testExclude>**/*</testExclude>
+                  </testExcludes>
+                </configuration>
+              </execution>
+            </executions>
           </plugin>
         </plugins>
       </build>

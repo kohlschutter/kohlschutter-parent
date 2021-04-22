@@ -88,8 +88,7 @@
     <pmd.strict>false</pmd.strict>
 
     <!-- Only upgrade to the latest version you can have in Eclipse, no later
-      versions -->
-    <!-- Otherwise, you may not be able to run checks in Eclipse -->
+      versions; otherwise, you may not be able to run checks in Eclipse -->
     <pmdVersion>6.33.0</pmdVersion>
   </properties>
   <profiles>
@@ -1170,6 +1169,11 @@
           <groupId>de.thetaphi</groupId>
           <artifactId>forbiddenapis</artifactId>
           <version>${forbiddenapis.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>3.2.0</version>
         </plugin>
       </plugins>
     </pluginManagement>

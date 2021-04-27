@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>kohlschutter-util</artifactId>
+  <packaging>jar</packaging>
+  <parent>
+    <groupId>com.kohlschutter</groupId>
+    <artifactId>kohlschutter-parent-multirelease</artifactId>
+    <version>1.4.0</version>
+    <relativePath>../kohlschutter-parent-multirelease/pom.xml</relativePath>
+  </parent>
+  <name>kohlschutter-util</name>
+  <description>Common helpers</description>
+  <properties>
+    <kohlschutter.project.base.directory>${project.basedir}</kohlschutter.project.base.directory>
+    <kohlschutter.project.notice.file>${kohlschutter.parent.directory}/NOTICE</kohlschutter.project.notice.file>
+    <kohlschutter.multirelease.java8.release>7</kohlschutter.multirelease.java8.release>
+  </properties>
+</project>

@@ -1202,8 +1202,26 @@
         <version>${kohlschutter.parent.version}</version>
         <scope>provided</scope>
       </dependency>
+      <dependency>
+        <groupId>com.kohlschutter</groupId>
+        <artifactId>kohlschutter-util</artifactId>
+        <version>${kohlschutter.parent.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.kohlschutter</groupId>
+        <artifactId>kohlschutter-test-util</artifactId>
+        <version>${kohlschutter.parent.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>5.7.1</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
+
 
   <reporting>
     <plugins>
@@ -1238,5 +1256,7 @@
     <module>maven-plugin-config</module>
     <module>kohlschutter-parent-multirelease</module>
     <module>compiler-annotations</module>
+    <module>kohlschutter-util</module>
+    <module>kohlschutter-test-util</module>
   </modules>
 </project>

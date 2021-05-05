@@ -29,6 +29,8 @@ import java.lang.annotation.RetentionPolicy;
 public @interface SuppressFBWarnings {
   /**
    * The FindBugs/SpotBugs warnings that should be suppressed.
+   * 
+   * @return A list of warnings.
    */
   String[] value() default {};
 }

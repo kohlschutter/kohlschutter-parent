@@ -20,4 +20,8 @@ final class JavaReleaseShim {
   static long getPid() {
     return ProcessHandle.current().pid();
   }
+
+  static String getCommandline() {
+    return ProcessHandle.current().info().commandLine().orElse(null);
+  }
 }

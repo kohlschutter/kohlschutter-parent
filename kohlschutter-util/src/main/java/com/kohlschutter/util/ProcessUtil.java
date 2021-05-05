@@ -1,5 +1,10 @@
 package com.kohlschutter.util;
 
+/**
+ * Helper methods to access the current Java process.
+ * 
+ * @author Christian Kohlschütter
+ */
 public final class ProcessUtil {
   private ProcessUtil() {
     throw new IllegalStateException("No instances");
@@ -14,8 +19,13 @@ public final class ProcessUtil {
   public static long getPid() {
     return JavaReleaseShim.getPid();
   }
-  
-  public static void main(String[] args) {
-    System.out.println(ProcessUtilVintage.getPid());
+
+  /**
+   * Returns the command line used to invoke this VM, or {@code null} if unable to comply.
+   * 
+   * @return The command line, or {@code null}.
+   */
+  public static String getCommandline() {
+    return JavaReleaseShim.getCommandline();
   }
 }

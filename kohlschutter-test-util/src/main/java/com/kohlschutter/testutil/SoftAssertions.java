@@ -10,7 +10,7 @@ import org.opentest4j.TestAbortedException;
 
 public final class SoftAssertions implements Supplier<String> {
   private final List<AssertionError> errors = new ArrayList<>();
-  private final Supplier<String> conciseErrorMessageSupplier = new Supplier<String>() {
+  private final Supplier<String> supplier = new Supplier<String>() {
 
     @Override
     public String get() {
@@ -23,7 +23,7 @@ public final class SoftAssertions implements Supplier<String> {
           sb.append("; ");
         }
         sb.append(err.getMessage());
-        sb.append("\n");
+        sb.append('\n');
       }
       return sb.toString();
     }
@@ -46,7 +46,7 @@ public final class SoftAssertions implements Supplier<String> {
   }
 
   public Supplier<String> conciseErrorMessageSupplier() {
-    return conciseErrorMessageSupplier;
+    return supplier;
   }
   
   public <T extends Throwable> T addAssertionThrowablesAsSuppressed(T t) {

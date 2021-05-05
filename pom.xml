@@ -82,8 +82,12 @@
     <forbiddenapis.strict>true</forbiddenapis.strict>
 
     <jacoco.disabled>false</jacoco.disabled>
-    <jacoco.strict>true</jacoco.strict>
+    <jacoco.strict>false</jacoco.strict>
     <jacoco.coverage.min>0.0</jacoco.coverage.min>
+
+    <javadoc.strict>false</javadoc.strict>
+
+    <license.strict>false</license.strict>
 
     <pmd.strict>false</pmd.strict>
 
@@ -100,6 +104,8 @@
         <forbiddenapis.strict>true</forbiddenapis.strict>
         <jacoco.strict>true</jacoco.strict>
         <pmd.strict>true</pmd.strict>
+        <license.strict>true</license.strict>
+        <javadoc.strict>true</javadoc.strict>
       </properties>
     </profile>
     <profile>
@@ -687,6 +693,7 @@
               <excludes>
                 <exclude>**/package-info.java</exclude>
               </excludes>
+              <failIfMissing>${license.strict}</failIfMissing>
             </configuration>
             <executions>
               <execution>
@@ -1005,6 +1012,7 @@
             <detectOfflineLinks>false</detectOfflineLinks>
             <detectJavaApiLink>false</detectJavaApiLink>
             <quiet>true</quiet>
+            <failOnWarnings>${javadoc.strict}</failOnWarnings>
           </configuration>
         </plugin>
         <plugin>

@@ -48,7 +48,7 @@ public final class SoftAssertions implements Supplier<String> {
   public Supplier<String> conciseErrorMessageSupplier() {
     return supplier;
   }
-  
+
   public <T extends Throwable> T addAssertionThrowablesAsSuppressed(T t) {
     for (AssertionError err : errors) {
       t.addSuppressed(err);

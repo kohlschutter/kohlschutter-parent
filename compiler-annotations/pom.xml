@@ -17,4 +17,10 @@
     <kohlschutter.project.base.directory>${project.basedir}</kohlschutter.project.base.directory>
     <kohlschutter.project.notice.file>${kohlschutter.parent.directory}/NOTICE</kohlschutter.project.notice.file>
   </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.eclipse.jdt</groupId>
+      <artifactId>org.eclipse.jdt.annotation</artifactId>
+    </dependency>
+  </dependencies>
 </project>

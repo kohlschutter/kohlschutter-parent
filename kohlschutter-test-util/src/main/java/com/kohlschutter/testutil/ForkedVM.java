@@ -12,6 +12,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.kohlschutter.util.ProcessUtil;
 
@@ -85,6 +88,37 @@ public class ForkedVM {
         onJavaMainClass(arg);
         onArguments(args);
         break;
+      } else if (arg.startsWith("-javaagent")) {
+        if (!onJavaAgent(arg)) {
+          if (arg.contains("jacoco")) {
+            Pattern patDestFile = Pattern.compile("^(.+?[=,]destfile=)([^,=]+)(.*?)$");
+            Matcher m = patDestFile.matcher(arg);
+            if (m.find()) {
+              // This is how Maven calls jacoco. We can create a separate coverage file, which we
+              // then aggregate later.
+              File currentJacocoExec = new File(m.group(2));
+              File newJacocoExec = new File(currentJacocoExec.getParentFile(), "jacoco-forked-"
+                  + UUID.randomUUID() + ".exec");
+              System.err.println("[INFO] (ForkedVM) Writing code coverage for forked process to "
+                  + newJacocoExec);
+
+              StringBuilder sb = new StringBuilder();
+              sb.append(m.group(1));
+              sb.append(newJacocoExec.toString());
+              sb.append(m.group(3));
+
+              onJavaOption(sb.toString());
+            } else {
+              // Eclipse calls jacoco using a TCP port, and it looks like access that port from
+              // multiple clients isn't supported (yet?), so let's emit a warning and see what
+              // happens.
+              System.err.println(
+                  "[WARNING] (ForkedVM) Code coverage may be incomplete for code only called from the forked VM");
+
+              onJavaOption(arg);
+            }
+          }
+        }
       } else {
         onJavaOption(arg);
       }
@@ -97,6 +131,18 @@ public class ForkedVM {
 
   protected void onJavaOption(String option) {
     cmd.add(option);
+  }
+
+  /**
+   * Called for a {@code -javaagent} option.
+   * 
+   * @param option The option.
+   * @return {@code true} if handled by this method. If {@code false}, some fallback options may be
+   *         applied by {@link ForkedVM}.
+   */
+  protected boolean onJavaAgent(String option) {
+    // ignored by default
+    return false;
   }
 
   protected void onJavaOption(String option, String arg) {

@@ -1135,7 +1135,7 @@
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
-          <version>0.8.6</version>
+          <version>0.8.7</version>
           <configuration>
             <skip>${jacoco.disabled}</skip>
             <excludes>
@@ -1191,21 +1191,6 @@
       </plugins>
     </pluginManagement>
   </build>
-
-  <dependencies>
-    <dependency>
-      <groupId>net.jcip</groupId>
-      <artifactId>jcip-annotations</artifactId>
-      <version>1.0</version>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>com.github.spotbugs</groupId>
-      <artifactId>spotbugs-annotations</artifactId>
-      <version>4.2.3</version>
-      <optional>true</optional>
-    </dependency>
-  </dependencies>
 
   <dependencyManagement>
     <dependencies>

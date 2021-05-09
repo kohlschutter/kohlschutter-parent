@@ -79,7 +79,7 @@
     <spotbugs.strict>false</spotbugs.strict>
 
     <forbiddenapis.version>3.1</forbiddenapis.version>
-    <forbiddenapis.strict>true</forbiddenapis.strict>
+    <forbiddenapis.strict>false</forbiddenapis.strict>
 
     <jacoco.disabled>false</jacoco.disabled>
     <jacoco.strict>false</jacoco.strict>

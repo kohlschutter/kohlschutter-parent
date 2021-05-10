@@ -2,12 +2,15 @@ package com.kohlschutter.util;
 
 import java.util.concurrent.ExecutionException;
 
+import com.kohlschutter.annotations.compiletime.ExcludeFromCodeCoverageGeneratedReport;
+
 /**
  * Helper methods for exception handling.
  * 
  * @author Christian Kohlschütter
  */
 public final class ExceptionUtil {
+  @ExcludeFromCodeCoverageGeneratedReport
   private ExceptionUtil() {
     throw new IllegalStateException("No instances");
   }

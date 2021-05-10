@@ -4,7 +4,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.kohlschutter.annotations.compiletime.ExcludeFromCodeCoverageGeneratedReport;
+
 public final class IOUtil {
+  @ExcludeFromCodeCoverageGeneratedReport
   private IOUtil() {
     throw new IllegalStateException("No instances");
   }

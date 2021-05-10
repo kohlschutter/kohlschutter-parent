@@ -31,6 +31,6 @@ import java.lang.annotation.Target;
  * @author Christian Kohlschütter
  */
 @Retention(RetentionPolicy.CLASS)
-@Target({ElementType.METHOD, ElementType.TYPE})
+@Target({ElementType.METHOD, ElementType.TYPE, ElementType.CONSTRUCTOR})
 public @interface ExcludeFromCodeCoverageGeneratedReport {
 }

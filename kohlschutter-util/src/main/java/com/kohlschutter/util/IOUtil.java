@@ -3,6 +3,7 @@ package com.kohlschutter.util;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 import com.kohlschutter.annotations.compiletime.ExcludeFromCodeCoverageGeneratedReport;
 
@@ -13,7 +14,7 @@ public final class IOUtil {
   }
 
   /**
-   * Reads all bytes from the given InputStream.
+   * Reads all bytes from the given {@link InputStream}.
    * 
    * With Java 9 and above, {@code InputStream#readAllBytes()} is used. On older Java versions, the
    * call is implemented like {@link #readAllBytesNaively(InputStream)}.
@@ -35,12 +36,43 @@ public final class IOUtil {
    * @throws IOException on error.
    */
   public static byte[] readAllBytesNaively(InputStream in) throws IOException {
+    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    transferAllBytesNaively(in, bos);
+    return bos.toByteArray();
+  }
+
+  /**
+   * Transfers all remaining bytes from the given {@link InputStream} to the given
+   * {@link OutputStream}.
+   * 
+   * With Java 9 and above, {@code InputStream#transferTo()} is used. On older Java versions, the
+   * call is implemented like {@link #transferAllBytesNaively(InputStream, OutputStream)}.
+   * 
+   * @param in The source.
+   * @param out The target.
+   * @return The number of bytes transferred.
+   * @throws IOException on error.
+   */
+  public static long transferAllBytes(InputStream in, OutputStream out) throws IOException {
+    return JavaReleaseShim.transferAllBytes(in, out);
+  }
+
+  /**
+   * Reads all bytes from the given {@link InputStream} — naively — by reading into a temporary
+   * byte-array buffer, which is then written to the given {@link OutputStream}.
+   * 
+   * @param in The input stream.
+   * @return The bytes.
+   * @throws IOException on error.
+   */
+  public static long transferAllBytesNaively(InputStream in, OutputStream out) throws IOException {
+    long total = 0;
     byte[] buf = new byte[4096];
     int read;
-    ByteArrayOutputStream bos = new ByteArrayOutputStream();
     while ((read = in.read(buf)) != -1) {
-      bos.write(buf, 0, read);
+      total += read;
+      out.write(buf, 0, read);
     }
-    return bos.toByteArray();
+    return total;
   }
 }

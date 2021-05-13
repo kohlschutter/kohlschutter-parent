@@ -2,6 +2,7 @@ package com.kohlschutter.util;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * The implementations in this class may be overridden for older Java versions.
@@ -23,5 +24,9 @@ final class JavaReleaseShim {
 
   static String getCommandline() {
     return ProcessHandle.current().info().commandLine().orElse(null);
+  }
+
+  static long transferAllBytes(InputStream in, OutputStream out) throws IOException {
+    return in.transferTo(out);
   }
 }

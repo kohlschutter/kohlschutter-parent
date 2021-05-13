@@ -61,8 +61,9 @@ public final class IOUtil {
    * Reads all bytes from the given {@link InputStream} — naively — by reading into a temporary
    * byte-array buffer, which is then written to the given {@link OutputStream}.
    * 
-   * @param in The input stream.
-   * @return The bytes.
+   * @param in The source.
+   * @param out The target.
+   * @return The number of bytes transferred.
    * @throws IOException on error.
    */
   public static long transferAllBytesNaively(InputStream in, OutputStream out) throws IOException {

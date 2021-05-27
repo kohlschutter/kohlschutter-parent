@@ -9,6 +9,7 @@ import java.lang.ProcessBuilder.Redirect;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -36,6 +37,10 @@ public class ForkedVM {
   private final String overrideMainClass;
   private final String[] overrideArgs;
 
+  private boolean haveJavaMainClass = false;
+
+  private boolean haveArguments = false;
+
   protected ForkedVM() {
     this(null, (String[]) null);
   }
@@ -48,6 +53,12 @@ public class ForkedVM {
   public Process fork() throws IOException, UnsupportedOperationException {
     cmd = new ArrayList<>();
     parse();
+    if (!haveJavaMainClass) {
+      onJavaMainClass(null);
+    }
+    if (!haveArguments) {
+      onArguments(Collections.emptyList());
+    }
 
     Process p = new ProcessBuilder(cmd) //
         .redirectOutput(Redirect.PIPE) //
@@ -146,18 +157,25 @@ public class ForkedVM {
   }
 
   protected void onJavaOption(String option, String arg) {
+    if ("-jar".equals(option)) {
+      option = "-cp";
+    }
     cmd.add(option);
     cmd.add(arg);
   }
 
   protected void onJavaMainClass(String arg) {
+    haveJavaMainClass = true;
     if (overrideMainClass != null) {
       arg = overrideMainClass;
     }
-    cmd.add(arg);
+    if (arg != null) {
+      cmd.add(arg);
+    }
   }
 
   protected void onArguments(List<String> args) {
+    haveArguments = true;
     if (overrideArgs != null) {
       args = Arrays.asList(overrideArgs);
     }

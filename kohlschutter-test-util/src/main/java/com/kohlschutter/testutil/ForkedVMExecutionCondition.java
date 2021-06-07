@@ -45,7 +45,7 @@ public class ForkedVMExecutionCondition implements ExecutionCondition {
       return ConditionEvaluationResult.enabled("Unconditional execution");
     }
     
-    if (forkSupported.booleanValue() != ForkedVM.supported()) {
+    if (forkSupported.booleanValue() != ForkedVM.isSupported()) {
       return ConditionEvaluationResult.disabled(message);
     } else {
       return ConditionEvaluationResult.enabled("ForkedVM support status as expected");

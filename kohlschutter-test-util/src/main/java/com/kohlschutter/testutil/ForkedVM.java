@@ -82,7 +82,12 @@ public class ForkedVM {
     return p;
   }
 
-  public static boolean supported() {
+  /**
+   * Checks if launching a new Java VM based on the current one is supported.
+   * 
+   * @return {@code true} if supported.
+   */
+  public static boolean isSupported() {
     return SUPPORTED;
   }
 

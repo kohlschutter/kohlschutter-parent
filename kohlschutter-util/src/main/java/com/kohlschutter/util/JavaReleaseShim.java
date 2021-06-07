@@ -22,8 +22,12 @@ final class JavaReleaseShim {
     return ProcessHandle.current().pid();
   }
 
-  static String getCommandline() {
-    return ProcessHandle.current().info().commandLine().orElse(null);
+  static String getJavaCommand() {
+    return ProcessHandle.current().info().command().orElse(null);
+  }
+
+  static String[] getJavaCommandArguments() {
+    return ProcessHandle.current().info().arguments().orElse(null);
   }
 
   static long transferAllBytes(InputStream in, OutputStream out) throws IOException {

@@ -18,6 +18,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.kohlschutter.util.ProcessUtil;
+import com.kohlschutter.util.SystemPropertyUtil;
 
 /**
  * Simplifies forking a Java VM based on the configuration of the currently running VM.
@@ -31,6 +32,19 @@ public class ForkedVM {
       "-cp", "--module-path", "--upgrade-module-path", "-classpath", "--class-path",
       "--patch-module", "--add-reads", "--add-exports", "--add-opens", "--add-modules", "-d",
       "--describe-module", "--limit-modules", "-jar"));
+
+  private static final boolean SUPPORTED;
+
+  static {
+    if (!SystemPropertyUtil.getBooleanSystemProperty("com.kohlschutter.ForkedVM.enabled", true)) {
+      SUPPORTED = false;
+    } else if (ProcessUtil.getJavaCommand() == null || ProcessUtil
+        .getJavaCommandArguments() == null) {
+      SUPPORTED = false;
+    } else {
+      SUPPORTED = true;
+    }
+  }
 
   private List<String> cmd;
 
@@ -68,14 +82,24 @@ public class ForkedVM {
     return p;
   }
 
+  public static boolean supported() {
+    return SUPPORTED;
+  }
+
   private void parse() throws IOException, UnsupportedOperationException {
-    String commandline = ProcessUtil.getCommandline();
-    if (commandline == null) {
-      throw new UnsupportedOperationException("Could not get VM commandline");
+    String command = ProcessUtil.getJavaCommand();
+    if (command == null) {
+      throw new UnsupportedOperationException("Could not get VM command");
+    }
+    String[] commandArgs = ProcessUtil.getJavaCommandArguments();
+    if (commandArgs == null || commandArgs.length == 0) {
+      throw new UnsupportedOperationException("Could not get VM command arguments");
     }
 
-    List<String> args = new ArrayList<>(Arrays.asList(commandline.split("[ ]+")));
-    onJavaExecutable(args.remove(0));
+    onJavaExecutable(command);
+
+    List<String> args = new ArrayList<>(Arrays.asList(commandArgs));
+
     while (!args.isEmpty()) {
       String arg = unescapeJavaArg(args.remove(0));
 

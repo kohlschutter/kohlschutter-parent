@@ -21,11 +21,21 @@ public final class ProcessUtil {
   }
 
   /**
-   * Returns the command line used to invoke this VM, or {@code null} if unable to comply.
+   * Returns the java command used to invoke this VM, or {@code null} if unable to comply.
    * 
-   * @return The command line, or {@code null}.
+   * @return The command, or {@code null}.
    */
-  public static String getCommandline() {
-    return JavaReleaseShim.getCommandline();
+  public static String getJavaCommand() {
+    return JavaReleaseShim.getJavaCommand();
+  }
+
+  /**
+   * Returns the java arguments (without the command) used to invoke this VM, or {@code null} if
+   * unable to comply.
+   * 
+   * @return The command, or {@code null}.
+   */
+  public static String[] getJavaCommandArguments() {
+    return JavaReleaseShim.getJavaCommandArguments();
   }
 }

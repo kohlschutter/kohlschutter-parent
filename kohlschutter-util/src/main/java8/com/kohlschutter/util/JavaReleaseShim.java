@@ -18,7 +18,11 @@ final class JavaReleaseShim {
     return ProcessUtilVintage.getPid();
   }
 
-  static String getCommandline() {
+  static String getJavaCommand() {
+    return null;
+  }
+
+  static String[] getJavaCommandArguments() {
     return null;
   }
 

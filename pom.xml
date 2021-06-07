@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.kohlschutter</groupId>
   <artifactId>kohlschutter-parent</artifactId>
-  <version>1.4.0</version>
+  <version>1.4.1</version>
   <packaging>pom</packaging>
   <name>kohlschutter-parent</name>
   <inceptionYear>2014</inceptionYear>
@@ -60,7 +60,7 @@
     <kohlschutter.project.notice.file>${kohlschutter.project.base.directory}/NOTICE</kohlschutter.project.notice.file>
 
     <!-- Please keep this version in lockstep with the version declared above -->
-    <kohlschutter.parent.version>1.4.0</kohlschutter.parent.version>
+    <kohlschutter.parent.version>1.4.1</kohlschutter.parent.version>
     <kohlschutter.maven.version.min>3.6.0</kohlschutter.maven.version.min>
 
     <coding.style.version>1.2.4</coding.style.version>
@@ -153,9 +153,9 @@
                   <goal>run</goal>
                 </goals>
                 <configuration>
-                  <tasks>
+                  <target>
                     <echoproperties />
-                  </tasks>
+                  </target>
                 </configuration>
               </execution>
             </executions>
@@ -285,9 +285,9 @@
                   <goal>run</goal>
                 </goals>
                 <configuration>
-                  <tasks>
+                  <target>
                     <echoproperties />
-                  </tasks>
+                  </target>
                 </configuration>
               </execution>
             </executions>

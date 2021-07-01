@@ -33,7 +33,6 @@ public class ForkedVMExecutionCondition implements ExecutionCondition {
 
     Optional<AnnotatedElement> element = context.getElement();
     if (element.isPresent()) {
-      @SuppressWarnings("null")
       ForkedVMRequirement requirement = element.get().getAnnotation(
           ForkedVMRequirement.class);
       if (requirement != null) {

@@ -34,7 +34,6 @@ public class SystemPropertyExecutionCondition implements ExecutionCondition {
 
     Optional<AnnotatedElement> element = context.getElement();
     if (element.isPresent()) {
-      @SuppressWarnings("null")
       SystemPropertyRequirement requirement = element.get().getAnnotation(
           SystemPropertyRequirement.class);
       if (requirement != null) {

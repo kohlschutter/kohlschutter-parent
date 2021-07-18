@@ -93,7 +93,7 @@
 
     <!-- Only upgrade to the latest version you can have in Eclipse, no later
       versions; otherwise, you may not be able to run checks in Eclipse -->
-    <pmdVersion>6.33.0</pmdVersion>
+    <pmdVersion>6.36.0</pmdVersion>
   </properties>
   <profiles>
     <profile>

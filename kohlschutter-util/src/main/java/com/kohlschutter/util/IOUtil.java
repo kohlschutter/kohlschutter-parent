@@ -1,6 +1,7 @@
 package com.kohlschutter.util;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -75,5 +76,11 @@ public final class IOUtil {
       out.write(buf, 0, read);
     }
     return total;
+  }
+
+  public static void delete(File f) throws IOException {
+    if (!f.delete() && f.exists()) {
+      throw new IOException("Could not delete file: " + f);
+    }
   }
 }

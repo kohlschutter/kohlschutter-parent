@@ -3,6 +3,7 @@ package com.kohlschutter.testutil;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.ProcessBuilder.Redirect;
@@ -108,60 +109,77 @@ public class ForkedVM {
     while (!args.isEmpty()) {
       String arg = unescapeJavaArg(args.remove(0));
 
-      if (HAS_PARAMETER.contains(arg)) {
-        onJavaOption(arg, unescapeJavaArg(args.remove(0)));
-      } else if (!arg.startsWith("-")) {
-        if (arg.startsWith("@") && arg.length() > 1) {
-          List<String> extraArgs = new ArrayList<>();
-          File f = new File(arg.substring(1));
-          try (BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(f),
-              Charset.defaultCharset()))) {
-            String arg0;
-            while ((arg0 = in.readLine()) != null) {
-              extraArgs.add(arg0);
-            }
-          }
-          args.addAll(0, extraArgs);
-          continue;
-        }
+      if (!parseArg(args, arg)) {
+        break;
+      }
+    }
+  }
 
+  private boolean parseArg(List<String> args, String arg) throws FileNotFoundException,
+      IOException {
+    if (HAS_PARAMETER.contains(arg)) {
+      onJavaOption(arg, unescapeJavaArg(args.remove(0)));
+    } else if (!arg.startsWith("-")) {
+      if (arg.startsWith("@") && arg.length() > 1) {
+        addExtraArgsFromFile(args, new File(arg.substring(1)));
+        return true;
+      } else {
         onJavaMainClass(arg);
         onArguments(args);
-        break;
-      } else if (arg.startsWith("-javaagent")) {
-        if (!onJavaAgent(arg)) {
-          if (arg.contains("jacoco")) {
-            Pattern patDestFile = Pattern.compile("^(.+?[=,]destfile=)([^,=]+)(.*?)$");
-            Matcher m = patDestFile.matcher(arg);
-            if (m.find()) {
-              // This is how Maven calls jacoco. We can create a separate coverage file, which we
-              // then aggregate later.
-              File currentJacocoExec = new File(m.group(2));
-              File newJacocoExec = new File(currentJacocoExec.getParentFile(), "jacoco-forked-"
-                  + UUID.randomUUID() + ".exec");
-              System.err.println("[INFO] (ForkedVM) Writing code coverage for forked process to "
-                  + newJacocoExec);
-
-              StringBuilder sb = new StringBuilder();
-              sb.append(m.group(1));
-              sb.append(newJacocoExec.toString());
-              sb.append(m.group(3));
-
-              onJavaOption(sb.toString());
-            } else {
-              // Eclipse calls jacoco using a TCP port, and it looks like access that port from
-              // multiple clients isn't supported (yet?), so let's emit a warning and see what
-              // happens.
-              System.err.println(
-                  "[WARNING] (ForkedVM) Code coverage may be incomplete for code only called from the forked VM");
-
-              onJavaOption(arg);
-            }
-          }
-        }
-      } else {
-        onJavaOption(arg);
+        return false;
       }
+    } else if (arg.startsWith("-javaagent")) {
+      if (!onJavaAgent(arg)) {
+        if (arg.contains("jacoco")) {
+          parseJacocoJavaAgent(arg);
+        }
+      }
+    } else {
+      onJavaOption(arg);
+    }
+
+    return true;
+  }
+
+  private void addExtraArgsFromFile(List<String> args, File f) throws FileNotFoundException,
+      IOException {
+    List<String> extraArgs = new ArrayList<>();
+    try (BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(f),
+        Charset.defaultCharset()))) {
+      String arg0;
+      while ((arg0 = in.readLine()) != null) {
+        extraArgs.add(arg0);
+      }
+    }
+    args.addAll(0, extraArgs);
+  }
+
+  private void parseJacocoJavaAgent(String arg) {
+    Pattern patDestFile = Pattern.compile("^(.+?[=,]destfile=)([^,=]+)(.*?)$");
+    Matcher m = patDestFile.matcher(arg);
+    if (m.find()) {
+      // This is how Maven calls jacoco. We can create a separate coverage file, which we
+      // then aggregate later.
+      File currentJacocoExec = new File(m.group(2));
+      File newJacocoExec = new File(currentJacocoExec.getParentFile(), "jacoco-forked-" + UUID
+          .randomUUID() + ".exec");
+      System.err.println("[INFO] (ForkedVM) Writing code coverage for forked process to "
+          + newJacocoExec);
+
+      StringBuilder sb = new StringBuilder();
+      sb.append(m.group(1));
+      sb.append(newJacocoExec.toString());
+      sb.append(m.group(3));
+
+      onJavaOption(sb.toString());
+    } else {
+      // Eclipse calls jacoco using a TCP port, and it looks like access that port from
+      // multiple clients isn't supported (yet?), so let's emit a warning and see what
+      // happens.
+      System.err.println(
+          "[WARNING] (ForkedVM) Code coverage may be incomplete for code only called from the forked VM");
+
+      onJavaOption(arg);
     }
   }
 

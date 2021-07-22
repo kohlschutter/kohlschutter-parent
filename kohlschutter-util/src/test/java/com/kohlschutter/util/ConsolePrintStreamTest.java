@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.nio.charset.Charset;
 import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
@@ -17,7 +18,7 @@ public class ConsolePrintStreamTest {
       PrintStream outOld = System.out;
       try {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
+        System.setOut(new PrintStream(bos, true, Charset.defaultCharset().name()));
         try (ConsolePrintStream cpw = ConsolePrintStream.wrapSystemOut()) {
           assertFalse(cpw.hasNewlineSinceMark());
           cpw.println();

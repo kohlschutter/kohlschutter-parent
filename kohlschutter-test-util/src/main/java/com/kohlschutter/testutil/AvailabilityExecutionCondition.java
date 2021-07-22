@@ -52,7 +52,7 @@ public class AvailabilityExecutionCondition implements ExecutionCondition {
       try {
         Class.forName(requiredClass, false, null);
       } catch (Exception e) {
-        unsupported.add(requiredClass);
+        unsupported.add(requiredClass); // NOPMD
       }
     }
 

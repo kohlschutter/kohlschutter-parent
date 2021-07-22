@@ -3,6 +3,8 @@ package com.kohlschutter.util;
 import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 
 /**
  * A {@code System.out} wrapper that can knows a little bit about the system console.
@@ -10,15 +12,23 @@ import java.io.PrintStream;
  * @author Christian Kohlschütter
  */
 public class ConsolePrintStream extends PrintStream {
-  private static final byte[] NEWLINE_BYTES = System.lineSeparator().getBytes();
+  private static final byte[] NEWLINE_BYTES = System.lineSeparator().getBytes(Charset
+      .defaultCharset());
   private static final int NEWLINE = '\n';
 
   private final PrintStream out;
   private final ConsoleFilterOut cfo;
   private boolean closed = false;
 
-  private ConsolePrintStream() {
+  private ConsolePrintStream() throws UnsupportedEncodingException {
     this(new ConsoleFilterOut(System.out));
+  }
+
+  private ConsolePrintStream(ConsoleFilterOut cfo) throws UnsupportedEncodingException {
+    super(cfo, false, Charset.defaultCharset().name());
+    this.cfo = cfo;
+    this.out = System.out;
+    System.setOut(this);
   }
 
   public static ConsolePrintStream wrapSystemOut() {
@@ -27,16 +37,13 @@ public class ConsolePrintStream extends PrintStream {
       if (out instanceof ConsolePrintStream) {
         return (ConsolePrintStream) out;
       } else {
-        return new ConsolePrintStream();
+        try {
+          return new ConsolePrintStream();
+        } catch (UnsupportedEncodingException e) {
+          throw new IllegalStateException(e);
+        }
       }
     }
-  }
-
-  private ConsolePrintStream(ConsoleFilterOut cfo) {
-    super(cfo);
-    this.cfo = cfo;
-    this.out = System.out;
-    System.setOut(this);
   }
 
   private static final class ConsoleFilterOut extends FilterOutputStream {
@@ -89,15 +96,15 @@ public class ConsolePrintStream extends PrintStream {
       }
     }
 
-    private synchronized void markPosition() {
+    synchronized void markPosition() {
       markedPosition = numBytes;
     }
 
-    private synchronized boolean hasNewlineSinceMark() {
+    synchronized boolean hasNewlineSinceMark() {
       return lastNewline > markedPosition;
     }
 
-    private synchronized boolean hasOutputSinceMark() {
+    synchronized boolean hasOutputSinceMark() {
       return numBytes > markedPosition;
     }
   }
@@ -169,25 +176,27 @@ public class ConsolePrintStream extends PrintStream {
   }
 
   private void clearLine() {
-    flush();
+    synchronized (cfo) {
+      flush();
 
-    int numBytesSinceNewline = (cfo.numBytes - cfo.lastNewline);
-    if (numBytesSinceNewline == 0) {
-      return;
+      int numBytesSinceNewline = (cfo.numBytes - cfo.lastNewline);
+      if (numBytesSinceNewline == 0) {
+        return;
+      }
+      StringBuilder sb = new StringBuilder(numBytesSinceNewline * 3 + 1);
+
+      // overwrite anything written so far in the last line without ANSI escape sequences
+      for (int i = 0; i < numBytesSinceNewline; i++) {
+        sb.append("\b \b");
+      }
+
+      // triggers a newline in Eclipse when "Interpret ASCII control characters" is off
+      sb.append('\r');
+
+      out.print(sb);
+      out.flush();
+      cfo.lastNewline = cfo.numBytes;
     }
-    StringBuilder sb = new StringBuilder(numBytesSinceNewline * 3 + 1);
-
-    // Reliably overwrite anything written so far in the last line without ANSI escape sequences
-    for (int i = 0; i < numBytesSinceNewline; i++) {
-      sb.append("\b \b");
-    }
-
-    // triggers a newline in Eclipse when "Interpret ASCII control characters" is off
-    sb.append("\r");
-
-    out.print(sb);
-    out.flush();
-    cfo.lastNewline = cfo.numBytes;
   }
 
   /**

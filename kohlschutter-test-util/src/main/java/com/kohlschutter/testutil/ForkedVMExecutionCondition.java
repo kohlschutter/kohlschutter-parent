@@ -33,8 +33,7 @@ public class ForkedVMExecutionCondition implements ExecutionCondition {
 
     Optional<AnnotatedElement> element = context.getElement();
     if (element.isPresent()) {
-      ForkedVMRequirement requirement = element.get().getAnnotation(
-          ForkedVMRequirement.class);
+      ForkedVMRequirement requirement = element.get().getAnnotation(ForkedVMRequirement.class);
       if (requirement != null) {
         forkSupported = requirement.forkSupported();
       }
@@ -43,7 +42,7 @@ public class ForkedVMExecutionCondition implements ExecutionCondition {
     if (forkSupported == null) {
       return ConditionEvaluationResult.enabled("Unconditional execution");
     }
-    
+
     if (forkSupported.booleanValue() != ForkedVM.isSupported()) {
       return ConditionEvaluationResult.disabled(message);
     } else {

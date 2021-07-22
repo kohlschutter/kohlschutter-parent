@@ -115,6 +115,7 @@ public class ForkedVM {
     }
   }
 
+  @SuppressWarnings("PMD.CognitiveComplexity")
   private boolean parseArg(List<String> args, String arg) throws FileNotFoundException,
       IOException {
     if (HAS_PARAMETER.contains(arg)) {
@@ -129,10 +130,13 @@ public class ForkedVM {
         return false;
       }
     } else if (arg.startsWith("-javaagent")) {
-      if (!onJavaAgent(arg)) {
-        if (arg.contains("jacoco")) {
-          parseJacocoJavaAgent(arg);
-        }
+      if (!onJavaAgent(arg) && arg.contains("jacoco")) {
+        parseJacocoJavaAgent(arg);
+      }
+    } else if (arg.startsWith("-XX:StartFlightRecording=") || arg.startsWith(
+        "-XX:StartFlightRecording:")) {
+      if (!onStartFlightRecording(arg) && arg.contains("filename=")) {
+        parseStartFlightRecording(arg);
       }
     } else {
       onJavaOption(arg);
@@ -154,24 +158,20 @@ public class ForkedVM {
     args.addAll(0, extraArgs);
   }
 
-  private void parseJacocoJavaAgent(String arg) {
-    Pattern patDestFile = Pattern.compile("^(.+?[=,]destfile=)([^,=]+)(.*?)$");
+  private File replacePath(String arg, Pattern patDestFile, String prefix, String suffix) {
     Matcher m = patDestFile.matcher(arg);
     if (m.find()) {
-      // This is how Maven calls jacoco. We can create a separate coverage file, which we
-      // then aggregate later.
-      File currentJacocoExec = new File(m.group(2));
-      File newJacocoExec = new File(currentJacocoExec.getParentFile(), "jacoco-forked-" + UUID
-          .randomUUID() + ".exec");
-      System.err.println("[INFO] (ForkedVM) Writing code coverage for forked process to "
-          + newJacocoExec);
+      // Create a separate file for the ForkedVM
+      File oldFile = new File(m.group(2));
+      File newFile = new File(oldFile.getParentFile(), prefix + UUID.randomUUID() + suffix);
 
       StringBuilder sb = new StringBuilder();
       sb.append(m.group(1));
-      sb.append(newJacocoExec.toString());
+      sb.append(newFile.toString());
       sb.append(m.group(3));
 
       onJavaOption(sb.toString());
+      return newFile;
     } else {
       // Eclipse calls jacoco using a TCP port, and it looks like access that port from
       // multiple clients isn't supported (yet?), so let's emit a warning and see what
@@ -179,6 +179,36 @@ public class ForkedVM {
       System.err.println(
           "[WARNING] (ForkedVM) Code coverage may be incomplete for code only called from the forked VM");
 
+      onJavaOption(arg);
+      return null;
+    }
+  }
+
+  private void parseJacocoJavaAgent(String arg) {
+    Pattern patDestFile = Pattern.compile("^(.+?[=,]destfile=)([^,=]+)(.*?)$");
+    File newFile;
+    if ((newFile = replacePath(arg, patDestFile, "jacoco-forked-", ".exec")) != null) {
+      // This is how Maven calls jacoco. We can create a separate coverage file, which we
+      // then aggregate later.
+      System.err.println("[INFO] (ForkedVM) Writing code coverage for forked process to "
+          + newFile);
+    } else {
+      // Eclipse calls jacoco using a TCP port, and it looks like access that port from
+      // multiple clients isn't supported (yet?), so let's emit a warning and see what
+      // happens.
+      System.err.println(
+          "[WARNING] (ForkedVM) Code coverage may be incomplete for code only called from the forked VM");
+
+      onJavaOption(arg);
+    }
+  }
+
+  private void parseStartFlightRecording(String arg) {
+    Pattern patDestFile = Pattern.compile("^(.+?[=,]filename=)([^,=]+)(.*?)$");
+    File newFile;
+    if ((newFile = replacePath(arg, patDestFile, "jfr-forked-", ".jfr")) != null) {
+      System.err.println("[INFO] (ForkedVM) Writing flight recording data to " + newFile);
+    } else {
       onJavaOption(arg);
     }
   }
@@ -199,6 +229,18 @@ public class ForkedVM {
    *         applied by {@link ForkedVM}.
    */
   protected boolean onJavaAgent(String option) {
+    // ignored by default
+    return false;
+  }
+
+  /**
+   * Called for a {@code -XX:StartFlightRecording=} option.
+   * 
+   * @param option The option.
+   * @return {@code true} if handled by this method. If {@code false}, some fallback options may be
+   *         applied by {@link ForkedVM}.
+   */
+  protected boolean onStartFlightRecording(String option) {
     // ignored by default
     return false;
   }

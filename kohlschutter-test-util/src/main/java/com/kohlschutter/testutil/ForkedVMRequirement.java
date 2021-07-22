@@ -32,6 +32,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 @ExtendWith(ForkedVMExecutionCondition.class)
 public @interface ForkedVMRequirement {
   boolean forkSupported();
-  
+
   String message() default "";
 }

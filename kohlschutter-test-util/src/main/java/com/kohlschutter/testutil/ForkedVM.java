@@ -130,12 +130,12 @@ public class ForkedVM {
         return false;
       }
     } else if (arg.startsWith("-javaagent")) {
-      if (!onJavaAgent(arg) && arg.contains("jacoco")) {
+      if (!onJavaAgent(arg)) {
         parseJacocoJavaAgent(arg);
       }
     } else if (arg.startsWith("-XX:StartFlightRecording=") || arg.startsWith(
         "-XX:StartFlightRecording:")) {
-      if (!onStartFlightRecording(arg) && arg.contains("filename=")) {
+      if (!onStartFlightRecording(arg)) {
         parseStartFlightRecording(arg);
       }
     } else {
@@ -187,7 +187,8 @@ public class ForkedVM {
   private void parseJacocoJavaAgent(String arg) {
     Pattern patDestFile = Pattern.compile("^(.+?[=,]destfile=)([^,=]+)(.*?)$");
     File newFile;
-    if ((newFile = replacePath(arg, patDestFile, "jacoco-forked-", ".exec")) != null) {
+    if (arg.contains("jacoco") && (newFile = replacePath(arg, patDestFile, "jacoco-forked-",
+        ".exec")) != null) {
       // This is how Maven calls jacoco. We can create a separate coverage file, which we
       // then aggregate later.
       System.err.println("[INFO] (ForkedVM) Writing code coverage for forked process to "

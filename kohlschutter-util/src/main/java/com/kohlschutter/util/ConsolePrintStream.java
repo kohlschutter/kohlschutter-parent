@@ -15,6 +15,7 @@ public class ConsolePrintStream extends PrintStream {
   private static final byte[] NEWLINE_BYTES = System.lineSeparator().getBytes(Charset
       .defaultCharset());
   private static final int NEWLINE = '\n';
+  private static final boolean NO_CONSOLE = System.console() == null;
 
   private final PrintStream out;
   private final ConsoleFilterOut cfo;
@@ -150,7 +151,7 @@ public class ConsolePrintStream extends PrintStream {
     synchronized (cfo) {
       cfo.lastUpdate = 0;
       if (cfo.lastByte != NEWLINE) {
-        if (hasNewlineSinceMark()) {
+        if (NO_CONSOLE || hasNewlineSinceMark()) {
           println();
         } else {
           clearLine();

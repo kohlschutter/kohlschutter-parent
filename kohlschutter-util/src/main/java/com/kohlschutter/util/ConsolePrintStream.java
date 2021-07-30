@@ -15,11 +15,32 @@ public class ConsolePrintStream extends PrintStream {
   private static final byte[] NEWLINE_BYTES = System.lineSeparator().getBytes(Charset
       .defaultCharset());
   private static final int NEWLINE = '\n';
-  private static final boolean NO_CONSOLE = System.console() == null;
+  private static final boolean NO_CONSOLE; // if true, then we don't update lines
+  private static final boolean IS_WINDOWS;
 
   private final PrintStream out;
   private final ConsoleFilterOut cfo;
   private boolean closed = false;
+
+  static {
+    if (System.console() != null) {
+      NO_CONSOLE = false;
+    } else {
+      String serviceName = System.getenv("XPC_SERVICE_NAME");
+      if (serviceName != null && serviceName.endsWith(".eclipse")) {
+        // running in Eclipse, assume console is on
+        NO_CONSOLE = false;
+      } else {
+        NO_CONSOLE = true;
+      }
+    }
+
+    IS_WINDOWS = "\\".equals(System.getProperty("file.separator", ""));
+  }
+
+  public static void main(String[] args) {
+
+  }
 
   private ConsolePrintStream() throws UnsupportedEncodingException {
     this(new ConsoleFilterOut(System.out));
@@ -149,15 +170,29 @@ public class ConsolePrintStream extends PrintStream {
    */
   public void update(String s) {
     synchronized (cfo) {
+      flush();
       cfo.lastUpdate = 0;
       if (cfo.lastByte != NEWLINE) {
         if (NO_CONSOLE || hasNewlineSinceMark()) {
           println();
+          print(s);
         } else {
-          clearLine();
+          if (IS_WINDOWS) {
+            clearLine();
+            print(s);
+          } else {
+            int numBytesSinceNewline = (cfo.numBytes - cfo.lastNewline);
+            int toClear = numBytesSinceNewline - s.length();
+
+            print('\r');
+            cfo.lastNewline = cfo.numBytes;
+            print(s);
+            clearToEndOfLine(toClear);
+          }
         }
+      } else {
+        print(s);
       }
-      print(s);
       flush();
       markPosition();
       cfo.lastUpdate = cfo.numBytes;
@@ -197,6 +232,23 @@ public class ConsolePrintStream extends PrintStream {
       out.print(sb);
       out.flush();
       cfo.lastNewline = cfo.numBytes;
+    }
+  }
+
+  private void clearToEndOfLine(int toClear) {
+    if (toClear <= 0) {
+      return;
+    }
+    synchronized (cfo) {
+      StringBuilder sb = new StringBuilder(toClear * 2);
+      for (int i = 0; i < toClear; i++) {
+        sb.append(' ');
+      }
+      for (int i = 0; i < toClear; i++) {
+        sb.append('\b');
+      }
+
+      out.print(sb);
     }
   }
 

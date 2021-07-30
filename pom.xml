@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.kohlschutter</groupId>
   <artifactId>kohlschutter-parent</artifactId>
-  <!-- NOTE: When updating the version number, also change the property "kohlschutter.parent.version" below -->
+  <!-- NOTE: When updating, also change the property "kohlschutter.parent.version" below -->
   <version>1.4.2</version>
   <packaging>pom</packaging>
   <name>kohlschutter-parent</name>
@@ -898,7 +898,7 @@
         <!-- invoke with: mvn formatter:format -->
         <groupId>net.revelc.code.formatter</groupId>
         <artifactId>formatter-maven-plugin</artifactId>
-        <version>2.8.1</version>
+        <version>2.16.0</version>
         <configuration>
           <compilerCompliance>${maven.compiler.target}</compilerCompliance>
           <compilerSource>${maven.compiler.source}</compilerSource>
@@ -966,7 +966,7 @@
         <plugin>
           <groupId>com.github.spotbugs</groupId>
           <artifactId>spotbugs-maven-plugin</artifactId>
-          <version>4.2.2</version>
+          <version>4.2.3</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -976,7 +976,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
-          <version>3.1.2</version>
+          <version>3.2.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -999,7 +999,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.1.1</version>
+          <version>3.1.2</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -1008,7 +1008,7 @@
             If you get an error like "The code being documented uses modules
             but the packages defined in ... are in the unnamed module", then
             update your Java SDK -->
-          <version>3.2.0</version>
+          <version>3.3.0</version>
           <configuration>
             <detectOfflineLinks>false</detectOfflineLinks>
             <detectJavaApiLink>false</detectJavaApiLink>
@@ -1049,7 +1049,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-gpg-plugin</artifactId>
-          <version>1.6</version>
+          <version>3.0.1</version>
         </plugin>
         <plugin>
           <groupId>com.googlecode.maven-java-formatter-plugin</groupId>
@@ -1059,7 +1059,7 @@
         <plugin>
           <groupId>com.mycila</groupId>
           <artifactId>license-maven-plugin</artifactId>
-          <version>4.0</version>
+          <version>4.1</version>
         </plugin>
         <plugin>
           <groupId>org.sonatype.plugins</groupId>
@@ -1094,12 +1094,12 @@
             <dependency>
               <groupId>ch.qos.logback</groupId>
               <artifactId>logback-classic</artifactId>
-              <version>1.2.3</version>
+              <version>1.2.5</version>
             </dependency>
             <dependency>
               <groupId>ch.qos.logback</groupId>
               <artifactId>logback-core</artifactId>
-              <version>1.2.3</version>
+              <version>1.2.5</version>
             </dependency>
           </dependencies>
         </plugin>
@@ -1150,7 +1150,7 @@
             <dependency>
               <groupId>org.jacoco</groupId>
               <artifactId>org.jacoco.core</artifactId>
-              <version>0.8.6</version>
+              <version>0.8.7</version>
             </dependency>
             <dependency><!-- Fix "Unsupported api 589824" error -->
               <groupId>org.apache.bcel</groupId>
@@ -1214,7 +1214,7 @@
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
-        <version>5.7.1</version>
+        <version>5.7.2</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

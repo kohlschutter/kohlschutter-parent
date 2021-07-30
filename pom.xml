@@ -5,7 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.kohlschutter</groupId>
   <artifactId>kohlschutter-parent</artifactId>
-  <version>1.4.1</version>
+  <!-- NOTE: When updating the version number, also change the property "kohlschutter.parent.version" below -->
+  <version>1.4.2</version>
   <packaging>pom</packaging>
   <name>kohlschutter-parent</name>
   <inceptionYear>2014</inceptionYear>
@@ -60,10 +61,10 @@
     <kohlschutter.project.notice.file>${kohlschutter.project.base.directory}/NOTICE</kohlschutter.project.notice.file>
 
     <!-- Please keep this version in lockstep with the version declared above -->
-    <kohlschutter.parent.version>1.4.1</kohlschutter.parent.version>
+    <kohlschutter.parent.version>1.4.2</kohlschutter.parent.version>
     <kohlschutter.maven.version.min>3.6.0</kohlschutter.maven.version.min>
 
-    <coding.style.version>1.2.4</coding.style.version>
+    <coding.style.version>1.2.5</coding.style.version>
     <coding.style.dirname>coding-style/${coding.style.version}</coding.style.dirname>
     <coding.style.eclipse.dir>${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse</coding.style.eclipse.dir>
     <eclipse.jdt.core.prefs>${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>

@@ -11,19 +11,22 @@ import java.nio.charset.Charset;
  * 
  * @author Christian Kohlschütter
  */
-public class ConsolePrintStream extends PrintStream {
+public final class ConsolePrintStream extends PrintStream {
   private static final byte[] NEWLINE_BYTES = System.lineSeparator().getBytes(Charset
       .defaultCharset());
   private static final int NEWLINE = '\n';
   private static final boolean NO_CONSOLE; // if true, then we don't update lines
-  private static final boolean IS_WINDOWS;
+  private static final boolean CLEAR_LINE_FIRST;
 
   private final PrintStream out;
   private final ConsoleFilterOut cfo;
   private boolean closed = false;
 
   static {
-    if (System.console() != null) {
+    String forceConsole = System.getProperty("com.kohlschutter.util.console", "");
+    if (!forceConsole.isEmpty()) {
+      NO_CONSOLE = !Boolean.valueOf(forceConsole);
+    } else if (System.console() != null) {
       NO_CONSOLE = false;
     } else {
       String serviceName = System.getenv("XPC_SERVICE_NAME");
@@ -35,11 +38,14 @@ public class ConsolePrintStream extends PrintStream {
       }
     }
 
-    IS_WINDOWS = "\\".equals(System.getProperty("file.separator", ""));
-  }
+    boolean isWindows = "\\".equals(System.getProperty("file.separator", ""));
 
-  public static void main(String[] args) {
-
+    String clf = System.getProperty("com.kohlschutter.util.console.clear-line-first", "");
+    if (!clf.isEmpty()) {
+      CLEAR_LINE_FIRST = Boolean.valueOf(clf);
+    } else {
+      CLEAR_LINE_FIRST = (isWindows);
+    }
   }
 
   private ConsolePrintStream() throws UnsupportedEncodingException {
@@ -177,7 +183,7 @@ public class ConsolePrintStream extends PrintStream {
           println();
           print(s);
         } else {
-          if (IS_WINDOWS) {
+          if (CLEAR_LINE_FIRST) {
             clearLine();
             print(s);
           } else {
@@ -265,5 +271,32 @@ public class ConsolePrintStream extends PrintStream {
       closed = true;
       System.setOut(out);
     }
+  }
+
+  /**
+   * Returns {@code true} if a system console is attached (which enables {@link #update(String)},
+   * for example), {@code false} when piping to another file or process, for example.
+   * 
+   * The behavior can be overridden by setting the system property
+   * {@code com.kohlschutter.util.console} to either {@code true} or {@code false}.
+   * 
+   * @return {@code true} if a system console is attached.
+   */
+  public static boolean hasConsole() {
+    return !NO_CONSOLE;
+  }
+
+  /**
+   * Returns {@code true} if {@link #update(String)} clears the line first before writing the new
+   * content instead of printing a carriage return, followed by the new text, and then clearing the
+   * remaining characters.
+   * 
+   * The behavior can be overridden by setting the system property
+   * {@code com.kohlschutter.util.console.clear-line-first} to either {@code true} or {@code false}.
+   * 
+   * @return {@code true} if "clear-first" is enabled.
+   */
+  public static boolean isClearLineFirst() {
+    return CLEAR_LINE_FIRST;
   }
 }

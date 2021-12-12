@@ -8,6 +8,11 @@ import java.io.OutputStream;
 
 import com.kohlschutter.annotations.compiletime.ExcludeFromCodeCoverageGeneratedReport;
 
+/**
+ * Some I/O-related helper methods.
+ * 
+ * @author Christian Kohlschütter
+ */
 public final class IOUtil {
   @ExcludeFromCodeCoverageGeneratedReport
   private IOUtil() {
@@ -78,6 +83,14 @@ public final class IOUtil {
     return total;
   }
 
+  /**
+   * Deletes a file.
+   * 
+   * If the file could not be deleted (but exists), an {@link IOException} is thrown.
+   * 
+   * @param f The file to delete.
+   * @throws IOException on error.
+   */
   public static void delete(File f) throws IOException {
     if (!f.delete() && f.exists()) {
       throw new IOException("Could not delete file: " + f);

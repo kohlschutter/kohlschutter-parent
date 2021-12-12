@@ -56,15 +56,32 @@ public class ForkedVM {
 
   private boolean haveArguments = false;
 
+  /**
+   * Internal constructor.
+   */
   protected ForkedVM() {
     this(null, (String[]) null);
   }
 
+  /**
+   * Creates a {@link ForkedVM} instance, using the given main class and corresponding arguments.
+   * 
+   * @param mainClass The main class to run.
+   * @param args The arguments to pass.
+   * @see #fork()
+   */
   public ForkedVM(String mainClass, String... args) {
     this.overrideMainClass = mainClass;
     this.overrideArgs = args == null ? null : args.clone();
   }
 
+  /**
+   * Starts/forks the VM.
+   * 
+   * @return The process of the forked VM.
+   * @throws IOException on error.
+   * @throws UnsupportedOperationException if the operation was not supported.
+   */
   public Process fork() throws IOException, UnsupportedOperationException {
     cmd = new ArrayList<>();
     parse();
@@ -214,16 +231,42 @@ public class ForkedVM {
     }
   }
 
+  /**
+   * Callback for the java executable (called upon {@link #fork()}).
+   * 
+   * @param executable The name of the Java executable.
+   */
   protected void onJavaExecutable(String executable) {
     cmd.add(executable);
   }
 
+  /**
+   * Callback for a valueless Java option (called upon {@link #fork()}).
+   * 
+   * @param option The java option.
+   * @see #onJavaOption(String, String)
+   */
   protected void onJavaOption(String option) {
     cmd.add(option);
   }
 
   /**
-   * Called for a {@code -javaagent} option.
+   * Callback for a valued Java option (called upon {@link #fork()}).
+   * 
+   * @param option The java option.
+   * @param arg The option argument.
+   * @see #onJavaOption(String)
+   */
+  protected void onJavaOption(String option, String arg) {
+    if ("-jar".equals(option)) {
+      option = "-cp";
+    }
+    cmd.add(option);
+    cmd.add(arg);
+  }
+
+  /**
+   * Callback for a {@code -javaagent} option.
    * 
    * @param option The option.
    * @return {@code true} if handled by this method. If {@code false}, some fallback options may be
@@ -235,7 +278,7 @@ public class ForkedVM {
   }
 
   /**
-   * Called for a {@code -XX:StartFlightRecording=} option.
+   * Callback for a {@code -XX:StartFlightRecording=} option.
    * 
    * @param option The option.
    * @return {@code true} if handled by this method. If {@code false}, some fallback options may be
@@ -246,14 +289,11 @@ public class ForkedVM {
     return false;
   }
 
-  protected void onJavaOption(String option, String arg) {
-    if ("-jar".equals(option)) {
-      option = "-cp";
-    }
-    cmd.add(option);
-    cmd.add(arg);
-  }
-
+  /**
+   * Callback for the Java main class.
+   * 
+   * @param arg The main class.
+   */
   protected void onJavaMainClass(String arg) {
     haveJavaMainClass = true;
     if (overrideMainClass != null) {
@@ -264,6 +304,11 @@ public class ForkedVM {
     }
   }
 
+  /**
+   * Callback for invocation arguments.
+   * 
+   * @param args The arguments.
+   */
   protected void onArguments(List<String> args) {
     haveArguments = true;
     if (overrideArgs != null) {

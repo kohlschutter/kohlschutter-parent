@@ -25,6 +25,12 @@ import org.junit.jupiter.api.extension.ConditionEvaluationResult;
 import org.junit.jupiter.api.extension.ExecutionCondition;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
+/**
+ * A JUnit {@link ExecutionCondition} for {@link CommandAvailabilityRequirement}.
+ * 
+ * @author Christian Kohlschütter
+ * @see CommandAvailabilityRequirement
+ */
 public class CommandAvailabilityExecutionCondition implements ExecutionCondition {
   @Override
   public ConditionEvaluationResult evaluateExecutionCondition(ExtensionContext context) {

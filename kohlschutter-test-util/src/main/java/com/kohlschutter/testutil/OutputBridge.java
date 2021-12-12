@@ -22,14 +22,37 @@ public class OutputBridge implements Runnable, Closeable {
 
   private ByteArrayOutputStream bos;
 
+  /**
+   * Specifies valid output streams for a process.
+   * 
+   * @author Christian Kohlschütter
+   */
   public enum ProcessStream {
-    STDOUT, STDERR
+    /** Standard output (stdout). */
+    STDOUT,
+
+    /** Error output (stderr). */
+    STDERR
   }
 
+  /**
+   * Creates a new {@link OutputBridge} for the output from the given process.
+   * 
+   * @param process The process to bridge output from.
+   * @param output The stream to bridge.
+   */
   public OutputBridge(Process process, ProcessStream output) {
     this(process, output, (byte[]) null);
   }
 
+  /**
+   * Creates a new {@link OutputBridge} for the output from the given process, optionally prefixing
+   * each output line with the given prefix.
+   * 
+   * @param process The process to bridge output from.
+   * @param output The stream to bridge.
+   * @param prefix The prefix, or {@code null}.
+   */
   public OutputBridge(Process process, ProcessStream output, String prefix) {
     this(process, output, (prefix == null || prefix.isEmpty() ? null : prefix.getBytes(Charset
         .defaultCharset())));
@@ -89,10 +112,20 @@ public class OutputBridge implements Runnable, Closeable {
     }
   }
 
+  /**
+   * Checks if there was some output.
+   * 
+   * @return {@code true} if there was some output.
+   */
   public final boolean hasOutput() {
     return numBytesRead() > 0;
   }
 
+  /**
+   * Returns the number of bytes received.
+   * 
+   * @return The number of bytes received.
+   */
   public final int numBytesRead() {
     return numRead;
   }

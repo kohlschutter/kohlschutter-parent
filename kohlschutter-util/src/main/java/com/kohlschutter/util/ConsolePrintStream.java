@@ -59,6 +59,11 @@ public final class ConsolePrintStream extends PrintStream {
     System.setOut(this);
   }
 
+  /**
+   * Wraps {@code System.out} as a {@link ConsolePrintStream}.
+   * 
+   * @return The wrapped stream.
+   */
   public static ConsolePrintStream wrapSystemOut() {
     synchronized (System.class) {
       PrintStream out = System.out;
@@ -81,7 +86,7 @@ public final class ConsolePrintStream extends PrintStream {
     private int lastUpdate = 0;
     private int lastByte = 0;
 
-    private ConsoleFilterOut(PrintStream out) {
+    ConsoleFilterOut(PrintStream out) {
       super(out);
     }
 

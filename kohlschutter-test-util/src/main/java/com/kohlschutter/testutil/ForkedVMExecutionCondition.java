@@ -24,6 +24,12 @@ import org.junit.jupiter.api.extension.ConditionEvaluationResult;
 import org.junit.jupiter.api.extension.ExecutionCondition;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
+/**
+ * A JUnit {@link ExecutionCondition} for {@link ForkedVMRequirement}.
+ * 
+ * @author Christian Kohlschütter
+ * @see ForkedVMRequirement
+ */
 public class ForkedVMExecutionCondition implements ExecutionCondition {
   @Override
   public ConditionEvaluationResult evaluateExecutionCondition(ExtensionContext context) {

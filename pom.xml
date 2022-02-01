@@ -1078,7 +1078,7 @@
             <dependency>
               <groupId>com.thoughtworks.xstream</groupId>
               <artifactId>xstream</artifactId>
-              <version>1.4.18</version>
+              <version>1.4.19</version>
             </dependency>
             <dependency><!-- needed by xstream 1.4.16 -->
               <groupId>xpp3</groupId>

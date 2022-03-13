@@ -56,11 +56,19 @@ public class ForkedVM {
 
   private boolean haveArguments = false;
 
+  private Redirect redirectInput = Redirect.PIPE;
+  private Redirect redirectOutput = Redirect.PIPE;
+  private Redirect redirectError = Redirect.PIPE;
+
   /**
    * Internal constructor.
    */
   protected ForkedVM() {
-    this(null, (String[]) null);
+    this((String) null, (String[]) null);
+  }
+
+  public ForkedVM(Class<?> mainClass, String... args) {
+    this(mainClass.getName(), args);
   }
 
   /**
@@ -92,10 +100,13 @@ public class ForkedVM {
       onArguments(Collections.emptyList());
     }
 
-    Process p = new ProcessBuilder(cmd) //
-        .redirectOutput(Redirect.PIPE) //
-        .redirectError(Redirect.PIPE) //
-        .start();
+    ProcessBuilder pb = new ProcessBuilder(cmd);
+
+    pb.redirectInput(redirectInput);
+    pb.redirectOutput(redirectOutput);
+    pb.redirectError(redirectError);
+
+    Process p = pb.start();
 
     return p;
   }
@@ -327,5 +338,17 @@ public class ForkedVM {
       }
     }
     return arg;
+  }
+
+  public void setRedirectInput(Redirect redirect) {
+    this.redirectInput = redirect == null ? Redirect.PIPE : redirect;
+  }
+
+  public void setRedirectOutput(Redirect redirect) {
+    this.redirectOutput = redirect == null ? Redirect.PIPE : redirect;
+  }
+
+  public void setRedirectError(Redirect redirect) {
+    this.redirectError = redirect == null ? Redirect.PIPE : redirect;
   }
 }

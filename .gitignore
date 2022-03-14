@@ -11,3 +11,4 @@ pom.xml.releaseBackup
 /coding-style
 /.pmd
 .*.swp
+.checkstyle

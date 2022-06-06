@@ -37,6 +37,13 @@ public final class SoftAssertions implements Supplier<String> {
   };
 
   /**
+   * Default constructor.
+   */
+  public SoftAssertions() {
+    super();
+  }
+
+  /**
    * Adds a failed assertion, using the given message, to the list of errors.
    * 
    * @param message The message.

@@ -30,7 +30,14 @@ import org.junit.jupiter.api.extension.ExtensionContext;
  * @author Christian Kohlschütter
  * @see SystemPropertyRequirement
  */
-public class SystemPropertyExecutionCondition implements ExecutionCondition {
+public final class SystemPropertyExecutionCondition implements ExecutionCondition {
+  /**
+   * Default constructor.
+   */
+  public SystemPropertyExecutionCondition() {
+    super();
+  }
+
   @Override
   public ConditionEvaluationResult evaluateExecutionCondition(ExtensionContext context) {
     String property = null;

@@ -67,8 +67,32 @@ public class ForkedVM {
     this((String) null, (String[]) null);
   }
 
+  /**
+   * Creates a {@link ForkedVM} instance, using the given main class.
+   * 
+   * @param mainClass The main class to run.
+   */
+  public ForkedVM(Class<?> mainClass) {
+    this(mainClass.getName(), new String[0]);
+  }
+
+  /**
+   * Creates a {@link ForkedVM} instance, using the given main class and corresponding arguments.
+   * 
+   * @param mainClass The main class to run.
+   * @param args The arguments to pass.
+   */
   public ForkedVM(Class<?> mainClass, String... args) {
     this(mainClass.getName(), args);
+  }
+
+  /**
+   * Creates a {@link ForkedVM} instance, using the given main class.
+   * 
+   * @param mainClass The main class to run.
+   */
+  public ForkedVM(String mainClass) {
+    this(mainClass, new String[0]);
   }
 
   /**
@@ -340,14 +364,29 @@ public class ForkedVM {
     return arg;
   }
 
+  /**
+   * Use the given {@link Redirect} policy for {@code STDIN}.
+   * 
+   * @param redirect The redirect policy.
+   */
   public void setRedirectInput(Redirect redirect) {
     this.redirectInput = redirect == null ? Redirect.PIPE : redirect;
   }
 
+  /**
+   * Use the given {@link Redirect} policy for {@code STDOUT}.
+   * 
+   * @param redirect The redirect policy.
+   */
   public void setRedirectOutput(Redirect redirect) {
     this.redirectOutput = redirect == null ? Redirect.PIPE : redirect;
   }
 
+  /**
+   * Use the given {@link Redirect} policy for {@code STDERR}.
+   * 
+   * @param redirect The redirect policy.
+   */
   public void setRedirectError(Redirect redirect) {
     this.redirectError = redirect == null ? Redirect.PIPE : redirect;
   }

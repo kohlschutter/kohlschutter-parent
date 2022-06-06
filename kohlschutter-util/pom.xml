@@ -8,7 +8,7 @@
   <parent>
     <groupId>com.kohlschutter</groupId>
     <artifactId>kohlschutter-parent-multirelease</artifactId>
-    <version>1.4.4-SNAPSHOT</version>
+    <version>1.4.4</version>
     <relativePath>../kohlschutter-parent-multirelease/pom.xml</relativePath>
   </parent>
   <name>kohlschutter-util</name>
@@ -16,7 +16,7 @@
   <properties>
     <kohlschutter.project.base.directory>${project.basedir}</kohlschutter.project.base.directory>
     <kohlschutter.project.notice.file>${kohlschutter.parent.directory}/NOTICE</kohlschutter.project.notice.file>
-    <kohlschutter.multirelease.java8.release>7</kohlschutter.multirelease.java8.release>
+    <kohlschutter.multirelease.java8.release>8</kohlschutter.multirelease.java8.release>
   </properties>
   <dependencies>
     <dependency>

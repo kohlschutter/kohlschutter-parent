@@ -30,7 +30,14 @@ import org.junit.jupiter.api.extension.ExtensionContext;
  * @author Christian Kohlschütter
  * @see ForkedVMRequirement
  */
-public class ForkedVMExecutionCondition implements ExecutionCondition {
+public final class ForkedVMExecutionCondition implements ExecutionCondition {
+  /**
+   * Default constructor.
+   */
+  public ForkedVMExecutionCondition() {
+    super();
+  }
+
   @Override
   public ConditionEvaluationResult evaluateExecutionCondition(ExtensionContext context) {
     Boolean forkSupported = null;

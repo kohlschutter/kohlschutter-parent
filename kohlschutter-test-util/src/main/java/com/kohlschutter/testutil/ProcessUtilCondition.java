@@ -17,7 +17,6 @@
  */
 package com.kohlschutter.testutil;
 
-import java.io.IOException;
 import java.lang.reflect.AnnotatedElement;
 import java.util.Optional;
 
@@ -25,49 +24,37 @@ import org.junit.jupiter.api.extension.ConditionEvaluationResult;
 import org.junit.jupiter.api.extension.ExecutionCondition;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
+import com.kohlschutter.util.ProcessUtil;
+
 /**
- * A JUnit {@link ExecutionCondition} for {@link CommandAvailabilityRequirement}.
+ * Checks if the requirements specified by {@link ProcessUtilRequirement} are met.
  * 
  * @author Christian Kohlschütter
- * @see CommandAvailabilityRequirement
  */
-public final class CommandAvailabilityExecutionCondition implements ExecutionCondition {
+public final class ProcessUtilCondition implements ExecutionCondition {
   /**
    * Default constructor.
    */
-  public CommandAvailabilityExecutionCondition() {
+  public ProcessUtilCondition() {
     super();
   }
 
   @Override
   public ConditionEvaluationResult evaluateExecutionCondition(ExtensionContext context) {
-    String[] commands = null;
-
-    String message = "";
-
     Optional<AnnotatedElement> element = context.getElement();
     if (element.isPresent()) {
-      CommandAvailabilityRequirement requirement = element.get().getAnnotation(
-          CommandAvailabilityRequirement.class);
+      ProcessUtilRequirement requirement = element.get().getAnnotation(
+          ProcessUtilRequirement.class);
       if (requirement != null) {
-        commands = requirement.commands();
-        message = requirement.message();
-      }
-    }
-
-    if (commands == null || commands.length == 0) {
-      return ConditionEvaluationResult.enabled("Unconditional execution");
-    }
-
-    for (String command : commands) {
-      try {
-        if (Runtime.getRuntime().exec(new String[] {"which", command}).waitFor() != 0) {
-          return ConditionEvaluationResult.disabled(message);
+        if (requirement.canGetJavaCommandArguments()) {
+          String[] args = ProcessUtil.getJavaCommandArguments();
+          if (args == null || args.length == 0) {
+            return ConditionEvaluationResult.disabled("Cannot get Java commandline arguments");
+          }
         }
-      } catch (InterruptedException | IOException e) {
-        return ConditionEvaluationResult.disabled(message);
       }
     }
-    return ConditionEvaluationResult.enabled("All commands are available");
+
+    return ConditionEvaluationResult.enabled("Everything looks good");
   }
 }

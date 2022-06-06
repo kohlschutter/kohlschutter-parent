@@ -32,7 +32,14 @@ import org.junit.jupiter.api.extension.ExtensionContext;
  * @author Christian Kohlschütter
  * @see AvailabilityRequirement
  */
-public class AvailabilityExecutionCondition implements ExecutionCondition {
+public final class AvailabilityExecutionCondition implements ExecutionCondition {
+  /**
+   * Default constructor.
+   */
+  public AvailabilityExecutionCondition() {
+    super();
+  }
+
   @Override
   public ConditionEvaluationResult evaluateExecutionCondition(ExtensionContext context) {
     String[] requiredClasses = {};

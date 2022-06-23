@@ -27,7 +27,11 @@ public final class ConsolePrintStream extends PrintStream {
     if (!forceConsole.isEmpty()) {
       NO_CONSOLE = !Boolean.valueOf(forceConsole);
     } else if (System.console() != null) {
-      NO_CONSOLE = false;
+      if("z/OS".equals(System.getProperty("os.name"))) {
+        NO_CONSOLE = true;
+      } else {
+        NO_CONSOLE = false;
+      }
     } else {
       String serviceName = System.getenv("XPC_SERVICE_NAME");
       if (serviceName != null && serviceName.endsWith(".eclipse")) {

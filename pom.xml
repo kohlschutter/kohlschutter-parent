@@ -61,7 +61,7 @@
     <kohlschutter.project.notice.file>${kohlschutter.project.base.directory}/NOTICE</kohlschutter.project.notice.file>
 
     <!-- Please keep this version in lockstep with the version declared above -->
-    <kohlschutter.parent.version>1.4.4</kohlschutter.parent.version>
+    <kohlschutter.parent.version>1.4.5-SNAPSHOT</kohlschutter.parent.version>
     <kohlschutter.maven.version.min>3.6.0</kohlschutter.maven.version.min>
     
     <kohlschutter.target.name>target</kohlschutter.target.name>

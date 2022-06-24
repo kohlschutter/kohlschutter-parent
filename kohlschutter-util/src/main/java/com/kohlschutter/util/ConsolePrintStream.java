@@ -27,7 +27,7 @@ public final class ConsolePrintStream extends PrintStream {
     if (!forceConsole.isEmpty()) {
       NO_CONSOLE = !Boolean.valueOf(forceConsole);
     } else if (System.console() != null) {
-      if("z/OS".equals(System.getProperty("os.name"))) {
+      if ("z/OS".equals(System.getProperty("os.name"))) {
         NO_CONSOLE = true;
       } else {
         NO_CONSOLE = false;

@@ -1082,50 +1082,7 @@
                 <plugin>
                     <groupId>org.sonatype.plugins</groupId>
                     <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>1.6.8</version>
-                    <!--<version>1.6.12</version>-->
-                    <dependencies>
-                        <dependency>
-                            <!-- Until https://github.com/sonatype/nexus-public/pull/93 is resolved, please -->
-                            <!-- git clone - -single-branch - -branch xstream-1.4.18-fix https://github.com/kohlschuetter/nexus-public.git -->
-                            <!-- git switch xstream-1.4.18-fix -->
-                            <!-- cd components/nexus-client-core ; mvn clean install -Denforcer.skip=true -Dmaven.compiler.target=7 -Dmaven.compiler.source=7 -DskipTests=true -->
-                            <groupId>org.sonatype.nexus</groupId>
-                            <artifactId>nexus-client-core</artifactId>
-                            <version>2.14.21-02</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>com.thoughtworks.xstream</groupId>
-                            <artifactId>xstream</artifactId>
-                            <version>1.4.19</version>
-                        </dependency>
-                        <dependency>
-                            <!-- needed by xstream 1.4.16 -->
-                            <groupId>xpp3</groupId>
-                            <artifactId>xpp3</artifactId>
-                            <version>1.1.4c</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.httpcomponents</groupId>
-                            <artifactId>httpclient</artifactId>
-                            <version>4.5.13</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.httpcomponents</groupId>
-                            <artifactId>httpcore</artifactId>
-                            <version>4.4.15</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>ch.qos.logback</groupId>
-                            <artifactId>logback-classic</artifactId>
-                            <version>1.2.11</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>ch.qos.logback</groupId>
-                            <artifactId>logback-core</artifactId>
-                            <version>1.2.11</version>
-                        </dependency>
-                    </dependencies>
+                    <version>1.6.13</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>

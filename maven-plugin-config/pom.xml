@@ -8,7 +8,7 @@
   <parent>
     <groupId>com.kohlschutter</groupId>
     <artifactId>kohlschutter-parent</artifactId>
-    <version>1.4.5</version>
+    <version>1.4.6</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <name>maven-plugin-config</name>

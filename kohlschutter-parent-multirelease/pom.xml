@@ -8,7 +8,7 @@
   <parent>
     <groupId>com.kohlschutter</groupId>
     <artifactId>kohlschutter-parent</artifactId>
-    <version>1.4.7</version>
+    <version>1.4.8</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <name>kohlschutter-parent-multirelease</name>
@@ -123,13 +123,31 @@
                   <goal>copy-resources</goal>
                 </goals>
                 <configuration>
-                  <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/</outputDirectory>
+                  <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/${kohlschutter.multirelease.java.release}</outputDirectory>
                   <resources>
                     <resource>
                       <directory>${project.build.outputDirectory}</directory>
                       <includes>
-                        <include>**</include>
+                        <include>**/*.class</include>
                       </includes>
+                    </resource>
+                  </resources>
+                </configuration>
+              </execution>
+              <execution>
+                <id>copy-default-resources-to-common-multirelease</id>
+                <phase>compile</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/</outputDirectory>
+                  <resources>
+                    <resource>
+                      <directory>${project.build.outputDirectory}</directory>
+                      <excludes>
+                        <exclude>**/*.class</exclude>
+                      </excludes>
                     </resource>
                   </resources>
                 </configuration>

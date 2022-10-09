@@ -365,7 +365,6 @@
                                         </artifactItem>
                                     </artifactItems>
                                     <skip>${coding.style.skip.unpack}</skip>
-                                    <verbose>true</verbose>
                                 </configuration>
                             </execution>
                         </executions>
@@ -915,7 +914,6 @@
                     <compilerTargetPlatform>${maven.compiler.target}</compilerTargetPlatform>
                     <lineEnding>LF</lineEnding>
                     <configFile>${eclipse.formatter.config}</configFile>
-                    <overrideConfigCompilerVersion>true</overrideConfigCompilerVersion>
                     <includes>
                         <include>com/kohlschutter/**/*.java</include>
                         <include>org/kohlschutter/**/*.java</include>

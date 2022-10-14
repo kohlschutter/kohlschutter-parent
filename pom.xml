@@ -5,7 +5,7 @@
     <artifactId>kohlschutter-parent</artifactId>
     <!-- NOTE: When updating with "mvn versions:set -DnewVersion=",
      also change the property "kohlschutter.parent.version" below -->
-    <version>1.5.0-SNAPSHOT</version>
+    <version>1.5.0</version>
     <packaging>pom</packaging>
     <name>kohlschutter-parent</name>
     <inceptionYear>2014</inceptionYear>

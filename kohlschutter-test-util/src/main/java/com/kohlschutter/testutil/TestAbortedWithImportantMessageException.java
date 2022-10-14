@@ -38,7 +38,15 @@ public final class TestAbortedWithImportantMessageException extends TestAbortedE
      * A message is included, which should be shown without further information about test module
      * and class.
      */
-    TEST_ABORTED_SHORT_INFORMATIONAL;
+    TEST_ABORTED_SHORT_INFORMATIONAL,
+
+    /**
+     * Test aborted, result would count as "with issues".
+     * 
+     * A short message is included, which should be shown without further information about test
+     * module and class.
+     */
+    TEST_ABORTED_SHORT_WITH_ISSUES;
 
     /**
      * Checks if this message type is considered "with issues".
@@ -46,7 +54,7 @@ public final class TestAbortedWithImportantMessageException extends TestAbortedE
      * @return {@code true} if "with issues."
      */
     public boolean isWithIssues() {
-      return this == TEST_ABORTED_WITH_ISSUES;
+      return this == TEST_ABORTED_WITH_ISSUES || this == TEST_ABORTED_SHORT_WITH_ISSUES;
     }
 
     /**
@@ -55,7 +63,7 @@ public final class TestAbortedWithImportantMessageException extends TestAbortedE
      * @return {@code true} if test information (module, class, method) should be included.
      */
     public boolean isIncludeTestInfo() {
-      return this != TEST_ABORTED_SHORT_INFORMATIONAL;
+      return this != TEST_ABORTED_SHORT_INFORMATIONAL && this != TEST_ABORTED_SHORT_WITH_ISSUES;
     }
   }
 

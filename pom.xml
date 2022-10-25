@@ -748,6 +748,9 @@
                                 </reports>
                             </reportSet>
                         </reportSets>
+                        <configuration>
+                            <updateBuildOutputTimestampPolicy>never</updateBuildOutputTimestampPolicy>
+                        </configuration>
                     </plugin>
                 </plugins>
             </reporting>
@@ -926,6 +929,7 @@
                 <artifactId>versions-maven-plugin</artifactId>
                 <configuration>
                     <generateBackupPoms>false</generateBackupPoms>
+                    <updateBuildOutputTimestampPolicy>never</updateBuildOutputTimestampPolicy>
                 </configuration>
             </plugin>
             <plugin>

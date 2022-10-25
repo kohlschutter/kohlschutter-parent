@@ -82,7 +82,7 @@
         <spotbugs.exclude.file>${coding.style.eclipse.dir}/spotbugs-exclude.xml</spotbugs.exclude.file>
         <spotbugs.disabled>false</spotbugs.disabled>
         <spotbugs.strict>false</spotbugs.strict>
-        <spotbugs.version>4.7.2</spotbugs.version>
+        <spotbugs.version>4.7.3</spotbugs.version>
         <spotbugs.plugin.version>4.7.0.0</spotbugs.plugin.version>
 
         <forbiddenapis.version>3.3</forbiddenapis.version>
@@ -1190,7 +1190,7 @@
                             <!-- Fix "Unsupported api 589824" error -->
                             <groupId>org.apache.bcel</groupId>
                             <artifactId>bcel</artifactId>
-                            <version>6.5.0</version>
+                            <version>6.6.0</version>
                         </dependency>
                     </dependencies>
                 </plugin>

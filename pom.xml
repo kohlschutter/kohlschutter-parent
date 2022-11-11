@@ -5,7 +5,7 @@
     <artifactId>kohlschutter-parent</artifactId>
     <!-- NOTE: When updating with "mvn versions:set -DnewVersion=",
      also change the property "kohlschutter.parent.version" below -->
-    <version>1.5.1</version>
+    <version>1.5.2</version>
     <packaging>pom</packaging>
     <name>kohlschutter-parent</name>
     <inceptionYear>2014</inceptionYear>
@@ -61,7 +61,7 @@
         <kohlschutter.project.notice.file>${kohlschutter.project.base.directory}/NOTICE</kohlschutter.project.notice.file>
 
         <!-- Please keep this version in lockstep with the version declared above -->
-        <kohlschutter.parent.version>1.5.1</kohlschutter.parent.version>
+        <kohlschutter.parent.version>1.5.2</kohlschutter.parent.version>
         <kohlschutter.maven.version.min>3.6.0</kohlschutter.maven.version.min>
 
         <kohlschutter.target.name>target</kohlschutter.target.name>
@@ -714,6 +714,8 @@
                             <includes>
                                 <include>src/main/java/org/newsclub/**/*.java</include>
                                 <include>src/test/java/org/newsclub/**/*.java</include>
+                                <include>src/main/java/com/kohlschutter/**/*.java</include>
+                                <include>src/test/java/com/kohlschutter/**/*.java</include>
                             </includes>
                             <excludes>
                                 <exclude>**/package-info.java</exclude>

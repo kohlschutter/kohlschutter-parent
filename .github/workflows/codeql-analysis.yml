@@ -54,7 +54,7 @@ jobs:
 
     - run: |
        echo "Build kohlschutter-parent with Maven"
-       mvn clean install -Pstrict
+       mvn clean install -Pstrict -Puse-snapshots
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2

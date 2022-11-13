@@ -69,6 +69,11 @@
 
         <kohlschutter.target.name>target</kohlschutter.target.name>
 
+        <kohlschutter.custom.package.folder>org/newsclub</kohlschutter.custom.package.folder>
+
+        <kohlschutter.snapshots.repo>https://oss.sonatype.org/content/repositories/snapshots</kohlschutter.snapshots.repo>
+        <kohlschutter.staging.repo>https://oss.sonatype.org/content/groups/staging/</kohlschutter.staging.repo>
+
         <coding.style.version>1.2.9-SNAPSHOT</coding.style.version>
         <coding.style.dirname>coding-style/${coding.style.version}</coding.style.dirname>
         <coding.style.eclipse.dir>${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse</coding.style.eclipse.dir>
@@ -108,6 +113,36 @@
         <pmdVersion>6.51.0</pmdVersion>
     </properties>
     <profiles>
+        <profile>
+            <id>use-snapshots</id>
+            <repositories>
+                <repository>
+                    <id>snapshots-repo</id>
+                    <url>${kohlschutter.snapshots.repo}</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+        <profile>
+            <id>use-staging</id>
+            <repositories>
+                <repository>
+                    <id>snapshots-staging</id>
+                    <url>${kohlschutter.staging.repo}</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
         <profile>
             <id>strict</id>
             <properties>
@@ -719,8 +754,8 @@
                             <failIfMissing>${license.strict}</failIfMissing>
                             <header>${kohlschutter.project.notice.file}</header>
                             <includes>
-                                <include>src/main/java/org/newsclub/**/*.java</include>
-                                <include>src/test/java/org/newsclub/**/*.java</include>
+                                <include>src/main/java/${kohlschutter.custom.package.folder}/**/*.java</include>
+                                <include>src/test/java/${kohlschutter.custom.package.folder}/**/*.java</include>
                                 <include>src/main/java/com/kohlschutter/**/*.java</include>
                                 <include>src/test/java/com/kohlschutter/**/*.java</include>
                             </includes>
@@ -974,7 +1009,7 @@
                     <includes>
                         <include>com/kohlschutter/**/*.java</include>
                         <include>org/kohlschutter/**/*.java</include>
-                        <include>org/newsclub/**/*.java</include>
+                        <include>${kohlschutter.custom.package.folder}/**/*.java</include>
                         <!--
                         <include>com/kohlschutter/**/*.js</include>
                         <include>org/kohlschutter/**/*.js</include>

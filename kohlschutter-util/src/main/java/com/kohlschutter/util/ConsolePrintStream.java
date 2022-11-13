@@ -25,7 +25,7 @@ import java.nio.charset.Charset;
 
 /**
  * A {@code System.out} wrapper that can knows a little bit about the system console.
- * 
+ *
  * @author Christian Kohlschütter
  */
 public final class ConsolePrintStream extends PrintStream {
@@ -82,7 +82,7 @@ public final class ConsolePrintStream extends PrintStream {
 
   /**
    * Wraps {@code System.out} as a {@link ConsolePrintStream}.
-   * 
+   *
    * @return The wrapped stream.
    */
   public static ConsolePrintStream wrapSystemOut() {
@@ -176,7 +176,7 @@ public final class ConsolePrintStream extends PrintStream {
 
   /**
    * Checks if a newline character was written since the last call to {@link #markPosition()}.
-   * 
+   *
    * @return {@code true} if a newline character was found.
    */
   public boolean hasNewlineSinceMark() {
@@ -185,7 +185,7 @@ public final class ConsolePrintStream extends PrintStream {
 
   /**
    * Checks if any output was written since the last call to {@link #markPosition()}.
-   * 
+   *
    * @return {@code true} if a newline character was found.
    */
   public boolean hasOutputSinceMark() {
@@ -195,9 +195,9 @@ public final class ConsolePrintStream extends PrintStream {
   /**
    * Prints a string, not advancing to a newline unless necessary, and clearing any previous output
    * written with {@link #update(String)} via backspace characters.
-   * 
+   *
    * This allows for succinct progress updates that don't pollute the console output.
-   * 
+   *
    * @param s The string to print.
    */
   public void update(String s) {
@@ -233,7 +233,7 @@ public final class ConsolePrintStream extends PrintStream {
 
   /**
    * Like {@link #update(String)}, but adding a newline after the output.
-   * 
+   *
    * @param s The string to print.
    */
   public void updateln(String s) {
@@ -302,10 +302,10 @@ public final class ConsolePrintStream extends PrintStream {
   /**
    * Returns {@code true} if a system console is attached (which enables {@link #update(String)},
    * for example), {@code false} when piping to another file or process, for example.
-   * 
+   *
    * The behavior can be overridden by setting the system property
    * {@code com.kohlschutter.util.console} to either {@code true} or {@code false}.
-   * 
+   *
    * @return {@code true} if a system console is attached.
    */
   public static boolean hasConsole() {
@@ -316,10 +316,10 @@ public final class ConsolePrintStream extends PrintStream {
    * Returns {@code true} if {@link #update(String)} clears the line first before writing the new
    * content instead of printing a carriage return, followed by the new text, and then clearing the
    * remaining characters.
-   * 
+   *
    * The behavior can be overridden by setting the system property
    * {@code com.kohlschutter.util.console.clear-line-first} to either {@code true} or {@code false}.
-   * 
+   *
    * @return {@code true} if "clear-first" is enabled.
    */
   public static boolean isClearLineFirst() {

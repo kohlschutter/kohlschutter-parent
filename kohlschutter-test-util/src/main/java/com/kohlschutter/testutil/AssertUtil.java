@@ -25,7 +25,7 @@ import java.util.Set;
 
 /**
  * Some assertion-related helper methods.
- * 
+ *
  * @author Christian Kohlschütter
  */
 public final class AssertUtil {
@@ -35,7 +35,7 @@ public final class AssertUtil {
 
   /**
    * Ignore the given value. Can be used to silence compiler warnings etc.
-   * 
+   *
    * @param o The value to ignore.
    */
   public static void ignoreValue(Object o) {
@@ -43,7 +43,7 @@ public final class AssertUtil {
 
   /**
    * Asserts that a given set contains a subset of elements.
-   * 
+   *
    * @param <T> The element type.
    * @param set The set to check.
    * @param elements The expected elements.
@@ -54,7 +54,7 @@ public final class AssertUtil {
 
   /**
    * Asserts that a given set contains a subset of elements.
-   * 
+   *
    * @param <T> The element type.
    * @param set The set to check.
    * @param message The error message if the assertion fails.

@@ -34,21 +34,21 @@ import org.junit.jupiter.api.extension.ExtendWith;
 public @interface SystemPropertyRequirement {
   /**
    * The name of the system property to check.
-   * 
+   *
    * @return The name of the system property.
    */
   String property();
 
   /**
    * The expected value of the system property.
-   * 
+   *
    * @return The expected value of the system property.
    */
   String value();
 
   /**
    * The error message to show if the requirement does not hold.
-   * 
+   *
    * @return The error message.
    */
   String message() default "";

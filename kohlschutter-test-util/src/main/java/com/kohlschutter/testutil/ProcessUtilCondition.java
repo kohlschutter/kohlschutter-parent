@@ -28,7 +28,7 @@ import com.kohlschutter.util.ProcessUtil;
 
 /**
  * Checks if the requirements specified by {@link ProcessUtilRequirement} are met.
- * 
+ *
  * @author Christian Kohlschütter
  */
 public final class ProcessUtilCondition implements ExecutionCondition {

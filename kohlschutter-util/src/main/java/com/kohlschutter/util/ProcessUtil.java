@@ -19,7 +19,7 @@ package com.kohlschutter.util;
 
 /**
  * Helper methods to access the current Java process.
- * 
+ *
  * @author Christian Kohlschütter
  */
 public final class ProcessUtil {
@@ -29,7 +29,7 @@ public final class ProcessUtil {
 
   /**
    * Returns the PID of the current process.
-   * 
+   *
    * @return The PID
    * @throws IllegalStateException if the PID could not be determined.
    */
@@ -39,7 +39,7 @@ public final class ProcessUtil {
 
   /**
    * Returns the java command used to invoke this VM, or {@code null} if unable to comply.
-   * 
+   *
    * @return The command, or {@code null}.
    */
   public static String getJavaCommand() {
@@ -49,7 +49,7 @@ public final class ProcessUtil {
   /**
    * Returns the java arguments (without the command) used to invoke this VM, or {@code null} if
    * unable to comply.
-   * 
+   *
    * @return The command, or {@code null}.
    */
   public static String[] getJavaCommandArguments() {

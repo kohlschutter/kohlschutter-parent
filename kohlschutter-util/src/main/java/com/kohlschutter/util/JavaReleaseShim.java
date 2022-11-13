@@ -23,7 +23,7 @@ import java.io.OutputStream;
 
 /**
  * The implementations in this class may be overridden for older Java versions.
- * 
+ *
  * see the corresponding class in src/main/java8, for example.
  */
 final class JavaReleaseShim {

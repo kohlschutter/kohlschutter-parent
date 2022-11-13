@@ -22,14 +22,14 @@ import java.lang.annotation.RetentionPolicy;
 
 /**
  * Marker class indicating that some FindBugs/SpotBugs warnings should be suppressed.
- * 
+ *
  * @author Christian Kohlschütter
  */
 @Retention(RetentionPolicy.CLASS)
 public @interface SuppressFBWarnings {
   /**
    * The FindBugs/SpotBugs warnings that should be suppressed.
-   * 
+   *
    * @return A list of warnings.
    */
   String[] value() default {};

@@ -28,7 +28,7 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 
 /**
  * A JUnit {@link ExecutionCondition} for {@link AvailabilityRequirement}.
- * 
+ *
  * @author Christian Kohlschütter
  * @see AvailabilityRequirement
  */

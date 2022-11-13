@@ -40,9 +40,9 @@ import com.kohlschutter.util.SystemPropertyUtil;
 
 /**
  * Simplifies forking a Java VM based on the configuration of the currently running VM.
- * 
+ *
  * This is mostly designed to be used during unit testing when running a second VM is required.
- * 
+ *
  * @author Christian Kohlschütter
  */
 public class ForkedVM {
@@ -86,7 +86,7 @@ public class ForkedVM {
 
   /**
    * Creates a {@link ForkedVM} instance, using the given main class.
-   * 
+   *
    * @param mainClass The main class to run.
    */
   public ForkedVM(Class<?> mainClass) {
@@ -95,7 +95,7 @@ public class ForkedVM {
 
   /**
    * Creates a {@link ForkedVM} instance, using the given main class and corresponding arguments.
-   * 
+   *
    * @param mainClass The main class to run.
    * @param args The arguments to pass.
    */
@@ -105,7 +105,7 @@ public class ForkedVM {
 
   /**
    * Creates a {@link ForkedVM} instance, using the given main class.
-   * 
+   *
    * @param mainClass The main class to run.
    */
   public ForkedVM(String mainClass) {
@@ -114,7 +114,7 @@ public class ForkedVM {
 
   /**
    * Creates a {@link ForkedVM} instance, using the given main class and corresponding arguments.
-   * 
+   *
    * @param mainClass The main class to run.
    * @param args The arguments to pass.
    * @see #fork()
@@ -126,7 +126,7 @@ public class ForkedVM {
 
   /**
    * Starts/forks the VM.
-   * 
+   *
    * @return The process of the forked VM.
    * @throws IOException on error.
    * @throws UnsupportedOperationException if the operation was not supported.
@@ -154,7 +154,7 @@ public class ForkedVM {
 
   /**
    * Checks if launching a new Java VM based on the current one is supported.
-   * 
+   *
    * @return {@code true} if supported.
    */
   public static boolean isSupported() {
@@ -285,7 +285,7 @@ public class ForkedVM {
 
   /**
    * Callback for the java executable (called upon {@link #fork()}).
-   * 
+   *
    * @param executable The name of the Java executable.
    */
   protected void onJavaExecutable(String executable) {
@@ -294,7 +294,7 @@ public class ForkedVM {
 
   /**
    * Callback for a valueless Java option (called upon {@link #fork()}).
-   * 
+   *
    * @param option The java option.
    * @see #onJavaOption(String, String)
    */
@@ -304,7 +304,7 @@ public class ForkedVM {
 
   /**
    * Callback for a valued Java option (called upon {@link #fork()}).
-   * 
+   *
    * @param option The java option.
    * @param arg The option argument.
    * @see #onJavaOption(String)
@@ -319,7 +319,7 @@ public class ForkedVM {
 
   /**
    * Callback for a {@code -javaagent} option.
-   * 
+   *
    * @param option The option.
    * @return {@code true} if handled by this method. If {@code false}, some fallback options may be
    *         applied by {@link ForkedVM}.
@@ -331,7 +331,7 @@ public class ForkedVM {
 
   /**
    * Callback for a {@code -XX:StartFlightRecording=} option.
-   * 
+   *
    * @param option The option.
    * @return {@code true} if handled by this method. If {@code false}, some fallback options may be
    *         applied by {@link ForkedVM}.
@@ -343,7 +343,7 @@ public class ForkedVM {
 
   /**
    * Callback for the Java main class.
-   * 
+   *
    * @param arg The main class.
    */
   protected void onJavaMainClass(String arg) {
@@ -358,7 +358,7 @@ public class ForkedVM {
 
   /**
    * Callback for invocation arguments.
-   * 
+   *
    * @param args The arguments.
    */
   protected void onArguments(List<String> args) {
@@ -383,7 +383,7 @@ public class ForkedVM {
 
   /**
    * Use the given {@link Redirect} policy for {@code STDIN}.
-   * 
+   *
    * @param redirect The redirect policy.
    */
   public void setRedirectInput(Redirect redirect) {
@@ -392,7 +392,7 @@ public class ForkedVM {
 
   /**
    * Use the given {@link Redirect} policy for {@code STDOUT}.
-   * 
+   *
    * @param redirect The redirect policy.
    */
   public void setRedirectOutput(Redirect redirect) {
@@ -401,7 +401,7 @@ public class ForkedVM {
 
   /**
    * Use the given {@link Redirect} policy for {@code STDERR}.
-   * 
+   *
    * @param redirect The redirect policy.
    */
   public void setRedirectError(Redirect redirect) {

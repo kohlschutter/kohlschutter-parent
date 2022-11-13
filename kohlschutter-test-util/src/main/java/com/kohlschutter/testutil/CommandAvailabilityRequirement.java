@@ -33,14 +33,14 @@ import org.junit.jupiter.api.extension.ExtendWith;
 public @interface CommandAvailabilityRequirement {
   /**
    * The command to check for.
-   * 
+   *
    * @return The command.
    */
   String[] commands();
 
   /**
    * The error message to show if the requirement does not hold.
-   * 
+   *
    * @return The error message.
    */
   String message() default "";

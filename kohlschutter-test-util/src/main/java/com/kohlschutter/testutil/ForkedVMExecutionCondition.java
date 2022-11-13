@@ -26,7 +26,7 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 
 /**
  * A JUnit {@link ExecutionCondition} for {@link ForkedVMRequirement}.
- * 
+ *
  * @author Christian Kohlschütter
  * @see ForkedVMRequirement
  */

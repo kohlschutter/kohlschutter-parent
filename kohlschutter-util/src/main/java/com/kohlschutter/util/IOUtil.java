@@ -27,7 +27,7 @@ import com.kohlschutter.annotations.compiletime.ExcludeFromCodeCoverageGenerated
 
 /**
  * Some I/O-related helper methods.
- * 
+ *
  * @author Christian Kohlschütter
  */
 public final class IOUtil {
@@ -38,10 +38,10 @@ public final class IOUtil {
 
   /**
    * Reads all bytes from the given {@link InputStream}.
-   * 
+   *
    * With Java 9 and above, {@code InputStream#readAllBytes()} is used. On older Java versions, the
    * call is implemented like {@link #readAllBytesNaively(InputStream)}.
-   * 
+   *
    * @param in The input stream.
    * @return The bytes.
    * @throws IOException on error.
@@ -53,7 +53,7 @@ public final class IOUtil {
   /**
    * Reads all bytes from the given InputStream — naively — by reading into a temporary byte-array
    * buffer, which is then converted to a byte array.
-   * 
+   *
    * @param in The input stream.
    * @return The bytes.
    * @throws IOException on error.
@@ -67,10 +67,10 @@ public final class IOUtil {
   /**
    * Transfers all remaining bytes from the given {@link InputStream} to the given
    * {@link OutputStream}.
-   * 
+   *
    * With Java 9 and above, {@code InputStream#transferTo()} is used. On older Java versions, the
    * call is implemented like {@link #transferAllBytesNaively(InputStream, OutputStream)}.
-   * 
+   *
    * @param in The source.
    * @param out The target.
    * @return The number of bytes transferred.
@@ -83,7 +83,7 @@ public final class IOUtil {
   /**
    * Reads all bytes from the given {@link InputStream} — naively — by reading into a temporary
    * byte-array buffer, which is then written to the given {@link OutputStream}.
-   * 
+   *
    * @param in The source.
    * @param out The target.
    * @return The number of bytes transferred.
@@ -102,9 +102,9 @@ public final class IOUtil {
 
   /**
    * Deletes a file.
-   * 
+   *
    * If the file could not be deleted (but exists), an {@link IOException} is thrown.
-   * 
+   *
    * @param f The file to delete.
    * @throws IOException on error.
    */

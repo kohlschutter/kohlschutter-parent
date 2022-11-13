@@ -24,10 +24,10 @@ import java.lang.annotation.Target;
 
 /**
  * Marks a type or method that should be excluded from code-coverage calculations.
- * 
+ *
  * Implementation note: Jacoco recognizes all annotations that contain the string "Generated",
  * therefore this class should not be renamed.
- * 
+ *
  * @author Christian Kohlschütter
  */
 @Retention(RetentionPolicy.CLASS)

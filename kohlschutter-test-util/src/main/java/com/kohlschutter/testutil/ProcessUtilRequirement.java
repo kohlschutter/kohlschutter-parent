@@ -29,7 +29,7 @@ import com.kohlschutter.util.ProcessUtil;
 /**
  * Annotation to control the availability of a specific test depending on the availability of
  * particular features provided by {@link ProcessUtil}.
- * 
+ *
  * @author Christian Kohlschütter
  */
 @Target({ElementType.TYPE, ElementType.METHOD})
@@ -39,7 +39,7 @@ public @interface ProcessUtilRequirement {
   /**
    * If set to {@code true}, the annotated test will only run if
    * {@link ProcessUtil#getJavaCommandArguments()} returns some non-empty value.
-   * 
+   *
    * @return {@code true} if required.
    */
   boolean canGetJavaCommandArguments();

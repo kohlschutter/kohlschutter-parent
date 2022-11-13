@@ -30,10 +30,10 @@ final class ProcessUtilVintage {
 
   /**
    * Returns the PID of the current process.
-   * 
+   *
    * Workaround for Java 8 where <code>ProcessHandle.current().pid()</code> is not available.
    * Nevertheless, this should still work in newer versions.
-   * 
+   *
    * @return The PID
    * @throws IllegalStateException if the PID could not be determined.
    */

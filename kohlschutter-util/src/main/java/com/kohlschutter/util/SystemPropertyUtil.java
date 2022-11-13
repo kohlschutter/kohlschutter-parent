@@ -19,7 +19,7 @@ package com.kohlschutter.util;
 
 /**
  * Helper methods to simplify working with system properties.
- * 
+ *
  * @author Christian Kohlschütter
  */
 public final class SystemPropertyUtil {

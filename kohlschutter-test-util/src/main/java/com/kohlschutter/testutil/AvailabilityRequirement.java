@@ -33,14 +33,14 @@ import org.junit.jupiter.api.extension.ExtendWith;
 public @interface AvailabilityRequirement {
   /**
    * The required classes.
-   * 
+   *
    * @return The list of required classes.
    */
   String[] classes();
 
   /**
    * The error message to show if the requirement does not hold.
-   * 
+   *
    * @return The error message.
    */
   String message() default "";

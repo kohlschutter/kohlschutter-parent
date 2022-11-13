@@ -27,7 +27,7 @@ import java.nio.charset.Charset;
 
 /**
  * Forwards output (stdout/stderr) from another process.
- * 
+ *
  * @author Christian Kohlschütter
  */
 public class OutputBridge implements Runnable, Closeable {
@@ -41,7 +41,7 @@ public class OutputBridge implements Runnable, Closeable {
 
   /**
    * Specifies valid output streams for a process.
-   * 
+   *
    * @author Christian Kohlschütter
    */
   public enum ProcessStream {
@@ -54,7 +54,7 @@ public class OutputBridge implements Runnable, Closeable {
 
   /**
    * Creates a new {@link OutputBridge} for the output from the given process.
-   * 
+   *
    * @param process The process to bridge output from.
    * @param output The stream to bridge.
    */
@@ -65,7 +65,7 @@ public class OutputBridge implements Runnable, Closeable {
   /**
    * Creates a new {@link OutputBridge} for the output from the given process, optionally prefixing
    * each output line with the given prefix.
-   * 
+   *
    * @param process The process to bridge output from.
    * @param output The stream to bridge.
    * @param prefix The prefix, or {@code null}.
@@ -131,7 +131,7 @@ public class OutputBridge implements Runnable, Closeable {
 
   /**
    * Checks if there was some output.
-   * 
+   *
    * @return {@code true} if there was some output.
    */
   public final boolean hasOutput() {
@@ -140,7 +140,7 @@ public class OutputBridge implements Runnable, Closeable {
 
   /**
    * Returns the number of bytes received.
-   * 
+   *
    * @return The number of bytes received.
    */
   public final int numBytesRead() {

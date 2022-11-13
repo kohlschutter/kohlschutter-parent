@@ -34,7 +34,7 @@ public @interface ForkedVMRequirement {
   /**
    * Requires the availability ({@code true}) or absence ({@code false}) of support for
    * {@link ForkedVM}.
-   * 
+   *
    * @return {@code true} if ForkedVM support should be available, {@code false} if ForkedVM support
    *         should not be available.
    */
@@ -42,7 +42,7 @@ public @interface ForkedVMRequirement {
 
   /**
    * The error message to show if the requirement does not hold.
-   * 
+   *
    * @return The error message.
    */
   String message() default "";

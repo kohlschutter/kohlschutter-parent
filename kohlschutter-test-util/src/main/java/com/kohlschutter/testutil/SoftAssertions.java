@@ -27,9 +27,9 @@ import org.opentest4j.TestAbortedException;
 
 /**
  * A JUnit-compatible set of "soft assertions".
- * 
+ *
  * Soft assertions can be checked after aggregation.
- * 
+ *
  * @author Christian Kohlschütter
  */
 public final class SoftAssertions implements Supplier<String> {
@@ -62,7 +62,7 @@ public final class SoftAssertions implements Supplier<String> {
 
   /**
    * Adds a failed assertion, using the given message, to the list of errors.
-   * 
+   *
    * @param message The message.
    */
   public void fail(String message) {
@@ -71,7 +71,7 @@ public final class SoftAssertions implements Supplier<String> {
 
   /**
    * Adds a failed assertion, using the given message and throwable, to the list of errors.
-   * 
+   *
    * @param message The message.
    * @param t The throwable.
    */
@@ -81,7 +81,7 @@ public final class SoftAssertions implements Supplier<String> {
 
   /**
    * Adds a failed assertion to the list of errors.
-   * 
+   *
    * @param error The assertion error.
    */
   public void fail(AssertionError error) {
@@ -90,7 +90,7 @@ public final class SoftAssertions implements Supplier<String> {
 
   /**
    * Checks if there were no errors.
-   * 
+   *
    * @return {@code true} if no errors/failed assumptions were encountered.
    */
   public boolean checkPass() {
@@ -99,7 +99,7 @@ public final class SoftAssertions implements Supplier<String> {
 
   /**
    * Provides a concise error message.
-   * 
+   *
    * @return The error message (or an empty string).
    */
   public Supplier<String> conciseErrorMessageSupplier() {
@@ -108,7 +108,7 @@ public final class SoftAssertions implements Supplier<String> {
 
   /**
    * Adds all encountered assertion errors as suppressed errors to the given throwable.
-   * 
+   *
    * @param <T> The type of the throwable.
    * @param t The throwable to augment with suppressed throwables.
    * @return The augmented throwable.

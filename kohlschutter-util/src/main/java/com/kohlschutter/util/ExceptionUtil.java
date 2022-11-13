@@ -23,7 +23,7 @@ import com.kohlschutter.annotations.compiletime.ExcludeFromCodeCoverageGenerated
 
 /**
  * Helper methods for exception handling.
- * 
+ *
  * @author Christian Kohlschütter
  */
 public final class ExceptionUtil {
@@ -34,10 +34,10 @@ public final class ExceptionUtil {
 
   /**
    * Unwraps the exception thrown as the cause of an {@link ExecutionException}, if possible.
-   * 
+   *
    * If the cause is not an exception (but some other throwable), the {@link ExecutionException}
    * itself is returned.
-   * 
+   *
    * @param ex The {@link ExecutionException}.
    * @return The {@link ExecutionException}, or its cause {@link Exception}.
    */

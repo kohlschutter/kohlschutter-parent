@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.kohlschutter</groupId>
     <artifactId>kohlschutter-parent</artifactId>
-    
+
     <!-- IMPORTANT: After updating with "mvn versions:set -DnewVersion=",
      also change the property "kohlschutter.parent.version" below -->
     <version>1.5.2-SNAPSHOT</version>
@@ -69,11 +69,12 @@
 
         <kohlschutter.target.name>target</kohlschutter.target.name>
 
-        <coding.style.version>1.2.8</coding.style.version>
+        <coding.style.version>1.2.9-SNAPSHOT</coding.style.version>
         <coding.style.dirname>coding-style/${coding.style.version}</coding.style.dirname>
         <coding.style.eclipse.dir>${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse</coding.style.eclipse.dir>
         <eclipse.jdt.core.prefs>${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>
         <eclipse.formatter.config>${coding.style.eclipse.dir}/eclipse-formatter-config.xml</eclipse.formatter.config>
+        <eclipse.formatter.js.config>${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
         <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
 
         <kohlschutter.surefire.patch.args></kohlschutter.surefire.patch.args>
@@ -401,6 +402,7 @@
                 <coding.style.eclipse.dir>${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse</coding.style.eclipse.dir>
                 <eclipse.jdt.core.prefs>${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>
                 <eclipse.formatter.config>${coding.style.eclipse.dir}/eclipse-formatter-config.xml</eclipse.formatter.config>
+                <eclipse.formatter.js.config>${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
                 <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
             </properties>
         </profile>
@@ -416,6 +418,7 @@
                 <coding.style.eclipse.dir>${basedir}/../coding-style/eclipse</coding.style.eclipse.dir>
                 <eclipse.jdt.core.prefs>${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>
                 <eclipse.formatter.config>${coding.style.eclipse.dir}/eclipse-formatter-config.xml</eclipse.formatter.config>
+                <eclipse.formatter.js.config>${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
                 <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
             </properties>
         </profile>
@@ -431,6 +434,7 @@
                 <coding.style.eclipse.dir>${basedir}/../../coding-style/eclipse</coding.style.eclipse.dir>
                 <eclipse.jdt.core.prefs>${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>
                 <eclipse.formatter.config>${coding.style.eclipse.dir}/eclipse-formatter-config.xml</eclipse.formatter.config>
+                <eclipse.formatter.js.config>${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
                 <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
             </properties>
         </profile>
@@ -966,11 +970,29 @@
                     <compilerTargetPlatform>${maven.compiler.target}</compilerTargetPlatform>
                     <lineEnding>LF</lineEnding>
                     <configFile>${eclipse.formatter.config}</configFile>
+                    <configJsFile>${eclipse.formatter.js.config}</configJsFile>
                     <includes>
                         <include>com/kohlschutter/**/*.java</include>
                         <include>org/kohlschutter/**/*.java</include>
                         <include>org/newsclub/**/*.java</include>
+                        <!--
+                        <include>com/kohlschutter/**/*.js</include>
+                        <include>org/kohlschutter/**/*.js</include>
+                        -->
                     </includes>
+                    <excludes>
+                        <exclude>**/*.min.js</exclude>
+                    </excludes>
+                    <directories>
+                        <directory>src/main/java</directory>
+                        <directory>src/test/java</directory>
+                        <directory>src/main/java8</directory>
+                        <directory>src/test/java8</directory>
+                        <!--
+                        <directory>src/main/resources</directory>
+                        <directory>src/test/resources</directory>
+                        -->
+                    </directories>
                 </configuration>
             </plugin>
             <plugin>

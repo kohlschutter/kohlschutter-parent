@@ -75,7 +75,7 @@
 
         <kohlschutter.surefire.patch.args></kohlschutter.surefire.patch.args>
 
-        <checkstyle.version>10.3.4</checkstyle.version>
+        <checkstyle.version>10.4</checkstyle.version>
         <checkstyle.disabled>false</checkstyle.disabled>
         <checkstyle.strict>false</checkstyle.strict>
 
@@ -83,9 +83,9 @@
         <spotbugs.disabled>false</spotbugs.disabled>
         <spotbugs.strict>false</spotbugs.strict>
         <spotbugs.version>4.7.3</spotbugs.version>
-        <spotbugs.plugin.version>4.7.0.0</spotbugs.plugin.version>
+        <spotbugs.plugin.version>4.7.3.0</spotbugs.plugin.version>
 
-        <forbiddenapis.version>3.3</forbiddenapis.version>
+        <forbiddenapis.version>3.4</forbiddenapis.version>
         <forbiddenapis.strict>false</forbiddenapis.strict>
 
         <jacoco.disabled>false</jacoco.disabled>
@@ -101,7 +101,7 @@
 
         <!-- Only upgrade to the latest version you can have in Eclipse, no later
       versions; otherwise, you may not be able to run checks in Eclipse -->
-        <pmdVersion>6.50.0</pmdVersion>
+        <pmdVersion>6.51.0</pmdVersion>
     </properties>
     <profiles>
         <profile>
@@ -956,7 +956,7 @@
                 <!-- invoke with: mvn formatter:format -->
                 <groupId>net.revelc.code.formatter</groupId>
                 <artifactId>formatter-maven-plugin</artifactId>
-                <version>2.16.0</version>
+                <version>2.21.0</version>
                 <configuration>
                     <compilerCompliance>${maven.compiler.target}</compilerCompliance>
                     <compilerSource>${maven.compiler.source}</compilerSource>
@@ -1192,7 +1192,7 @@
                             <!-- Fix "Unsupported api 589824" error -->
                             <groupId>org.apache.bcel</groupId>
                             <artifactId>bcel</artifactId>
-                            <version>6.6.0</version>
+                            <version>6.6.1</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -1224,7 +1224,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-shade-plugin</artifactId>
-                    <version>3.4.0</version>
+                    <version>3.4.1</version>
                 </plugin>
             </plugins>
         </pluginManagement>

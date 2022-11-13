@@ -3,9 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.kohlschutter</groupId>
     <artifactId>kohlschutter-parent</artifactId>
-    <!-- NOTE: When updating with "mvn versions:set -DnewVersion=",
+    
+    <!-- IMPORTANT: After updating with "mvn versions:set -DnewVersion=",
      also change the property "kohlschutter.parent.version" below -->
-    <version>1.5.2</version>
+    <version>1.5.2-SNAPSHOT</version>
+
     <packaging>pom</packaging>
     <name>kohlschutter-parent</name>
     <inceptionYear>2014</inceptionYear>
@@ -45,6 +47,9 @@
         <url>https://github.com/kohlschutter/kohlschutter-parent/issues</url>
     </issueManagement>
     <properties>
+        <!-- Please keep this version in lockstep with the version declared above -->
+        <kohlschutter.parent.version>1.5.2-SNAPSHOT</kohlschutter.parent.version>
+
         <project.build.outputTimestamp>${git.commit.time}</project.build.outputTimestamp>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
@@ -60,8 +65,6 @@
 
         <kohlschutter.project.notice.file>${kohlschutter.project.base.directory}/NOTICE</kohlschutter.project.notice.file>
 
-        <!-- Please keep this version in lockstep with the version declared above -->
-        <kohlschutter.parent.version>1.5.2</kohlschutter.parent.version>
         <kohlschutter.maven.version.min>3.6.0</kohlschutter.maven.version.min>
 
         <kohlschutter.target.name>target</kohlschutter.target.name>

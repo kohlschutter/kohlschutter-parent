@@ -925,7 +925,7 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <version>3.3.9</version>
+                                    <version>${kohlschutter.maven.version.min}</version>
                                 </requireMavenVersion>
                             </rules>
                         </configuration>

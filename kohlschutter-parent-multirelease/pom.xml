@@ -77,9 +77,6 @@
                   <excludes>
                     <exclude>module-info.java</exclude>
                   </excludes>
-                  <testExcludes>
-                    <testExclude>**/*</testExclude>
-                  </testExcludes>
                 </configuration>
               </execution>
             </executions>
@@ -99,7 +96,25 @@
                   <includeEmptyDirs>true</includeEmptyDirs>
                   <resources>
                     <resource>
-                      <directory>src/main/java</directory>
+                      <directory>${kohlschutter.project.source.dir}</directory>
+                      <includes>
+                        <include>**</include>
+                      </includes>
+                    </resource>
+                    <resource>
+                      <directory>src/main/java11</directory>
+                      <includes>
+                        <include>**</include>
+                      </includes>
+                    </resource>
+                    <resource>
+                      <directory>src/main/java10</directory>
+                      <includes>
+                        <include>**</include>
+                      </includes>
+                    </resource>
+                    <resource>
+                      <directory>src/main/java9</directory>
                       <includes>
                         <include>**</include>
                       </includes>
@@ -208,7 +223,7 @@
                   <includeEmptyDirs>true</includeEmptyDirs>
                   <resources>
                     <resource>
-                      <directory>src/main/java</directory>
+                      <directory>${kohlschutter.project.source.dir}</directory>
                       <includes>
                         <include>**</include>
                       </includes>
@@ -243,9 +258,6 @@
                   <compileSourceRoots>
                     <compileSourceRoot>${project.build.directory}/sources-java9</compileSourceRoot>
                   </compileSourceRoots>
-                  <testExcludes>
-                    <testExclude>**/*</testExclude>
-                  </testExcludes>
                 </configuration>
               </execution>
             </executions>
@@ -253,5 +265,135 @@
         </plugins>
       </build>
     </profile>
+
+    <profile>
+      <id>multirelease-java10</id>
+      <activation>
+      <file>
+            <exists>src/main/java10</exists>
+      </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>copy-source-files-java10</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>${project.build.directory}/sources-java10</outputDirectory>
+                  <includeEmptyDirs>true</includeEmptyDirs>
+                  <resources>
+                    <resource>
+                      <directory>${kohlschutter.project.source.dir}</directory>
+                      <includes>
+                        <include>**</include>
+                      </includes>
+                    </resource>
+                    <resource>
+                      <directory>src/main/java10</directory>
+                      <includes>
+                        <include>**</include>
+                      </includes>
+                    </resource>
+                  </resources>
+                  <overwrite>true</overwrite>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>java10-compile</id>
+                <goals>
+                  <goal>compile</goal>
+                </goals>
+                <configuration>
+                    <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/10</outputDirectory>
+                    <target>10</target>
+                    <release>10</release>
+                    <multiReleaseOutput>false</multiReleaseOutput>
+                    <compileSourceRoots>
+                        <compileSourceRoot>${project.build.directory}/sources-java10</compileSourceRoot>
+                    </compileSourceRoots>
+                </configuration>
+            </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    
+    <profile>
+      <id>multirelease-java11</id>
+      <activation>
+      <file>
+            <exists>src/main/java11</exists>
+      </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>copy-source-files-java11</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>${project.build.directory}/sources-java11</outputDirectory>
+                  <includeEmptyDirs>true</includeEmptyDirs>
+                  <resources>
+                    <resource>
+                      <directory>${kohlschutter.project.source.dir}</directory>
+                      <includes>
+                        <include>**</include>
+                      </includes>
+                    </resource>
+                    <resource>
+                      <directory>src/main/java11</directory>
+                      <includes>
+                        <include>**</include>
+                      </includes>
+                    </resource>
+                  </resources>
+                  <overwrite>true</overwrite>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>java11-compile</id>
+                <goals>
+                  <goal>compile</goal>
+                </goals>
+                <configuration>
+                    <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/11</outputDirectory>
+                    <target>11</target>
+                    <release>11</release>
+                    <multiReleaseOutput>false</multiReleaseOutput>
+                    <compileSourceRoots>
+                        <compileSourceRoot>${project.build.directory}/sources-java11</compileSourceRoot>
+                    </compileSourceRoots>
+                </configuration>
+            </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>    
   </profiles>
 </project>

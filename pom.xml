@@ -107,13 +107,18 @@
         <javadoc.strict>false</javadoc.strict>
 
         <license.strict>false</license.strict>
+        <license.skip>false</license.skip>
 
         <pmd.strict>false</pmd.strict>
+
+        <impsort.skip>false</impsort.skip>
+        <formatter.skip>false</formatter.skip>
 
         <!-- Only upgrade to the latest version you can have in Eclipse, no later
       versions; otherwise, you may not be able to run checks in Eclipse -->
         <pmdVersion>6.51.0</pmdVersion>
     </properties>
+
     <profiles>
         <profile>
             <id>use-snapshots</id>
@@ -762,24 +767,11 @@
                         </dependencies>
                     </plugin>
                     <plugin>
-                        <!-- invoke with: mvn license:format -->
                         <groupId>com.mycila</groupId>
                         <artifactId>license-maven-plugin</artifactId>
-                        <configuration>
-                            <failIfMissing>${license.strict}</failIfMissing>
-                            <header>${kohlschutter.project.notice.file}</header>
-                            <includes>
-                                <include>src/main/java*/${kohlschutter.custom.package.folder}/**/*.java</include>
-                                <include>src/test/java*/${kohlschutter.custom.package.folder}/**/*.java</include>
-                                <include>src/main/java*/com/kohlschutter/**/*.java</include>
-                                <include>src/test/java*/com/kohlschutter/**/*.java</include>
-                            </includes>
-                            <excludes>
-                                <exclude>**/package-info.java</exclude>
-                            </excludes>
-                        </configuration>
                         <executions>
                             <execution>
+                                <id>check-license-headers</id>
                                 <goals>
                                     <goal>check</goal>
                                 </goals>
@@ -989,6 +981,58 @@
                 </plugins>
             </build>
         </profile>
+
+        <!-- Reformat code, organize imports -->
+        <profile>
+            <id>reformat</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.mycila</groupId>
+                        <artifactId>license-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>reformat-license-headers</id>
+                                <phase>process-sources</phase>
+                                <goals>
+                                    <goal>format</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>net.revelc.code</groupId>
+                        <artifactId>impsort-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sort-imports</id>
+                                <configuration>
+                                    <skip>${impsort.skip}</skip>
+                                </configuration>
+                                <goals>
+                                    <goal>sort</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>net.revelc.code.formatter</groupId>
+                        <artifactId>formatter-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>format-sourcecode</id>
+                                <configuration>
+                                    <skip>${formatter.skip}</skip>
+                                </configuration>
+                                <goals>
+                                    <goal>format</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
     <!-- The main build tag -->
@@ -1066,49 +1110,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <!-- invoke with: mvn formatter:format -->
-                <groupId>net.revelc.code.formatter</groupId>
-                <artifactId>formatter-maven-plugin</artifactId>
-                <version>2.21.0</version>
-                <configuration>
-                    <compilerCompliance>${maven.compiler.target}</compilerCompliance>
-                    <compilerSource>${maven.compiler.source}</compilerSource>
-                    <compilerTargetPlatform>${maven.compiler.target}</compilerTargetPlatform>
-                    <lineEnding>LF</lineEnding>
-                    <configFile>${eclipse.formatter.config}</configFile>
-                    <configJsFile>${eclipse.formatter.js.config}</configJsFile>
-                    <includes>
-                        <include>com/kohlschutter/**/*.java</include>
-                        <include>org/kohlschutter/**/*.java</include>
-                        <include>${kohlschutter.custom.package.folder}/**/*.java</include>
-                        <!--
-                        <include>com/kohlschutter/**/*.js</include>
-                        <include>org/kohlschutter/**/*.js</include>
-                        -->
-                    </includes>
-                    <excludes>
-                        <exclude>**/*.min.js</exclude>
-                    </excludes>
-                    <directories>
-                        <directory>src/main/java</directory>
-                        <directory>src/main/java-overlay</directory>
-                        <directory>src/test/java</directory>
-                        <directory>src/main/java8</directory>
-                        <directory>src/test/java8</directory>
-                        <directory>src/main/java9</directory>
-                        <directory>src/test/java9</directory>
-                        <directory>src/main/java10</directory>
-                        <directory>src/test/java10</directory>
-                        <directory>src/main/java11</directory>
-                        <directory>src/test/java11</directory>
-                        <!--
-                        <directory>src/main/resources</directory>
-                        <directory>src/test/resources</directory>
-                        -->
-                    </directories>
-                </configuration>
-            </plugin>
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
@@ -1129,6 +1131,7 @@
             </plugin>
         </plugins>
 
+        <!-- the main "pluginManagement" section -->
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -1262,14 +1265,23 @@
                     <version>3.0.1</version>
                 </plugin>
                 <plugin>
-                    <groupId>com.googlecode.maven-java-formatter-plugin</groupId>
-                    <artifactId>maven-java-formatter-plugin</artifactId>
-                    <version>0.4</version>
-                </plugin>
-                <plugin>
                     <groupId>com.mycila</groupId>
                     <artifactId>license-maven-plugin</artifactId>
                     <version>4.2.rc3</version>
+                    <configuration>
+                        <skip>${license.skip}</skip>
+                        <failIfMissing>${license.strict}</failIfMissing>
+                        <header>${kohlschutter.project.notice.file}</header>
+                        <includes>
+                            <include>src/main/java*/${kohlschutter.custom.package.folder}/**/*.java</include>
+                            <include>src/test/java*/${kohlschutter.custom.package.folder}/**/*.java</include>
+                            <include>src/main/java*/com/kohlschutter/**/*.java</include>
+                            <include>src/test/java*/com/kohlschutter/**/*.java</include>
+                        </includes>
+                        <excludes>
+                            <exclude>**/package-info.java</exclude>
+                        </excludes>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.sonatype.plugins</groupId>
@@ -1364,6 +1376,66 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-shade-plugin</artifactId>
                     <version>3.4.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>net.revelc.code.formatter</groupId>
+                    <artifactId>formatter-maven-plugin</artifactId>
+                    <version>2.21.0</version>
+                    <configuration>
+                        <compilerCompliance>${maven.compiler.target}</compilerCompliance>
+                        <compilerSource>${maven.compiler.source}</compilerSource>
+                        <compilerTargetPlatform>${maven.compiler.target}</compilerTargetPlatform>
+                        <lineEnding>LF</lineEnding>
+                        <configFile>${eclipse.formatter.config}</configFile>
+                        <configJsFile>${eclipse.formatter.js.config}</configJsFile>
+                        <includes>
+                            <include>com/kohlschutter/**/*.java</include>
+                            <include>org/kohlschutter/**/*.java</include>
+                            <include>${kohlschutter.custom.package.folder}/**/*.java</include>
+                            <!--
+                                <include>com/kohlschutter/**/*.js</include>
+                                <include>org/kohlschutter/**/*.js</include>
+                                -->
+                        </includes>
+                        <excludes>
+                            <exclude>**/*.min.js</exclude>
+                        </excludes>
+                        <directories>
+                            <directory>src/main/java</directory>
+                            <directory>src/main/java-overlay</directory>
+                            <directory>src/test/java</directory>
+                            <directory>src/main/java8</directory>
+                            <directory>src/test/java8</directory>
+                            <directory>src/main/java9</directory>
+                            <directory>src/test/java9</directory>
+                            <directory>src/main/java10</directory>
+                            <directory>src/test/java10</directory>
+                            <directory>src/main/java11</directory>
+                            <directory>src/test/java11</directory>
+                            <!--
+                                <directory>src/main/resources</directory>
+                                <directory>src/test/resources</directory>
+                                -->
+                        </directories>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>net.revelc.code</groupId>
+                    <artifactId>impsort-maven-plugin</artifactId>
+                    <version>1.7.0</version>
+                    <configuration>
+                        <groups>java.,javax.,org.,com.</groups>
+                        <staticGroups>java,*</staticGroups>
+                        <excludes>
+                            <exclude>**/thrift/*.java</exclude>
+                            <exclude>**/*generated*/*.java</exclude>
+                        </excludes>
+                        <includes>
+                            <include>com/kohlschutter/**/*.java</include>
+                            <include>org/kohlschutter/**/*.java</include>
+                            <include>${kohlschutter.custom.package.folder}/**/*.java</include>
+                        </includes>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

@@ -1412,6 +1412,24 @@
                             <directory>src/test/java10</directory>
                             <directory>src/main/java11</directory>
                             <directory>src/test/java11</directory>
+                            <directory>src/main/java12</directory>
+                            <directory>src/test/java12</directory>
+                            <directory>src/main/java13</directory>
+                            <directory>src/test/java13</directory>
+                            <directory>src/main/java14</directory>
+                            <directory>src/test/java14</directory>
+                            <directory>src/main/java15</directory>
+                            <directory>src/test/java15</directory>
+                            <directory>src/main/java16</directory>
+                            <directory>src/test/java16</directory>
+                            <directory>src/main/java17</directory>
+                            <directory>src/test/java17</directory>
+                            <directory>src/main/java18</directory>
+                            <directory>src/test/java18</directory>
+                            <directory>src/main/java19</directory>
+                            <directory>src/test/java19</directory>
+                            <directory>src/main/java20</directory>
+                            <directory>src/test/java20</directory>
                             <!--
                                 <directory>src/main/resources</directory>
                                 <directory>src/test/resources</directory>

@@ -1161,12 +1161,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>3.12.1</version>
+                    <version>4.0.0-M4</version>
                     <dependencies>
                         <dependency>
                             <groupId>org.apache.maven.skins</groupId>
                             <artifactId>maven-fluido-skin</artifactId>
-                            <version>1.11.1</version>
+                            <version>2.0.0-M2</version>
                         </dependency>
                     </dependencies>
                 </plugin>

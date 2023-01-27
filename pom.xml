@@ -56,8 +56,10 @@
         <file.encoding>UTF-8</file.encoding>
         <maven.compile.encoding>UTF-8</maven.compile.encoding>
 
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <kohlschutter.java.release>1.8</kohlschutter.java.release>
+
+        <maven.compiler.source>${kohlschutter.java.release}</maven.compiler.source>
+        <maven.compiler.target>${kohlschutter.java.release}</maven.compiler.target>
 
         <!-- Projects must define the following property -->
         <kohlschutter.project.base.directory>${project.basedir}</kohlschutter.project.base.directory>

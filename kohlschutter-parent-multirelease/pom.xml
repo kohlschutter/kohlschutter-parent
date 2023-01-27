@@ -19,6 +19,8 @@
         <!-- The most-recent java release this project supports (at least 9) -->
         <kohlschutter.multirelease.java.release>9</kohlschutter.multirelease.java.release>
 
+        <kohlschutter.java.release>${kohlschutter.multirelease.java.release}</kohlschutter.java.release>
+
         <!-- The Java release we should use for Java 8 (usually 8, but use any
       lower version to force compiling against something ancient, e.g., 7) -->
         <kohlschutter.multirelease.java8.release>8</kohlschutter.multirelease.java8.release>

@@ -88,7 +88,7 @@
 
         <kohlschutter.surefire.patch.args></kohlschutter.surefire.patch.args>
 
-        <checkstyle.version>10.6.0</checkstyle.version>
+        <checkstyle.version>10.7.0</checkstyle.version>
         <checkstyle.disabled>false</checkstyle.disabled>
         <checkstyle.strict>false</checkstyle.strict>
 
@@ -118,7 +118,7 @@
 
         <!-- Only upgrade to the latest version you can have in Eclipse, no later
       versions; otherwise, you may not be able to run checks in Eclipse -->
-        <pmdVersion>6.53.0</pmdVersion>
+        <pmdVersion>6.54.0</pmdVersion>
     </properties>
 
     <profiles>

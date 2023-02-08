@@ -3,11 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.kohlschutter</groupId>
     <artifactId>kohlschutter-parent</artifactId>
-
     <!-- IMPORTANT: After updating with "mvn versions:set -DnewVersion=",
      also change the property "kohlschutter.parent.version" below -->
     <version>1.5.2-SNAPSHOT</version>
-
     <packaging>pom</packaging>
     <name>kohlschutter-parent</name>
     <inceptionYear>2014</inceptionYear>
@@ -49,35 +47,24 @@
     <properties>
         <!-- Please keep this version in lockstep with the version declared above -->
         <kohlschutter.parent.version>1.5.2-SNAPSHOT</kohlschutter.parent.version>
-
         <project.build.outputTimestamp>${git.commit.time}</project.build.outputTimestamp>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <file.encoding>UTF-8</file.encoding>
         <maven.compile.encoding>UTF-8</maven.compile.encoding>
-
         <kohlschutter.java.release>1.8</kohlschutter.java.release>
-
         <maven.compiler.source>${kohlschutter.java.release}</maven.compiler.source>
         <maven.compiler.target>${kohlschutter.java.release}</maven.compiler.target>
-
         <!-- Projects must define the following property -->
         <kohlschutter.project.base.directory>${project.basedir}</kohlschutter.project.base.directory>
         <kohlschutter.parent.directory>${project.basedir}</kohlschutter.parent.directory>
-
         <kohlschutter.project.notice.file>${kohlschutter.project.base.directory}/NOTICE</kohlschutter.project.notice.file>
-
         <kohlschutter.project.source.dir>${basedir}/src/main/java</kohlschutter.project.source.dir>
-
         <kohlschutter.maven.version.min>3.6.0</kohlschutter.maven.version.min>
-
         <kohlschutter.target.name>target</kohlschutter.target.name>
-
         <kohlschutter.custom.package.folder>org/newsclub</kohlschutter.custom.package.folder>
-
         <kohlschutter.snapshots.repo>https://oss.sonatype.org/content/repositories/snapshots</kohlschutter.snapshots.repo>
         <kohlschutter.staging.repo>https://oss.sonatype.org/content/groups/staging/</kohlschutter.staging.repo>
-
         <coding.style.version>1.2.9-SNAPSHOT</coding.style.version>
         <coding.style.dirname>coding-style/${coding.style.version}</coding.style.dirname>
         <coding.style.eclipse.dir>${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse</coding.style.eclipse.dir>
@@ -85,42 +72,31 @@
         <eclipse.formatter.config>${coding.style.eclipse.dir}/eclipse-formatter-config.xml</eclipse.formatter.config>
         <eclipse.formatter.js.config>${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
         <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
-
         <kohlschutter.surefire.patch.args></kohlschutter.surefire.patch.args>
-
         <checkstyle.version>10.7.0</checkstyle.version>
         <checkstyle.disabled>false</checkstyle.disabled>
         <checkstyle.strict>false</checkstyle.strict>
-
         <spotbugs.exclude.file>${coding.style.eclipse.dir}/spotbugs-exclude.xml</spotbugs.exclude.file>
         <spotbugs.disabled>false</spotbugs.disabled>
         <spotbugs.strict>false</spotbugs.strict>
         <spotbugs.version>4.7.3</spotbugs.version>
         <spotbugs.plugin.version>4.7.3.0</spotbugs.plugin.version>
-
         <forbiddenapis.version>3.4</forbiddenapis.version>
         <forbiddenapis.strict>false</forbiddenapis.strict>
-
         <jacoco.disabled>false</jacoco.disabled>
         <jacoco.strict>false</jacoco.strict>
         <jacoco.coverage.min>0.0</jacoco.coverage.min>
         <jacoco.exec.name-extra></jacoco.exec.name-extra>
-
         <javadoc.strict>false</javadoc.strict>
-
         <license.strict>false</license.strict>
         <license.skip>false</license.skip>
-
         <pmd.strict>false</pmd.strict>
-
         <impsort.skip>false</impsort.skip>
         <formatter.skip>false</formatter.skip>
-
         <!-- Only upgrade to the latest version you can have in Eclipse, no later
       versions; otherwise, you may not be able to run checks in Eclipse -->
         <pmdVersion>6.54.0</pmdVersion>
     </properties>
-
     <profiles>
         <profile>
             <id>use-snapshots</id>
@@ -229,7 +205,6 @@
             <properties>
                 <!-- Ignore Eclipse's nar-maven-plugin integration -->
                 <nar.skip>true</nar.skip>
-
                 <kohlschutter.target.name>target-eclipse</kohlschutter.target.name>
             </properties>
             <build>
@@ -379,7 +354,6 @@
                 </plugins>
             </build>
         </profile>
-
         <profile>
             <id>signed</id>
             <build>
@@ -404,7 +378,6 @@
                 </plugins>
             </build>
         </profile>
-
         <!-- BEGIN: coding-style specific profiles -->
         <!-- Unless you have the "coding-style" project in your eclipse workspace,
       we will download and unpack that artifact's contents to the top-level
@@ -553,7 +526,6 @@
             </build>
         </profile>
         <!-- END: coding-style specific profiles -->
-
         <profile>
             <id>unit-tests</id>
             <activation>
@@ -636,7 +608,6 @@
                 </plugins>
             </reporting>
         </profile>
-
         <profile>
             <id>code-quality</id>
             <activation>
@@ -983,7 +954,6 @@
                 </plugins>
             </build>
         </profile>
-
         <!-- Reformat code, organize imports -->
         <profile>
             <id>reformat</id>
@@ -1036,7 +1006,6 @@
             </build>
         </profile>
     </profiles>
-
     <!-- The main build tag -->
     <build>
         <sourceDirectory>${kohlschutter.project.source.dir}</sourceDirectory>
@@ -1112,7 +1081,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
@@ -1132,7 +1100,6 @@
                 <artifactId>maven-site-plugin</artifactId>
             </plugin>
         </plugins>
-
         <!-- the main "pluginManagement" section -->
         <pluginManagement>
             <plugins>
@@ -1273,16 +1240,20 @@
                     <configuration>
                         <skip>${license.skip}</skip>
                         <failIfMissing>${license.strict}</failIfMissing>
-                        <header>${kohlschutter.project.notice.file}</header>
-                        <includes>
-                            <include>src/main/java*/${kohlschutter.custom.package.folder}/**/*.java</include>
-                            <include>src/test/java*/${kohlschutter.custom.package.folder}/**/*.java</include>
-                            <include>src/main/java*/com/kohlschutter/**/*.java</include>
-                            <include>src/test/java*/com/kohlschutter/**/*.java</include>
-                        </includes>
-                        <excludes>
-                            <exclude>**/package-info.java</exclude>
-                        </excludes>
+                        <licenseSets>
+                            <licenseSet>
+                                <header>${kohlschutter.project.notice.file}</header>
+                                <includes>
+                                    <include>src/main/java*/${kohlschutter.custom.package.folder}/**/*.java</include>
+                                    <include>src/test/java*/${kohlschutter.custom.package.folder}/**/*.java</include>
+                                    <include>src/main/java*/com/kohlschutter/**/*.java</include>
+                                    <include>src/test/java*/com/kohlschutter/**/*.java</include>
+                                </includes>
+                                <excludes>
+                                    <exclude>**/package-info.java</exclude>
+                                </excludes>
+                            </licenseSet>
+                        </licenseSets>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -1460,7 +1431,6 @@
             </plugins>
         </pluginManagement>
     </build>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -1493,7 +1463,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <reporting>
         <plugins>
             <plugin>
@@ -1519,7 +1488,6 @@
             </plugin>
         </plugins>
     </reporting>
-
     <modules>
         <module>maven-plugin-config</module>
         <module>kohlschutter-parent-multirelease</module>

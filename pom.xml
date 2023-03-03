@@ -73,7 +73,7 @@
         <eclipse.formatter.js.config>${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
         <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
         <kohlschutter.surefire.patch.args></kohlschutter.surefire.patch.args>
-        <checkstyle.version>10.7.0</checkstyle.version>
+        <checkstyle.version>10.8.0</checkstyle.version>
         <checkstyle.disabled>false</checkstyle.disabled>
         <checkstyle.strict>false</checkstyle.strict>
         <spotbugs.exclude.file>${coding.style.eclipse.dir}/spotbugs-exclude.xml</spotbugs.exclude.file>
@@ -95,7 +95,7 @@
         <formatter.skip>false</formatter.skip>
         <!-- Only upgrade to the latest version you can have in Eclipse, no later
       versions; otherwise, you may not be able to run checks in Eclipse -->
-        <pmdVersion>6.54.0</pmdVersion>
+        <pmdVersion>6.55.0</pmdVersion>
         <xlint.compiler.arg>-Xlint:all,-classfile</xlint.compiler.arg>
     </properties>
     <profiles>

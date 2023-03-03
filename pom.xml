@@ -97,7 +97,6 @@
       versions; otherwise, you may not be able to run checks in Eclipse -->
         <pmdVersion>6.54.0</pmdVersion>
         <xlint.compiler.arg>-Xlint:all,-classfile</xlint.compiler.arg>
-        <git.commit.time></git.commit.time> <!-- workaround for "site" being unable to resolve this -->
     </properties>
     <profiles>
         <profile>
@@ -1013,6 +1012,29 @@
         <sourceDirectory>${kohlschutter.project.source.dir}</sourceDirectory>
         <plugins>
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>set-default-site-properties</id>
+                        <phase>pre-site</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <urls>classpath:/com/kohlschutter/site.properties</urls>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.kohlschutter</groupId>
+                        <artifactId>kohlschutter-parent-buildconfig</artifactId>
+                        <version>1.0.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
                 <groupId>io.github.git-commit-id</groupId>
                 <artifactId>git-commit-id-maven-plugin</artifactId>
                 <executions>
@@ -1110,6 +1132,11 @@
                     <groupId>io.github.git-commit-id</groupId>
                     <artifactId>git-commit-id-maven-plugin</artifactId>
                     <version>5.0.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>properties-maven-plugin</artifactId>
+                    <version>1.1.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

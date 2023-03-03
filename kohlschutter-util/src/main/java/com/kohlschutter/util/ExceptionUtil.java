@@ -27,7 +27,7 @@ import com.kohlschutter.annotations.compiletime.ExcludeFromCodeCoverageGenerated
  * @author Christian Kohlschütter
  */
 public final class ExceptionUtil {
-  @ExcludeFromCodeCoverageGeneratedReport
+  @ExcludeFromCodeCoverageGeneratedReport(reason = "unreachable")
   private ExceptionUtil() {
     throw new IllegalStateException("No instances");
   }

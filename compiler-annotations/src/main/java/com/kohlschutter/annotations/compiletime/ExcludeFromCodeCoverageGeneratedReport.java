@@ -33,4 +33,22 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.CLASS)
 @Target({ElementType.METHOD, ElementType.TYPE, ElementType.CONSTRUCTOR})
 public @interface ExcludeFromCodeCoverageGeneratedReport {
+  /**
+   * A human-readable explanation why it was excluded.
+   * 
+   * As a convention use the following values for certain scenarios:
+   * 
+   * <ul>
+   * <li>{@code unreachable} for clearly unreachable code (e.g., a private constructor in a static
+   * helper class) and methods that are assumed but not guaranteed to never be called (e.g.,
+   * implementations of an abstract/interface method that are expected to never be called due to
+   * implementation specifics)</li>
+   * <li>{@code exception unreachable} for methods that catch an exception that is never thrown
+   * (e.g., {@link CloneNotSupportedException})</li>
+   * <li>{@code jacoco bug} for scenarios where JaCoCo is clearly wrong
+   * </ul>
+   * 
+   * @return The reason.
+   */
+  String reason() default "";
 }

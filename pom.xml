@@ -96,6 +96,8 @@
         <!-- Only upgrade to the latest version you can have in Eclipse, no later
       versions; otherwise, you may not be able to run checks in Eclipse -->
         <pmdVersion>6.54.0</pmdVersion>
+        <xlint.compiler.arg>-Xlint:all,-classfile</xlint.compiler.arg>
+        <git.commit.time></git.commit.time> <!-- workaround for "site" being unable to resolve this -->
     </properties>
     <profiles>
         <profile>
@@ -1067,6 +1069,7 @@
                     <compilerArgs>
                         <!-- Prevent recompilation due to "Stale source detected: .../package-info.java" -->
                         <arg>-Xpkginfo:always</arg>
+                        <arg>${xlint.compiler.arg}</arg>
                     </compilerArgs>
                     <useIncrementalCompilation>false</useIncrementalCompilation>
                 </configuration>
@@ -1128,7 +1131,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>4.0.0-M4</version>
+                    <version>4.0.0-M5</version>
                     <dependencies>
                         <dependency>
                             <groupId>org.apache.maven.skins</groupId>

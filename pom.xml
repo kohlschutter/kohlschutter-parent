@@ -1093,8 +1093,16 @@
                         <arg>-Xpkginfo:always</arg>
                         <arg>${xlint.compiler.arg}</arg>
                     </compilerArgs>
-                    <useIncrementalCompilation>false</useIncrementalCompilation>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>default-testCompile</id>
+                        <configuration>
+                            <!-- don't use module path during testing: lots of false positive warnings -->
+                            <useModulePath>false</useModulePath>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

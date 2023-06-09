@@ -268,8 +268,6 @@ public class ForkedVM {
       // happens.
       System.err.println(
           "[WARNING] (ForkedVM) Code coverage may be incomplete for code only called from the forked VM");
-
-      onJavaOption(arg);
     }
   }
 

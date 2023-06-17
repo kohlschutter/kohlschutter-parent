@@ -28,6 +28,12 @@ final class ProcessUtilVintage {
     throw new IllegalStateException("No instances");
   }
 
+  private static int getAndroidPid() throws ClassNotFoundException, IllegalAccessException,
+      InvocationTargetException, NoSuchMethodException, SecurityException {
+    Class<?> androidClass = Class.forName("android.os.Process");
+    return (Integer) (androidClass.getMethod("myPid").invoke(null));
+  }
+
   /**
    * Returns the PID of the current process.
    *
@@ -44,7 +50,15 @@ final class ProcessUtilVintage {
       managementClass = Class.forName("java.lang.management.ManagementFactory");
       mxBeanClass = Class.forName("java.lang.management.RuntimeMXBean");
     } catch (ClassNotFoundException e) {
-      throw new IllegalStateException("Unable to determine current process PID", e);
+      try {
+        return getAndroidPid();
+      } catch (ClassNotFoundException | IllegalAccessException | InvocationTargetException
+          | NoSuchMethodException | SecurityException e2) {
+        IllegalStateException ise = new IllegalStateException(
+            "Unable to determine current process PID", e);
+        ise.addSuppressed(e2);
+        throw ise; // NOPMD.PreserveStackTrace
+      }
     }
     try {
       Object mxBean = managementClass.getMethod("getRuntimeMXBean").invoke(null);

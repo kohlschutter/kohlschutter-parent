@@ -24,7 +24,7 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 
 /**
- * A {@code System.out} wrapper that can knows a little bit about the system console.
+ * A {@code System.out} wrapper that knows a little bit about the system console.
  *
  * @author Christian Kohlschütter
  */
@@ -69,33 +69,52 @@ public final class ConsolePrintStream extends PrintStream {
     }
   }
 
-  private ConsolePrintStream() throws UnsupportedEncodingException {
-    this(new ConsoleFilterOut(System.out));
+  private ConsolePrintStream(PrintStream out) throws UnsupportedEncodingException {
+    this(new ConsoleFilterOut(out));
   }
 
   private ConsolePrintStream(ConsoleFilterOut cfo) throws UnsupportedEncodingException {
     super(cfo, false, Charset.defaultCharset().name());
     this.cfo = cfo;
-    this.out = System.out;
-    System.setOut(this);
+    this.out = cfo.getOutputStream();
   }
 
   /**
    * Wraps {@code System.out} as a {@link ConsolePrintStream}.
+   *
+   * {@code System.out} is automatically set to this stream.
    *
    * @return The wrapped stream.
    */
   public static ConsolePrintStream wrapSystemOut() {
     synchronized (System.class) {
       PrintStream out = System.out;
-      if (out instanceof ConsolePrintStream) {
-        return (ConsolePrintStream) out;
-      } else {
-        try {
-          return new ConsolePrintStream();
-        } catch (UnsupportedEncodingException e) {
-          throw new IllegalStateException(e);
-        }
+      ConsolePrintStream cps = wrapPrintStream(out);
+
+      System.setOut(cps);
+
+      return cps;
+    }
+  }
+
+  /**
+   * Wraps the given PrintStream as a {@link ConsolePrintStream}.
+   *
+   * {@code System.out} is NOT automatically set to this stream, so you may need to do this
+   * yourself.
+   * 
+   * @param out The {@link PrintStream} that should be wrapped.
+   *
+   * @return The wrapped stream.
+   */
+  public static ConsolePrintStream wrapPrintStream(PrintStream out) {
+    if (out instanceof ConsolePrintStream) {
+      return (ConsolePrintStream) out;
+    } else {
+      try {
+        return new ConsolePrintStream(out);
+      } catch (UnsupportedEncodingException e) {
+        throw new IllegalStateException(e);
       }
     }
   }
@@ -109,6 +128,10 @@ public final class ConsolePrintStream extends PrintStream {
 
     ConsoleFilterOut(PrintStream out) {
       super(out);
+    }
+
+    PrintStream getOutputStream() {
+      return (PrintStream) out;
     }
 
     @Override

@@ -35,9 +35,9 @@ import java.lang.annotation.Target;
 public @interface ExcludeFromCodeCoverageGeneratedReport {
   /**
    * A human-readable explanation why it was excluded.
-   * 
+   *
    * As a convention use the following values for certain scenarios:
-   * 
+   *
    * <ul>
    * <li>{@code unreachable} for clearly unreachable code (e.g., a private constructor in a static
    * helper class) and methods that are assumed but not guaranteed to never be called (e.g.,
@@ -47,7 +47,7 @@ public @interface ExcludeFromCodeCoverageGeneratedReport {
    * (e.g., {@link CloneNotSupportedException})</li>
    * <li>{@code jacoco bug} for scenarios where JaCoCo is clearly wrong
    * </ul>
-   * 
+   *
    * @return The reason.
    */
   String reason() default "";

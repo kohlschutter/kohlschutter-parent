@@ -27,7 +27,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 /**
  * Marks tests to be executed only if ForkVM is supported.
  */
-@Target({ElementType.METHOD, ElementType.TYPE})
+@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @ExtendWith(ForkedVMExecutionCondition.class)
 public @interface ForkedVMRequirement {

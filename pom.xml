@@ -219,6 +219,9 @@
                     <name>m2e.version</name>
                 </property>
             </activation>
+            <properties>
+                <spotbugs.disabled>true</spotbugs.disabled>
+            </properties>
             <build>
                 <pluginManagement>
                     <plugins>
@@ -317,6 +320,19 @@
                                                 <versionRange>[3.3.0,)</versionRange>
                                                 <goals>
                                                     <goal>build-classpath</goal>
+                                                </goals>
+                                            </pluginExecutionFilter>
+                                            <action>
+                                                <ignore></ignore>
+                                            </action>
+                                        </pluginExecution>
+                                        <pluginExecution>
+                                            <pluginExecutionFilter>
+                                                <groupId>com.github.spotbugs</groupId>
+                                                <artifactId>spotbugs-maven-plugin</artifactId>
+                                                <versionRange>[4.7.3.4,)</versionRange>
+                                                <goals>
+                                                    <goal>check</goal>
                                                 </goals>
                                             </pluginExecutionFilter>
                                             <action>

@@ -65,7 +65,7 @@
         <kohlschutter.custom.package.folder>org/newsclub</kohlschutter.custom.package.folder>
         <kohlschutter.snapshots.repo>https://oss.sonatype.org/content/repositories/snapshots</kohlschutter.snapshots.repo>
         <kohlschutter.staging.repo>https://oss.sonatype.org/content/groups/staging/</kohlschutter.staging.repo>
-        <coding.style.version>1.2.10</coding.style.version>
+        <coding.style.version>1.2.11</coding.style.version>
         <coding.style.dirname>coding-style/${coding.style.version}</coding.style.dirname>
         <coding.style.eclipse.dir>${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse</coding.style.eclipse.dir>
         <eclipse.jdt.core.prefs>${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>

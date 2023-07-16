@@ -69,6 +69,7 @@
                                 <configuration>
                                     <compileSourceRoots>
                                         <compileSourceRoot>${project.build.directory}/sources-java8</compileSourceRoot>
+                                        <compileSourceRoot>${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
                                     </compileSourceRoots>
                                     <outputDirectory>${project.build.outputDirectory}/../classes-multirelease</outputDirectory>
                                     <target>1.${kohlschutter.multirelease.java8.release}</target>
@@ -375,6 +376,7 @@
                                     <multiReleaseOutput>false</multiReleaseOutput>
                                     <compileSourceRoots>
                                         <compileSourceRoot>${project.build.directory}/sources-java9</compileSourceRoot>
+                                        <compileSourceRoot>${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
                                     </compileSourceRoots>
                                 </configuration>
                             </execution>
@@ -500,6 +502,7 @@
                                     <multiReleaseOutput>false</multiReleaseOutput>
                                     <compileSourceRoots>
                                         <compileSourceRoot>${project.build.directory}/sources-java10</compileSourceRoot>
+                                        <compileSourceRoot>${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
                                     </compileSourceRoots>
                                 </configuration>
                             </execution>
@@ -619,6 +622,7 @@
                                     <multiReleaseOutput>false</multiReleaseOutput>
                                     <compileSourceRoots>
                                         <compileSourceRoot>${project.build.directory}/sources-java11</compileSourceRoot>
+                                        <compileSourceRoot>${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
                                     </compileSourceRoots>
                                 </configuration>
                             </execution>
@@ -732,6 +736,7 @@
                                     <multiReleaseOutput>false</multiReleaseOutput>
                                     <compileSourceRoots>
                                         <compileSourceRoot>${project.build.directory}/sources-java12</compileSourceRoot>
+                                        <compileSourceRoot>${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
                                     </compileSourceRoots>
                                 </configuration>
                             </execution>
@@ -840,6 +845,7 @@
                                     <multiReleaseOutput>false</multiReleaseOutput>
                                     <compileSourceRoots>
                                         <compileSourceRoot>${project.build.directory}/sources-java13</compileSourceRoot>
+                                        <compileSourceRoot>${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
                                     </compileSourceRoots>
                                 </configuration>
                             </execution>
@@ -941,6 +947,7 @@
                                     <multiReleaseOutput>false</multiReleaseOutput>
                                     <compileSourceRoots>
                                         <compileSourceRoot>${project.build.directory}/sources-java14</compileSourceRoot>
+                                        <compileSourceRoot>${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
                                     </compileSourceRoots>
                                 </configuration>
                             </execution>
@@ -1036,6 +1043,7 @@
                                     <multiReleaseOutput>false</multiReleaseOutput>
                                     <compileSourceRoots>
                                         <compileSourceRoot>${project.build.directory}/sources-java15</compileSourceRoot>
+                                        <compileSourceRoot>${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
                                     </compileSourceRoots>
                                 </configuration>
                             </execution>
@@ -1132,6 +1140,7 @@
                                     <multiReleaseOutput>false</multiReleaseOutput>
                                     <compileSourceRoots>
                                         <compileSourceRoot>${project.build.directory}/sources-java16</compileSourceRoot>
+                                        <compileSourceRoot>${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
                                     </compileSourceRoots>
                                 </configuration>
                             </execution>
@@ -1215,6 +1224,7 @@
                                     <multiReleaseOutput>false</multiReleaseOutput>
                                     <compileSourceRoots>
                                         <compileSourceRoot>${project.build.directory}/sources-java17</compileSourceRoot>
+                                        <compileSourceRoot>${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
                                     </compileSourceRoots>
                                 </configuration>
                             </execution>
@@ -1292,6 +1302,7 @@
                                     <multiReleaseOutput>false</multiReleaseOutput>
                                     <compileSourceRoots>
                                         <compileSourceRoot>${project.build.directory}/sources-java18</compileSourceRoot>
+                                        <compileSourceRoot>${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
                                     </compileSourceRoots>
                                 </configuration>
                             </execution>
@@ -1363,6 +1374,7 @@
                                     <multiReleaseOutput>false</multiReleaseOutput>
                                     <compileSourceRoots>
                                         <compileSourceRoot>${project.build.directory}/sources-java19</compileSourceRoot>
+                                        <compileSourceRoot>${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
                                     </compileSourceRoots>
                                 </configuration>
                             </execution>
@@ -1428,6 +1440,7 @@
                                     <multiReleaseOutput>false</multiReleaseOutput>
                                     <compileSourceRoots>
                                         <compileSourceRoot>${project.build.directory}/sources-java20</compileSourceRoot>
+                                        <compileSourceRoot>${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
                                     </compileSourceRoots>
                                 </configuration>
                             </execution>

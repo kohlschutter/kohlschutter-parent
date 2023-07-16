@@ -1044,7 +1044,76 @@
                 </plugins>
             </build>
         </profile>
+
+        <!-- Resolve Maven property templates in files defined under src/main/java-unresolved-properties -->
+        <profile>
+            <id>java-template-not-eclipse</id>
+            <activation>
+                <property>
+                    <name>!m2e.version</name>
+                </property>
+                <file>
+                    <exists>src/main/java-unresolved-properties</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>templating-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>filter-src</id>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>filter-sources</goal>
+                                </goals>
+                                <configuration>
+                                    <sourceDirectory>${basedir}/src/main/java-unresolved-properties</sourceDirectory>
+                                    <outputDirectory>${project.build.directory}/generated-sources/java-resolved-properties</outputDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <!-- For performance reasons, we won't replace templates when running from within Eclipse -->
+        <profile>
+            <id>java-template-eclipse</id>
+            <activation>
+                <property>
+                    <name>m2e.version</name>
+                </property>
+                <file>
+                    <exists>src/main/java-unresolved-properties</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                     <plugin>
+                         <groupId>org.codehaus.mojo</groupId>
+                         <artifactId>build-helper-maven-plugin</artifactId>
+                         <executions>
+                             <execution>
+                                 <id>add-source</id>
+                                 <phase>generate-sources</phase>
+                                 <goals>
+                                     <goal>add-source</goal>
+                                 </goals>
+                                 <configuration>
+                                     <sources>
+                                         <source>src/main/java-unresolved-properties</source>
+                                     </sources>
+                                 </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
+
     <!-- The main build tag -->
     <build>
         <sourceDirectory>${kohlschutter.project.source.dir}</sourceDirectory>
@@ -1539,6 +1608,11 @@
                             <include>${kohlschutter.custom.package.folder}/**/*.java</include>
                         </includes>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>templating-maven-plugin</artifactId>
+                    <version>1.0.0</version>
                 </plugin>
             </plugins>
         </pluginManagement>

@@ -102,7 +102,7 @@ public final class ConsolePrintStream extends PrintStream {
    *
    * {@code System.out} is NOT automatically set to this stream, so you may need to do this
    * yourself.
-   * 
+   *
    * @param out The {@link PrintStream} that should be wrapped.
    *
    * @return The wrapped stream.

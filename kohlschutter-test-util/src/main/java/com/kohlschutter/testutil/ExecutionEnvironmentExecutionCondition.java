@@ -19,6 +19,7 @@ package com.kohlschutter.testutil;
 
 import java.lang.reflect.AnnotatedElement;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 import org.junit.jupiter.api.extension.ConditionEvaluationResult;
 import org.junit.jupiter.api.extension.ExecutionCondition;
@@ -51,6 +52,27 @@ public final class ExecutionEnvironmentExecutionCondition implements ExecutionCo
         + ruleValue);
   }
 
+  private static ConditionEvaluationResult checkRule(String ruleName, Rule rule,
+      Supplier<Boolean> positiveCheck) {
+    switch (rule) {
+      case ALLOWED:
+        return null;
+      case REQUIRED:
+        if (!positiveCheck.get()) {
+          return notSatisfied(ruleName, rule);
+        }
+        break;
+      case PROHIBITED:
+        if (positiveCheck.get()) {
+          return notSatisfied(ruleName, rule);
+        }
+        break;
+      default:
+        throw new IllegalStateException(ruleName);
+    }
+    return null;
+  }
+
   @Override
   public ConditionEvaluationResult evaluateExecutionCondition(ExtensionContext context) {
     Optional<AnnotatedElement> element = context.getElement();
@@ -60,23 +82,17 @@ public final class ExecutionEnvironmentExecutionCondition implements ExecutionCo
       return unconditionalExecution();
     }
 
-    Rule eclipseRule = requirement.eclipse();
+    ConditionEvaluationResult res;
 
-    switch (eclipseRule) {
-      case ALLOWED:
-        break;
-      case REQUIRED:
-        if (!ExecutionEnvironmentUtil.isInEclipse()) {
-          return notSatisfied("eclipse", eclipseRule);
-        }
-        break;
-      case PROHIBITED:
-        if (ExecutionEnvironmentUtil.isInEclipse()) {
-          return notSatisfied("eclipse", eclipseRule);
-        }
-        break;
-      default:
-        throw new IllegalStateException();
+    res = checkRule("eclipse", requirement.eclipse(), ExecutionEnvironmentUtil::isInEclipse);
+    if (res != null) {
+      return res;
+    }
+
+    res = checkRule("root", requirement.root(), () -> "root".equals(System.getProperty("user.name",
+        "")));
+    if (res != null) {
+      return res;
     }
 
     return ConditionEvaluationResult.enabled("Criteria satisfied");

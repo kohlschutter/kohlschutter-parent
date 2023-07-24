@@ -58,4 +58,11 @@ public @interface ExecutionEnvironmentRequirement {
    * @return The rule.
    */
   Rule eclipse() default Rule.ALLOWED;
+
+  /**
+   * Controls whether the test should be run when executing as user "root".
+   *
+   * @return The rule.
+   */
+  Rule root() default Rule.ALLOWED;
 }

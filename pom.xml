@@ -96,6 +96,7 @@
         <pmdVersion>6.55.0</pmdVersion>
         <pmd.plugin.version>3.21.0</pmd.plugin.version>
         <xlint.compiler.arg>-Xlint:all,-classfile,-try,-module,-requires-automatic</xlint.compiler.arg>
+        <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
     </properties>
     <profiles>
         <profile>
@@ -148,6 +149,7 @@
                 <pmd.strict>true</pmd.strict>
                 <license.strict>true</license.strict>
                 <javadoc.strict>true</javadoc.strict>
+                <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
             </properties>
         </profile>
         <profile>

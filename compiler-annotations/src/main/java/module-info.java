@@ -10,4 +10,5 @@ module com.kohlschutter.annotations.compiletime {
   exports com.kohlschutter.annotations.compiletime;
 
   requires transitive org.eclipse.jdt.annotation;
+  requires transitive com.google.errorprone.annotations;
 }

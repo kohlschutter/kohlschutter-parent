@@ -97,6 +97,10 @@
         <pmd.plugin.version>3.21.0</pmd.plugin.version>
         <xlint.compiler.arg>-Xlint:all,-classfile,-try,-module,-requires-automatic</xlint.compiler.arg>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
+        <eclipsejdt.annotations.version>2.2.700</eclipsejdt.annotations.version>
+        <errorprone.version>2.20.0</errorprone.version>
+        <errorprone.annotations.version>${errorprone.version}</errorprone.annotations.version>
+        <errorprone.args></errorprone.args>
     </properties>
     <profiles>
         <profile>
@@ -1127,6 +1131,30 @@
                 </plugins>
             </build>
         </profile>
+        <profile>
+            <id>errorprone</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <showWarnings>true</showWarnings>
+                            <compilerArgs>
+                                <arg>-XDcompilePolicy=simple</arg>
+                                <arg>-Xplugin:ErrorProne -Xep:UnnecessaryParentheses:OFF -Xep:ObjectToString:OFF -Xep:StringSplitter:OFF -Xep:MissingOverride:OFF -Xep:EqualsGetClass:OFF -Xep:ReferenceEquality:OFF -Xep:MixedMutabilityReturnType:OFF -Xep:InlineMeSuggester:OFF ${errorprone.args}</arg>
+                            </compilerArgs>
+                            <annotationProcessorPaths>
+                                <annotationProcessorPath>
+                                    <groupId>com.google.errorprone</groupId>
+                                    <artifactId>error_prone_core</artifactId>
+                                    <version>${errorprone.version}</version>
+                                </annotationProcessorPath>
+                            </annotationProcessorPaths>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
     <!-- The main build tag -->
@@ -1660,7 +1688,17 @@
             <dependency>
                 <groupId>org.eclipse.jdt</groupId>
                 <artifactId>org.eclipse.jdt.annotation</artifactId>
-                <version>2.2.700</version>
+                <version>${eclipsejdt.annotations.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.errorprone</groupId>
+                <artifactId>error_prone_core</artifactId>
+                <version>${errorprone.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.errorprone</groupId>
+                <artifactId>error_prone_annotations</artifactId>
+                <version>${errorprone.annotations.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

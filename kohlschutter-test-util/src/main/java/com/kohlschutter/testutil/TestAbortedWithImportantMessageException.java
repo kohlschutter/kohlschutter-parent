@@ -90,6 +90,11 @@ public final class TestAbortedWithImportantMessageException extends TestAbortedE
   private final MessageType type;
 
   /**
+   * The summary message (could be identical to message).
+   */
+  private final String summaryMessage;
+
+  /**
    * Creates a new {@link TestAbortedWithImportantMessageException} instance.
    *
    * @param message The message.
@@ -98,8 +103,22 @@ public final class TestAbortedWithImportantMessageException extends TestAbortedE
    */
   public TestAbortedWithImportantMessageException(MessageType type, String message,
       Throwable cause) {
+    this(type, message, message, cause);
+  }
+
+  /**
+   * Creates a new {@link TestAbortedWithImportantMessageException} instance.
+   *
+   * @param message The message.
+   * @param type The message type.
+   * @param summaryMessage A message to show in a selftest summary, or {@code null}.
+   * @param cause The optional cause.
+   */
+  public TestAbortedWithImportantMessageException(MessageType type, String message,
+      String summaryMessage, Throwable cause) {
     super(message, cause);
     this.type = Objects.requireNonNull(type);
+    this.summaryMessage = summaryMessage == null ? message : summaryMessage;
   }
 
   /**
@@ -109,8 +128,21 @@ public final class TestAbortedWithImportantMessageException extends TestAbortedE
    * @param type The message type.
    */
   public TestAbortedWithImportantMessageException(MessageType type, String message) {
+    this(type, message, message);
+  }
+
+  /**
+   * Creates a new {@link TestAbortedWithImportantMessageException} instance.
+   *
+   * @param type The message type.
+   * @param message The message to show in the stack trace
+   * @param summaryMessage A message to show in a selftest summary, or {@code null}.
+   */
+  public TestAbortedWithImportantMessageException(MessageType type, String message,
+      String summaryMessage) {
     super(message);
     this.type = Objects.requireNonNull(type);
+    this.summaryMessage = summaryMessage == null ? message : summaryMessage;
   }
 
   /**
@@ -120,5 +152,14 @@ public final class TestAbortedWithImportantMessageException extends TestAbortedE
    */
   public MessageType messageType() {
     return type;
+  }
+
+  /**
+   * Returns the summary message.
+   *
+   * @return The type.
+   */
+  public String getSummaryMessage() {
+    return summaryMessage;
   }
 }

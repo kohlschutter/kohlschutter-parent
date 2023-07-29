@@ -70,6 +70,7 @@ public final class TestAsyncUtil {
    * Run the following code, provided as a supplier. asynchronously, returning a {@link Future}.
    *
    * @param run The supplier to call when run asynchronously.
+   * @param <U> The return type.
    * @return The future.
    */
   public static <U> Future<U> supplyAsync(Supplier<U> run) {

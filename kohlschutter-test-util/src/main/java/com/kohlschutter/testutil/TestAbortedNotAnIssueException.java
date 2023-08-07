@@ -27,14 +27,28 @@ import org.opentest4j.TestAbortedException;
 public final class TestAbortedNotAnIssueException extends TestAbortedException {
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Creates a new {@link TestAbortedNotAnIssueException}.
+   */
   public TestAbortedNotAnIssueException() {
     super();
   }
 
+  /**
+   * Creates a new {@link TestAbortedNotAnIssueException}.
+   * 
+   * @param message The message.
+   * @param cause The cause.
+   */
   public TestAbortedNotAnIssueException(String message, Throwable cause) {
     super(message, cause);
   }
 
+  /**
+   * Creates a new {@link TestAbortedNotAnIssueException}.
+   * 
+   * @param message The message.
+   */
   public TestAbortedNotAnIssueException(String message) {
     super(message);
   }

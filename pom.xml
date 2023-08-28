@@ -71,7 +71,7 @@
         <eclipse.formatter.js.config>${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
         <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
         <kohlschutter.surefire.patch.args></kohlschutter.surefire.patch.args>
-        <checkstyle.version>10.12.1</checkstyle.version>
+        <checkstyle.version>10.12.3</checkstyle.version>
         <checkstyle.disabled>false</checkstyle.disabled>
         <checkstyle.strict>false</checkstyle.strict>
         <spotbugs.exclude.file>${coding.style.eclipse.dir}/spotbugs-exclude.xml</spotbugs.exclude.file>
@@ -98,7 +98,7 @@
         <xlint.compiler.arg>-Xlint:all,-classfile,-try,-module,-requires-automatic</xlint.compiler.arg>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
         <eclipsejdt.annotations.version>2.2.700</eclipsejdt.annotations.version>
-        <errorprone.version>2.20.0</errorprone.version>
+        <errorprone.version>2.21.1</errorprone.version>
         <errorprone.annotations.version>${errorprone.version}</errorprone.annotations.version>
         <errorprone.args></errorprone.args>
     </properties>
@@ -1367,7 +1367,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.3.0</version>
+                    <version>3.4.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

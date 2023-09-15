@@ -55,6 +55,7 @@
         <kohlschutter.java.release>1.8</kohlschutter.java.release>
         <maven.compiler.source>${kohlschutter.java.release}</maven.compiler.source>
         <maven.compiler.target>${kohlschutter.java.release}</maven.compiler.target>
+        <forbiddenapis.releaseVersion>${kohlschutter.java.release}</forbiddenapis.releaseVersion>
         <!-- Projects must define the following property -->
         <kohlschutter.project.base.directory>${project.basedir}</kohlschutter.project.base.directory>
         <kohlschutter.parent.directory>${project.basedir}</kohlschutter.parent.directory>
@@ -708,6 +709,7 @@
                             <!-- if the used Java version is too new, don't fail, just
                 do nothing -->
                             <failOnUnsupportedJava>false</failOnUnsupportedJava>
+                            <releaseVersion>${forbiddenapis.releaseVersion}</releaseVersion>
                             <excludes>
                                 <exclude>**/module-info.class</exclude>
                             </excludes>

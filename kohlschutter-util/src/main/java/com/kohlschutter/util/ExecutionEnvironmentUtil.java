@@ -17,6 +17,8 @@
  */
 package com.kohlschutter.util;
 
+import java.util.Locale;
+
 /**
  * Utility class to check which environment we run in.
  *
@@ -28,16 +30,28 @@ public final class ExecutionEnvironmentUtil {
           System.getProperty("jdk.module.path", "").contains("/target-eclipse/") //
       );
 
+  private static final boolean WINDOWS = //
+      System.getProperty("os.name", "").toLowerCase(Locale.ENGLISH).startsWith("windows");
+
   private ExecutionEnvironmentUtil() {
     throw new IllegalStateException("No instances");
   }
 
   /**
-   * Checks whether the code is being from within Eclipse.
+   * Checks whether the code is being run from within Eclipse.
    *
    * @return {@code true} if knowingly so.
    */
   public static boolean isInEclipse() {
     return IN_ECLIPSE;
+  }
+
+  /**
+   * Checks whether the code is being run from Windows.
+   *
+   * @return {@code true} if knowingly so.
+   */
+  public static boolean isWindows() {
+    return WINDOWS;
   }
 }

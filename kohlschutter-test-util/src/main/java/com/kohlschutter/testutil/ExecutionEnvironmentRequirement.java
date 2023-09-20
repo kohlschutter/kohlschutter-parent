@@ -65,4 +65,11 @@ public @interface ExecutionEnvironmentRequirement {
    * @return The rule.
    */
   Rule root() default Rule.ALLOWED;
+
+  /**
+   * Controls whether the test should be run when executing in Windows.
+   *
+   * @return The rule.
+   */
+  Rule windows() default Rule.ALLOWED;
 }

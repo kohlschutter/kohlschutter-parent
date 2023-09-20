@@ -95,6 +95,11 @@ public final class ExecutionEnvironmentExecutionCondition implements ExecutionCo
       return res;
     }
 
+    res = checkRule("windows", requirement.windows(), ExecutionEnvironmentUtil::isWindows);
+    if (res != null) {
+      return res;
+    }
+
     return ConditionEvaluationResult.enabled("Criteria satisfied");
   }
 }

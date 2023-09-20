@@ -36,7 +36,7 @@ public final class TestAbortedNotAnIssueException extends TestAbortedException {
 
   /**
    * Creates a new {@link TestAbortedNotAnIssueException}.
-   * 
+   *
    * @param message The message.
    * @param cause The cause.
    */
@@ -46,7 +46,7 @@ public final class TestAbortedNotAnIssueException extends TestAbortedException {
 
   /**
    * Creates a new {@link TestAbortedNotAnIssueException}.
-   * 
+   *
    * @param message The message.
    */
   public TestAbortedNotAnIssueException(String message) {

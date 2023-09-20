@@ -5,7 +5,7 @@
     <artifactId>kohlschutter-parent</artifactId>
     <!-- IMPORTANT: After updating with "mvn versions:set -DnewVersion=",
      also change the property "kohlschutter.parent.version" below -->
-    <version>1.5.7</version>
+    <version>1.5.8</version>
     <packaging>pom</packaging>
     <name>kohlschutter-parent</name>
     <inceptionYear>2014</inceptionYear>
@@ -46,7 +46,7 @@
     </issueManagement>
     <properties>
         <!-- Please keep this version in lockstep with the version declared above -->
-        <kohlschutter.parent.version>1.5.7</kohlschutter.parent.version>
+        <kohlschutter.parent.version>1.5.8</kohlschutter.parent.version>
         <project.build.outputTimestamp>${git.commit.time}</project.build.outputTimestamp>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>

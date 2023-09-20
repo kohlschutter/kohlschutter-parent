@@ -1369,7 +1369,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.4.0</version>
+                    <version>3.4.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -1411,7 +1411,7 @@
             If you get an error like "The code being documented uses modules
             but the packages defined in ... are in the unnamed module", then
             update your Java SDK -->
-                    <version>3.5.0</version>
+                    <version>3.6.0</version>
                     <configuration>
                         <detectOfflineLinks>false</detectOfflineLinks>
                         <detectJavaApiLink>false</detectJavaApiLink>
@@ -1485,7 +1485,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>versions-maven-plugin</artifactId>
-                    <version>2.16.0</version>
+                    <version>2.16.1</version>
                     <configuration>
                         <generateBackupPoms>false</generateBackupPoms>
                         <rulesUri>classpath:///com/kohlschutter/maven-version-rules.xml</rulesUri>

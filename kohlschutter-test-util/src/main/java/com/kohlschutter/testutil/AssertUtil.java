@@ -18,7 +18,9 @@
 package com.kohlschutter.testutil;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -65,5 +67,34 @@ public final class AssertUtil {
     Set<T> expected = new HashSet<>(elements);
     actual.retainAll(expected);
     assertEquals(expected, actual);
+  }
+
+  /**
+   * Assert that the given throwable is of at least one of the given classes.
+   *
+   * @param t The throwable to check, or {@code null}.
+   * @param expected A list of expected classes (instances can be null).
+   */
+  @SafeVarargs
+  @SuppressWarnings("varargs")
+  public static void assertInstanceOf(Throwable t, Class<? extends Throwable>... expected) {
+    Class<? extends Throwable> thrownClass = t == null ? null : t.getClass();
+    for (Class<? extends Throwable> e : expected) {
+      if (thrownClass == null) {
+        if (e == null) {
+          return;
+        }
+      } else if (e == null) {
+        // continue
+      } else if (e.isAssignableFrom(thrownClass)) {
+        return;
+      }
+    }
+
+    if (t == null) {
+      fail("Should have thrown something, specifically one of " + Arrays.toString(expected));
+    } else {
+      fail("Should have thrown one of " + Arrays.toString(expected) + " but did: " + t);
+    }
   }
 }

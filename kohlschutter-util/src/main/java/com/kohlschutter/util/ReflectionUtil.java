@@ -94,6 +94,7 @@ public final class ReflectionUtil {
    * @param methodName The method name to call (must be static).
    * @return The instance, or {@code null} if the instance could not be retrieved.
    */
+  @SuppressWarnings("exports")
   public static <T> @Nullable T singletonIfPossible(Class<T> desiredType, String className,
       String methodName) {
     if (isIgnoredClass(className)) {
@@ -128,7 +129,7 @@ public final class ReflectionUtil {
    * @param args The arguments.
    * @return The instance, or {@code null} if the instance could not be retrieved.
    */
-  @SuppressWarnings("PMD.CognitiveComplexity")
+  @SuppressWarnings({"PMD.CognitiveComplexity", "exports"})
   public static <T> @Nullable T instantiateIfPossible(Class<T> desiredType, String className,
       Object... args) {
     if (isIgnoredClass(className)) {

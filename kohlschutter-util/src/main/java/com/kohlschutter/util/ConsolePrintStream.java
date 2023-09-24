@@ -35,7 +35,7 @@ public final class ConsolePrintStream extends PrintStream {
   private static final boolean NO_CONSOLE; // if true, then we don't update lines
   private static final boolean CLEAR_LINE_FIRST;
 
-  private final PrintStream out;
+  private final PrintStream printStream;
   private final ConsoleFilterOut cfo;
   private boolean closed = false;
 
@@ -76,7 +76,7 @@ public final class ConsolePrintStream extends PrintStream {
   private ConsolePrintStream(ConsoleFilterOut cfo) throws UnsupportedEncodingException {
     super(cfo, false, Charset.defaultCharset().name());
     this.cfo = cfo;
-    this.out = cfo.getOutputStream();
+    this.printStream = cfo.getOutputStream();
   }
 
   /**
@@ -86,15 +86,13 @@ public final class ConsolePrintStream extends PrintStream {
    *
    * @return The wrapped stream.
    */
-  public static ConsolePrintStream wrapSystemOut() {
-    synchronized (System.class) {
-      PrintStream out = System.out;
-      ConsolePrintStream cps = wrapPrintStream(out);
+  public static synchronized ConsolePrintStream wrapSystemOut() {
+    PrintStream out = System.out;
+    ConsolePrintStream cps = wrapPrintStream(out);
 
-      System.setOut(cps);
+    System.setOut(cps);
 
-      return cps;
-    }
+    return cps;
   }
 
   /**
@@ -284,8 +282,8 @@ public final class ConsolePrintStream extends PrintStream {
       // triggers a newline in Eclipse when "Interpret ASCII control characters" is off
       sb.append('\r');
 
-      out.print(sb);
-      out.flush();
+      printStream.print(sb);
+      printStream.flush();
       cfo.lastNewline = cfo.numBytes;
     }
   }
@@ -303,7 +301,7 @@ public final class ConsolePrintStream extends PrintStream {
         sb.append('\b');
       }
 
-      out.print(sb);
+      printStream.print(sb);
     }
   }
 
@@ -318,7 +316,7 @@ public final class ConsolePrintStream extends PrintStream {
         return;
       }
       closed = true;
-      System.setOut(out);
+      System.setOut(printStream);
     }
   }
 

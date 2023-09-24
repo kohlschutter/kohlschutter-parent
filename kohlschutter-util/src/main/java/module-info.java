@@ -6,5 +6,5 @@ module com.kohlschutter.util {
 
   exports com.kohlschutter.util;
 
-  requires transitive org.eclipse.jdt.annotation;
+  requires org.eclipse.jdt.annotation;
 }

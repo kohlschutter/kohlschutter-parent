@@ -33,6 +33,9 @@ public final class ExecutionEnvironmentUtil {
   private static final boolean WINDOWS = //
       System.getProperty("os.name", "").toLowerCase(Locale.ENGLISH).startsWith("windows");
 
+  private static final boolean SELFTEST = //
+      !System.getProperty("com.kohlschutter.selftest", "").isEmpty();
+
   private ExecutionEnvironmentUtil() {
     throw new IllegalStateException("No instances");
   }
@@ -53,5 +56,18 @@ public final class ExecutionEnvironmentUtil {
    */
   public static boolean isWindows() {
     return WINDOWS;
+  }
+
+  /**
+   * Checks whether the code is being run in "selftest" mode.
+   * <p>
+   * This is checked by the System property {@code com.kohlschutter.selftest}, which should be set
+   * to the classname of the Selftest class (if a selftest was started before initializing this
+   * class — the setting is cached).
+   *
+   * @return {@code true} if knowingly so.
+   */
+  public static boolean isSelftest() {
+    return SELFTEST;
   }
 }

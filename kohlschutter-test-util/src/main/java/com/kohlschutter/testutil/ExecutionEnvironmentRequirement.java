@@ -25,7 +25,7 @@ import java.lang.annotation.Target;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
- * Marks tests to be executed only if the specified classes are available.
+ * Marks tests to be executed only if the specified rules are applicable.
  */
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
@@ -33,7 +33,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 public @interface ExecutionEnvironmentRequirement {
 
   /**
-   * Determines execution from within the Eclipse IDE.
+   * Determines execution for a given environment.
    */
   enum Rule {
     /**
@@ -72,4 +72,11 @@ public @interface ExecutionEnvironmentRequirement {
    * @return The rule.
    */
   Rule windows() default Rule.ALLOWED;
+
+  /**
+   * Controls whether the test should be run when running in "selftest" mode.
+   *
+   * @return The rule.
+   */
+  Rule selftest() default Rule.ALLOWED;
 }

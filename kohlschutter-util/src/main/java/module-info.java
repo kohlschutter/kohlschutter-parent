@@ -4,5 +4,7 @@
 module com.kohlschutter.util {
   requires static com.kohlschutter.annotations.compiletime;
 
-  exports com.kohlschutter.util; 
+  exports com.kohlschutter.util;
+
+  requires transitive org.eclipse.jdt.annotation;
 }

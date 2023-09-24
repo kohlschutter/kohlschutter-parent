@@ -114,8 +114,10 @@ public final class SoftAssertions implements Supplier<String> {
    * @return The augmented throwable.
    */
   public <T extends Throwable> T addAssertionThrowablesAsSuppressed(T t) {
-    for (AssertionError err : errors) {
-      t.addSuppressed(err);
+    if (t != null) {
+      for (AssertionError err : errors) {
+        t.addSuppressed(err);
+      }
     }
     return t;
   }

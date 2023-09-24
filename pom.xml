@@ -99,7 +99,7 @@
         <xlint.compiler.arg>-Xlint:all,-classfile,-try,-module,-requires-automatic</xlint.compiler.arg>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
         <eclipsejdt.annotations.version>2.2.700</eclipsejdt.annotations.version>
-        <errorprone.version>2.21.1</errorprone.version>
+        <errorprone.version>2.22.0</errorprone.version>
         <errorprone.annotations.version>${errorprone.version}</errorprone.annotations.version>
         <errorprone.args></errorprone.args>
     </properties>

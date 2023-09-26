@@ -24,6 +24,8 @@
         <!-- The Java release we should use for Java 8 (usually 8, but use any
       lower version to force compiling against something ancient, e.g., 7) -->
         <kohlschutter.multirelease.java8.release>8</kohlschutter.multirelease.java8.release>
+        <kohlschutter.multirelease.retrolambda.skip>true</kohlschutter.multirelease.retrolambda.skip>
+        <kohlschutter.multirelease.java8.classesOutputDir>${project.build.outputDirectory}/../classes-multirelease</kohlschutter.multirelease.java8.classesOutputDir>
 
         <kohlschutter.multirelease.jar.phase>package</kohlschutter.multirelease.jar.phase>
         <kohlschutter.singlerelease.jar.phase>none</kohlschutter.singlerelease.jar.phase>
@@ -41,11 +43,59 @@
                         <release>${kohlschutter.multirelease.java.release}</release>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <!-- Enhanced fork of https://github.com/luontola/retrolambda -->
+                    <groupId>com.kohlschutter.retrolambda</groupId>
+                    <artifactId>retrolambda-maven-plugin</artifactId>
+                    <version>2.5.8-SNAPSHOT</version>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
 
     <profiles>
+        <profile>
+            <id>retrolambda</id>
+            <activation>
+                <!-- both criteria must be met -->
+                <file>
+                    <exists>${kohlschutter.project.base.directory}/src/main/java7/multirelease.md</exists>
+                </file>
+                <property>
+                    <name>release</name>
+                </property>
+            </activation>
+            <properties>
+                <kohlschutter.multirelease.java8.classesOutputDir>${project.build.outputDirectory}/../classes-java8</kohlschutter.multirelease.java8.classesOutputDir>
+                <kohlschutter.multirelease.retrolambda.skip>false</kohlschutter.multirelease.retrolambda.skip>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>net.orfjackal.retrolambda</groupId>
+                        <artifactId>retrolambda-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>process-main</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <skip>${kohlschutter.multirelease.retrolambda.skip}</skip>
+                            <target>1.7</target>
+                            <fork>true</fork>
+                            <mainInputDir>
+                                ${project.build.outputDirectory}/../classes-java8</mainInputDir>
+                            <defaultMethods>true</defaultMethods>
+                            <mainOutputDir>
+                                ${project.build.outputDirectory}/../classes-multirelease</mainOutputDir>
+                            <fixJava8Classpath>true</fixJava8Classpath>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
         <profile>
             <id>multirelease</id>
             <!-- Java 8 / multi-release jar support is enabled by default, unless
@@ -71,7 +121,7 @@
                                         <compileSourceRoot>${project.build.directory}/sources-java8</compileSourceRoot>
                                         <compileSourceRoot>${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
                                     </compileSourceRoots>
-                                    <outputDirectory>${project.build.outputDirectory}/../classes-multirelease</outputDirectory>
+                                    <outputDirectory>${kohlschutter.multirelease.java8.classesOutputDir}</outputDirectory>
                                     <target>1.${kohlschutter.multirelease.java8.release}</target>
                                     <release>${kohlschutter.multirelease.java8.release}</release>
                                     <multiReleaseOutput>false</multiReleaseOutput>

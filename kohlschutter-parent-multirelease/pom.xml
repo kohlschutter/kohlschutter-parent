@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>kohlschutter-parent-multirelease</artifactId>
     <packaging>pom</packaging>
@@ -44,10 +46,16 @@
                     </configuration>
                 </plugin>
                 <plugin>
-                    <!-- Enhanced fork of https://github.com/luontola/retrolambda -->
+                    <!-- Enhanced fork of
+                    https://github.com/luontola/retrolambda -->
                     <groupId>com.kohlschutter.retrolambda</groupId>
                     <artifactId>retrolambda-maven-plugin</artifactId>
                     <version>2.5.8-SNAPSHOT</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>animal-sniffer-maven-plugin</artifactId>
+                    <version>1.23</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -72,7 +80,30 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>net.orfjackal.retrolambda</groupId>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>animal-sniffer-maven-plugin</artifactId>
+                        <configuration>
+                            <signature>
+                                <groupId>com.kohlschutter.animalsniffer</groupId>
+                                <artifactId>signatures-java-7</artifactId>
+                                <version>1.0.0</version>
+                            </signature>
+                            <ignores>
+                                <class>java.lang.invoke.SerializedLambda</class>
+                                <class>java.nio.ByteBuffer</class>
+                            </ignores>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.kohlschutter.retrolambda</groupId>
                         <artifactId>retrolambda-maven-plugin</artifactId>
                         <executions>
                             <execution>

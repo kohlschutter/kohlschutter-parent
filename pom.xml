@@ -1747,6 +1747,11 @@
                 <artifactId>error_prone_annotations</artifactId>
                 <version>${errorprone.annotations.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>animal-sniffer-annotations</artifactId>
+                <version>1.23</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <reporting>

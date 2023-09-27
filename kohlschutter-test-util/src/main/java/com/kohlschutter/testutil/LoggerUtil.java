@@ -17,6 +17,7 @@
  */
 package com.kohlschutter.testutil;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.LogManager;
@@ -62,6 +63,12 @@ public final class LoggerUtil {
   public static void revertToDefaultConfiguration() {
     try {
       LogManager.getLogManager().readConfiguration();
+    } catch (FileNotFoundException e) {
+      try {
+        overrideDefaultConfiguration(LoggerUtil.class, "logging.properties");
+      } catch (SecurityException e1) {
+        throw new IllegalStateException(e); // throw original exception cause
+      }
     } catch (SecurityException | IOException e) {
       throw new IllegalStateException(e);
     }

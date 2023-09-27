@@ -62,6 +62,7 @@
         <kohlschutter.project.notice.file>${kohlschutter.project.base.directory}/NOTICE</kohlschutter.project.notice.file>
         <kohlschutter.project.source.dir>${basedir}/src/main/java</kohlschutter.project.source.dir>
         <kohlschutter.maven.version.min>3.6.0</kohlschutter.maven.version.min>
+        <kohlschutter.maven.java-version.min>11</kohlschutter.maven.java-version.min>
         <kohlschutter.target.name>target</kohlschutter.target.name>
         <kohlschutter.custom.package.folder>org/newsclub</kohlschutter.custom.package.folder>
         <coding.style.version>1.2.12</coding.style.version>
@@ -1274,6 +1275,9 @@
                                 <requireMavenVersion>
                                     <version>${kohlschutter.maven.version.min}</version>
                                 </requireMavenVersion>
+                                <requireJavaVersion>
+                                    <version>${kohlschutter.maven.java-version.min}</version>
+                                </requireJavaVersion>
                             </rules>
                         </configuration>
                     </execution>

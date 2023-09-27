@@ -1678,6 +1678,10 @@
                             <directory>src/test/java19</directory>
                             <directory>src/main/java20</directory>
                             <directory>src/test/java20</directory>
+                            <directory>src/main/java21</directory>
+                            <directory>src/test/java21</directory>
+                            <directory>src/main/java22</directory>
+                            <directory>src/test/java22</directory>
                             <!--
                                 <directory>src/main/resources</directory>
                                 <directory>src/test/resources</directory>

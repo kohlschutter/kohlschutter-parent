@@ -67,7 +67,7 @@ public final class LoggerUtil {
       try {
         overrideDefaultConfiguration(LoggerUtil.class, "logging.properties");
       } catch (SecurityException e1) {
-        throw new IllegalStateException(e); // throw original exception cause
+        throw new IllegalStateException(e); // NOPMD.PreserveStackTrace
       }
     } catch (SecurityException | IOException e) {
       throw new IllegalStateException(e);

@@ -65,13 +65,9 @@
         <profile>
             <id>retrolambda</id>
             <activation>
-                <!-- both criteria must be met -->
                 <file>
                     <exists>${kohlschutter.project.base.directory}/src/main/java7/multirelease.md</exists>
                 </file>
-                <property>
-                    <name>release</name>
-                </property>
             </activation>
             <properties>
                 <kohlschutter.multirelease.java8.classesOutputDir>${project.build.outputDirectory}/../classes-java8</kohlschutter.multirelease.java8.classesOutputDir>

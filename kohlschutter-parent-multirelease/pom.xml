@@ -103,6 +103,10 @@
                 <file>
                     <exists>${kohlschutter.project.base.directory}/src/main/java7/multirelease.md</exists>
                 </file>
+                <property>
+                    <name>retrolambda</name>
+                    <value>!false</value>
+                </property>
             </activation>
             <properties>
                 <kohlschutter.multirelease.java8.classesOutputDir>${project.build.outputDirectory}/../classes-java8</kohlschutter.multirelease.java8.classesOutputDir>
@@ -115,6 +119,7 @@
                         <artifactId>retrolambda-maven-plugin</artifactId>
                         <executions>
                             <execution>
+                                <id>default</id>
                                 <goals>
                                     <goal>process-main</goal>
                                 </goals>

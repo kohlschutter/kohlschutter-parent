@@ -76,6 +76,7 @@ public final class ExecutionEnvironmentExecutionCondition implements ExecutionCo
   @Override
   public ConditionEvaluationResult evaluateExecutionCondition(ExtensionContext context) {
     Optional<AnnotatedElement> element = context.getElement();
+    @SuppressWarnings("null")
     ExecutionEnvironmentRequirement requirement = element.isPresent() ? element.get().getAnnotation(
         ExecutionEnvironmentRequirement.class) : null;
     if (requirement == null) {

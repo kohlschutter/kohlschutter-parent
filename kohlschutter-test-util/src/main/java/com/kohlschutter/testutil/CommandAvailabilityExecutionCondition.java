@@ -47,6 +47,7 @@ public final class CommandAvailabilityExecutionCondition implements ExecutionCon
 
     Optional<AnnotatedElement> element = context.getElement();
     if (element.isPresent()) {
+      @SuppressWarnings("null")
       CommandAvailabilityRequirement requirement = element.get().getAnnotation(
           CommandAvailabilityRequirement.class);
       if (requirement != null) {

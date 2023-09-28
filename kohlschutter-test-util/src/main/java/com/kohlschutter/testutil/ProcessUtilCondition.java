@@ -43,6 +43,7 @@ public final class ProcessUtilCondition implements ExecutionCondition {
   public ConditionEvaluationResult evaluateExecutionCondition(ExtensionContext context) {
     Optional<AnnotatedElement> element = context.getElement();
     if (element.isPresent()) {
+      @SuppressWarnings("null")
       ProcessUtilRequirement requirement = element.get().getAnnotation(
           ProcessUtilRequirement.class);
       if (requirement != null) {

@@ -48,6 +48,7 @@ public final class AvailabilityExecutionCondition implements ExecutionCondition 
 
     Optional<AnnotatedElement> element = context.getElement();
     if (element.isPresent()) {
+      @SuppressWarnings("null")
       AvailabilityRequirement requirement = element.get().getAnnotation(
           AvailabilityRequirement.class);
       if (requirement != null) {

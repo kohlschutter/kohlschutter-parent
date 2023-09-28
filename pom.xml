@@ -1405,7 +1405,6 @@
                     <artifactId>spotbugs-maven-plugin</artifactId>
                     <version>${spotbugs.plugin.version}</version>
                     <dependencies>
-                            <!-- FIXME not yet in Maven central -->
                             <!--
                         <dependency>
                             <groupId>com.github.spotbugs</groupId>

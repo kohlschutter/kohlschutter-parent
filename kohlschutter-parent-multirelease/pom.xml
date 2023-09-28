@@ -50,7 +50,7 @@
                     https://github.com/luontola/retrolambda -->
                     <groupId>com.kohlschutter.retrolambda</groupId>
                     <artifactId>retrolambda-maven-plugin</artifactId>
-                    <version>2.5.8.1</version>
+                    <version>2.5.8.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -63,16 +63,12 @@
 
     <profiles>
         <profile>
-            <id>retrolambda</id>
+            <id>retrolambda-check</id>
             <activation>
                 <file>
                     <exists>${kohlschutter.project.base.directory}/src/main/java7/multirelease.md</exists>
                 </file>
             </activation>
-            <properties>
-                <kohlschutter.multirelease.java8.classesOutputDir>${project.build.outputDirectory}/../classes-java8</kohlschutter.multirelease.java8.classesOutputDir>
-                <kohlschutter.multirelease.retrolambda.skip>false</kohlschutter.multirelease.retrolambda.skip>
-            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -98,6 +94,22 @@
                             </execution>
                         </executions>
                     </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>retrolambda</id>
+            <activation>
+                <file>
+                    <exists>${kohlschutter.project.base.directory}/src/main/java7/multirelease.md</exists>
+                </file>
+            </activation>
+            <properties>
+                <kohlschutter.multirelease.java8.classesOutputDir>${project.build.outputDirectory}/../classes-java8</kohlschutter.multirelease.java8.classesOutputDir>
+                <kohlschutter.multirelease.retrolambda.skip>false</kohlschutter.multirelease.retrolambda.skip>
+            </properties>
+            <build>
+                <plugins>
                     <plugin>
                         <groupId>com.kohlschutter.retrolambda</groupId>
                         <artifactId>retrolambda-maven-plugin</artifactId>

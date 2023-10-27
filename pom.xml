@@ -80,8 +80,8 @@
         <spotbugs.disabled>false</spotbugs.disabled>
         <spotbugs.strict>false</spotbugs.strict>
         <!--<spotbugs.version>4.7.3</spotbugs.version>-->
-        <spotbugs.plugin.version>4.7.3.5</spotbugs.plugin.version>
-        <forbiddenapis.version>3.5.1</forbiddenapis.version>
+        <spotbugs.plugin.version>4.7.3.6</spotbugs.plugin.version>
+        <forbiddenapis.version>3.6</forbiddenapis.version>
         <forbiddenapis.strict>false</forbiddenapis.strict>
         <jacoco.disabled>false</jacoco.disabled>
         <jacoco.strict>false</jacoco.strict>
@@ -100,7 +100,7 @@
         <xlint.compiler.arg>-Xlint:all,-classfile,-try,-module,-requires-automatic</xlint.compiler.arg>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
         <eclipsejdt.annotations.version>2.2.700</eclipsejdt.annotations.version>
-        <errorprone.version>2.22.0</errorprone.version>
+        <errorprone.version>2.23.0</errorprone.version>
         <errorprone.annotations.version>${errorprone.version}</errorprone.annotations.version>
         <errorprone.args></errorprone.args>
     </properties>
@@ -1369,12 +1369,12 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>properties-maven-plugin</artifactId>
-                    <version>1.2.0</version>
+                    <version>1.2.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.3.0</version>
+                    <version>3.3.1</version>
                     <dependencies>
                         <dependency>
                             <!-- We should use the same checkstyle version as in eclipse-cs -->
@@ -1391,12 +1391,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>4.0.0-M9</version>
+                    <version>4.0.0-M11</version>
                     <dependencies>
                         <dependency>
                             <groupId>org.apache.maven.skins</groupId>
                             <artifactId>maven-fluido-skin</artifactId>
-                            <version>2.0.0-M7</version>
+                            <version>2.0.0-M8</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -1422,7 +1422,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.6.0</version>
+                    <version>3.6.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -1475,12 +1475,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.1.2</version>
+                    <version>3.2.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
-                    <version>3.3.1</version>
+                    <version>3.3.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -1505,7 +1505,7 @@
                 <plugin>
                     <groupId>com.mycila</groupId>
                     <artifactId>license-maven-plugin</artifactId>
-                    <version>4.2</version>
+                    <version>4.3</version>
                     <configuration>
                         <skip>${license.skip}</skip>
                         <failIfMissing>${license.strict}</failIfMissing>
@@ -1564,7 +1564,7 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.10</version>
+                    <version>0.8.11</version>
                     <configuration>
                         <skip>${jacoco.disabled}</skip>
                         <excludes>
@@ -1622,7 +1622,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-shade-plugin</artifactId>
-                    <version>3.5.0</version>
+                    <version>3.5.1</version>
                 </plugin>
                 <plugin>
                     <groupId>net.revelc.code.formatter</groupId>
@@ -1770,7 +1770,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.3.1</version>
                 <!--
           using "jxr-no-fork" prevents "module not found" errors:
           https://maven.apache.org/components/jxr-archives/jxr-LATEST/maven-jxr-plugin/examples/nofork.html

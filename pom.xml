@@ -80,7 +80,7 @@
         <spotbugs.disabled>false</spotbugs.disabled>
         <spotbugs.strict>false</spotbugs.strict>
         <!--<spotbugs.version>4.7.3</spotbugs.version>-->
-        <spotbugs.plugin.version>4.7.3.6</spotbugs.plugin.version>
+        <spotbugs.plugin.version>4.8.1.0</spotbugs.plugin.version>
         <forbiddenapis.version>3.6</forbiddenapis.version>
         <forbiddenapis.strict>false</forbiddenapis.strict>
         <jacoco.disabled>false</jacoco.disabled>
@@ -96,7 +96,7 @@
         <!-- Only upgrade to the latest version you can have in Eclipse, no later
       versions; otherwise, you may not be able to run checks in Eclipse -->
         <pmdVersion>6.55.0</pmdVersion>
-        <pmd.plugin.version>3.21.0</pmd.plugin.version>
+        <pmd.plugin.version>3.21.2</pmd.plugin.version>
         <xlint.compiler.arg>-Xlint:all,-classfile,-try,-module,-requires-automatic</xlint.compiler.arg>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
         <eclipsejdt.annotations.version>2.2.700</eclipsejdt.annotations.version>
@@ -1364,7 +1364,7 @@
                 <plugin>
                     <groupId>io.github.git-commit-id</groupId>
                     <artifactId>git-commit-id-maven-plugin</artifactId>
-                    <version>6.0.0</version>
+                    <version>7.0.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -1459,7 +1459,7 @@
             If you get an error like "The code being documented uses modules
             but the packages defined in ... are in the unnamed module", then
             update your Java SDK -->
-                    <version>3.6.0</version>
+                    <version>3.6.2</version>
                     <configuration>
                         <detectOfflineLinks>false</detectOfflineLinks>
                         <detectJavaApiLink>false</detectJavaApiLink>
@@ -1475,7 +1475,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.2.1</version>
+                    <version>3.2.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -1709,7 +1709,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>templating-maven-plugin</artifactId>
-                    <version>1.0.0</version>
+                    <version>3.0.0</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -1735,7 +1735,7 @@
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
-                <version>5.10.0</version>
+                <version>5.10.1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

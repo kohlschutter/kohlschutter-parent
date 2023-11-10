@@ -91,6 +91,12 @@ public class OutputBridge implements Runnable, Closeable {
     }
   }
 
+  @SuppressWarnings({"NoFinalizer" /* checkstyle */, "PMD.EmptyFinalizer"})
+  @Deprecated
+  @Override
+  protected final void finalize() {
+  }
+
   @Override
   public final void run() {
     bos = new ByteArrayOutputStream();

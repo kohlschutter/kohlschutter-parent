@@ -50,7 +50,7 @@ public final class ReflectionUtil {
     throw new IllegalStateException("No instances");
   }
 
-  private static class ExceptionPlaceholder extends Exception {
+  private static final class ExceptionPlaceholder extends Exception {
     private static final long serialVersionUID = 1L;
   }
 
@@ -129,7 +129,7 @@ public final class ReflectionUtil {
    * @param args The arguments.
    * @return The instance, or {@code null} if the instance could not be retrieved.
    */
-  @SuppressWarnings({"PMD.CognitiveComplexity", "exports"})
+  @SuppressWarnings({"PMD.CognitiveComplexity", "PMD.ExceptionAsFlowControl", "exports"})
   public static <T> @Nullable T instantiateIfPossible(Class<T> desiredType, String className,
       Object... args) {
     if (isIgnoredClass(className)) {

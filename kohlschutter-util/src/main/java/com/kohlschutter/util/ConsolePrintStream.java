@@ -63,7 +63,7 @@ public final class ConsolePrintStream extends PrintStream {
 
     String clf = System.getProperty("com.kohlschutter.util.console.clear-line-first", "");
     if (!clf.isEmpty()) {
-      CLEAR_LINE_FIRST = Boolean.valueOf(clf);
+      CLEAR_LINE_FIRST = Boolean.parseBoolean(clf);
     } else {
       CLEAR_LINE_FIRST = (isWindows);
     }

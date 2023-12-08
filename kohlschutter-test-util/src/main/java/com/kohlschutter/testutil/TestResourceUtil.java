@@ -31,7 +31,7 @@ public final class TestResourceUtil {
 
   /**
    * Returns the URL for a required resource, by path relative to the given class.
-   * 
+   *
    * @param classRef The class the path is relative to.
    * @param name The relative pathname.
    * @return The URL.

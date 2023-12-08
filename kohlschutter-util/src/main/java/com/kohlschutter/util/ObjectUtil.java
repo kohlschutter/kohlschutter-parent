@@ -21,7 +21,7 @@ import com.kohlschutter.annotations.compiletime.ExcludeFromCodeCoverageGenerated
 
 /**
  * Some helper functions around Java Objects.
- * 
+ *
  * @author Christian Kohlschütter
  */
 public final class ObjectUtil {

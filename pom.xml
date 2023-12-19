@@ -73,7 +73,7 @@
         <eclipse.formatter.js.config>${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
         <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
         <kohlschutter.surefire.patch.args></kohlschutter.surefire.patch.args>
-        <checkstyle.version>10.12.5</checkstyle.version>
+        <checkstyle.version>10.12.6</checkstyle.version>
         <checkstyle.disabled>false</checkstyle.disabled>
         <checkstyle.strict>false</checkstyle.strict>
         <spotbugs.exclude.file>${coding.style.eclipse.dir}/spotbugs-exclude.xml</spotbugs.exclude.file>
@@ -99,7 +99,7 @@
         <pmd.plugin.version>3.21.2</pmd.plugin.version>
         <xlint.compiler.arg>-Xlint:all,-classfile,-try,-module,-requires-automatic</xlint.compiler.arg>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-        <eclipsejdt.annotations.version>2.2.700</eclipsejdt.annotations.version>
+        <eclipsejdt.annotations.version>2.2.800</eclipsejdt.annotations.version>
         <errorprone.version>2.23.0</errorprone.version>
         <errorprone.annotations.version>${errorprone.version}</errorprone.annotations.version>
         <errorprone.args></errorprone.args>

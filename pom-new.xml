@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.kohlschutter</groupId>
     <artifactId>kohlschutter-parent</artifactId>
@@ -31,7 +33,8 @@
     <scm>
         <url>https://github.com/kohlschutter/kohlschutter-parent</url>
         <connection>scm:git:git@github.com:kohlschutter/kohlschutter-parent.git</connection>
-        <developerConnection>scm:git:git@github.com:kohlschutter/kohlschutter-parent.git</developerConnection>
+        <developerConnection>
+            scm:git:git@github.com:kohlschutter/kohlschutter-parent.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
     <distributionManagement>
@@ -45,7 +48,8 @@
         <url>https://github.com/kohlschutter/kohlschutter-parent/issues</url>
     </issueManagement>
     <properties>
-        <!-- Please keep this version in lockstep with the version declared above -->
+        <!-- Please keep this version in lockstep with the version declared
+        above -->
         <kohlschutter.parent.version>1.6.6</kohlschutter.parent.version>
         <project.build.outputTimestamp>${git.commit.time}</project.build.outputTimestamp>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -59,7 +63,8 @@
         <!-- Projects must define the following property -->
         <kohlschutter.project.base.directory>${project.basedir}</kohlschutter.project.base.directory>
         <kohlschutter.parent.directory>${project.basedir}</kohlschutter.parent.directory>
-        <kohlschutter.project.notice.file>${kohlschutter.project.base.directory}/NOTICE</kohlschutter.project.notice.file>
+        <kohlschutter.project.notice.file>
+            ${kohlschutter.project.base.directory}/NOTICE</kohlschutter.project.notice.file>
         <kohlschutter.project.source.dir>${basedir}/src/main/java</kohlschutter.project.source.dir>
         <kohlschutter.maven.version.min>3.6.0</kohlschutter.maven.version.min>
         <kohlschutter.maven.java-version.min>11</kohlschutter.maven.java-version.min>
@@ -67,11 +72,16 @@
         <kohlschutter.custom.package.folder>org/newsclub</kohlschutter.custom.package.folder>
         <coding.style.version>1.2.13</coding.style.version>
         <coding.style.dirname>coding-style/${coding.style.version}</coding.style.dirname>
-        <coding.style.eclipse.dir>${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse</coding.style.eclipse.dir>
-        <eclipse.jdt.core.prefs>${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>
-        <eclipse.formatter.config>${coding.style.eclipse.dir}/eclipse-formatter-config.xml</eclipse.formatter.config>
-        <eclipse.formatter.js.config>${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
-        <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
+        <coding.style.eclipse.dir>
+            ${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse</coding.style.eclipse.dir>
+        <eclipse.jdt.core.prefs>
+            ${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>
+        <eclipse.formatter.config>
+            ${coding.style.eclipse.dir}/eclipse-formatter-config.xml</eclipse.formatter.config>
+        <eclipse.formatter.js.config>
+            ${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
+        <eclipse.checkstyle.config>
+            ${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
         <kohlschutter.surefire.patch.args></kohlschutter.surefire.patch.args>
         <checkstyle.version>10.12.6</checkstyle.version>
         <checkstyle.disabled>false</checkstyle.disabled>
@@ -93,11 +103,13 @@
         <pmd.strict>false</pmd.strict>
         <impsort.skip>false</impsort.skip>
         <formatter.skip>false</formatter.skip>
-        <!-- Only upgrade to the latest version you can have in Eclipse, no later
+        <!-- Only upgrade to the latest version you can have in Eclipse, no
+        later
       versions; otherwise, you may not be able to run checks in Eclipse -->
-        <pmdVersion>6.55.0</pmdVersion>
+        <pmdVersion>7.0.0-SNAPSHOT</pmdVersion>
         <pmd.plugin.version>3.21.2</pmd.plugin.version>
-        <xlint.compiler.arg>-Xlint:all,-classfile,-try,-module,-requires-automatic</xlint.compiler.arg>
+        <xlint.compiler.arg>
+            -Xlint:all,-classfile,-try,-module,-requires-automatic</xlint.compiler.arg>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
         <eclipsejdt.annotations.version>2.2.800</eclipsejdt.annotations.version>
         <errorprone.version>2.23.0</errorprone.version>
@@ -209,7 +221,8 @@
                                 <configuration>
                                     <overWrite>true</overWrite>
                                     <sourceFile>${basedir}/README.md</sourceFile>
-                                    <destinationFile>${project.build.directory}/generated-site/markdown/index.md</destinationFile>
+                                    <destinationFile>
+                                        ${project.build.directory}/generated-site/markdown/index.md</destinationFile>
                                 </configuration>
                             </execution>
                         </executions>
@@ -286,8 +299,10 @@
                                     <pluginExecutions>
                                         <pluginExecution>
                                             <pluginExecutionFilter>
-                                                <groupId>org.apache.maven.plugins</groupId>
-                                                <artifactId>maven-dependency-plugin</artifactId>
+                                                <groupId>
+                                                    org.apache.maven.plugins</groupId>
+                                                <artifactId>
+                                                    maven-dependency-plugin</artifactId>
                                                 <versionRange>[2.9,)</versionRange>
                                                 <goals>
                                                     <goal>unpack</goal>
@@ -313,8 +328,10 @@
                                         </pluginExecution>
                                         <pluginExecution>
                                             <pluginExecutionFilter>
-                                                <groupId>org.apache.maven.plugins</groupId>
-                                                <artifactId>maven-checkstyle-plugin</artifactId>
+                                                <groupId>
+                                                    org.apache.maven.plugins</groupId>
+                                                <artifactId>
+                                                    maven-checkstyle-plugin</artifactId>
                                                 <versionRange>[3.0.0,)</versionRange>
                                                 <goals>
                                                     <goal>check</goal>
@@ -326,7 +343,8 @@
                                         </pluginExecution>
                                         <pluginExecution>
                                             <pluginExecutionFilter>
-                                                <groupId>org.apache.maven.plugins</groupId>
+                                                <groupId>
+                                                    org.apache.maven.plugins</groupId>
                                                 <artifactId>maven-antrun-plugin</artifactId>
                                                 <versionRange>[1.7,)</versionRange>
                                                 <goals>
@@ -339,7 +357,8 @@
                                         </pluginExecution>
                                         <pluginExecution>
                                             <pluginExecutionFilter>
-                                                <groupId>org.apache.maven.plugins</groupId>
+                                                <groupId>
+                                                    org.apache.maven.plugins</groupId>
                                                 <artifactId>maven-invoker-plugin</artifactId>
                                                 <versionRange>[3.1.0,)</versionRange>
                                                 <goals>
@@ -353,7 +372,8 @@
                                         <pluginExecution>
                                             <pluginExecutionFilter>
                                                 <groupId>io.github.git-commit-id</groupId>
-                                                <artifactId>git-commit-id-maven-plugin</artifactId>
+                                                <artifactId>
+                                                    git-commit-id-maven-plugin</artifactId>
                                                 <versionRange>[5.0.0,)</versionRange>
                                                 <goals>
                                                     <goal>revision</goal>
@@ -365,8 +385,10 @@
                                         </pluginExecution>
                                         <pluginExecution>
                                             <pluginExecutionFilter>
-                                                <groupId>org.apache.maven.plugins</groupId>
-                                                <artifactId>maven-dependency-plugin</artifactId>
+                                                <groupId>
+                                                    org.apache.maven.plugins</groupId>
+                                                <artifactId>
+                                                    maven-dependency-plugin</artifactId>
                                                 <versionRange>[3.3.0,)</versionRange>
                                                 <goals>
                                                     <goal>build-classpath</goal>
@@ -379,7 +401,8 @@
                                         <pluginExecution>
                                             <pluginExecutionFilter>
                                                 <groupId>com.github.spotbugs</groupId>
-                                                <artifactId>spotbugs-maven-plugin</artifactId>
+                                                <artifactId>
+                                                    spotbugs-maven-plugin</artifactId>
                                                 <versionRange>[4.7.3.4,)</versionRange>
                                                 <goals>
                                                     <goal>check</goal>
@@ -391,7 +414,8 @@
                                         </pluginExecution>
                                         <pluginExecution>
                                             <pluginExecutionFilter>
-                                                <groupId>org.apache.maven.plugins</groupId>
+                                                <groupId>
+                                                    org.apache.maven.plugins</groupId>
                                                 <artifactId>maven-plugin-plugin</artifactId>
                                                 <versionRange>[3.2,)</versionRange>
                                                 <goals>
@@ -464,7 +488,8 @@
             </build>
         </profile>
         <!-- BEGIN: coding-style specific profiles -->
-        <!-- Unless you have the "coding-style" project in your eclipse workspace,
+        <!-- Unless you have the "coding-style" project in your eclipse
+        workspace,
       we will download and unpack that artifact's contents to the top-level
       project.
       All Eclipse-specific formatting files will be in the "eclipse" directory. -->
@@ -472,7 +497,8 @@
             <id>coding-style-unpack</id>
             <activation>
                 <file>
-                    <missing>${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse/eclipse-formatter-config.xml</missing>
+                    <missing>
+                        ${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse/eclipse-formatter-config.xml</missing>
                 </file>
             </activation>
             <build>
@@ -494,7 +520,8 @@
                                             <version>${coding.style.version}</version>
                                             <classifier>files</classifier>
                                             <type>zip</type>
-                                            <outputDirectory>${kohlschutter.project.base.directory}/${coding.style.dirname}/</outputDirectory>
+                                            <outputDirectory>
+                                                ${kohlschutter.project.base.directory}/${coding.style.dirname}/</outputDirectory>
                                         </artifactItem>
                                     </artifactItems>
                                     <skip>${coding.style.skip.unpack}</skip>
@@ -509,48 +536,64 @@
             <id>coding-style-in-project</id>
             <activation>
                 <file>
-                    <exists>${basedir}/${coding.style.dirname}/eclipse/eclipse-formatter-config.xml</exists>
+                    <exists>
+                        ${basedir}/${coding.style.dirname}/eclipse/eclipse-formatter-config.xml</exists>
                 </file>
             </activation>
             <properties>
                 <coding.style.skip.unpack>true</coding.style.skip.unpack>
-                <coding.style.eclipse.dir>${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse</coding.style.eclipse.dir>
-                <eclipse.jdt.core.prefs>${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>
-                <eclipse.formatter.config>${coding.style.eclipse.dir}/eclipse-formatter-config.xml</eclipse.formatter.config>
-                <eclipse.formatter.js.config>${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
-                <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
+                <coding.style.eclipse.dir>
+                    ${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse</coding.style.eclipse.dir>
+                <eclipse.jdt.core.prefs>
+                    ${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>
+                <eclipse.formatter.config>
+                    ${coding.style.eclipse.dir}/eclipse-formatter-config.xml</eclipse.formatter.config>
+                <eclipse.formatter.js.config>
+                    ${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
+                <eclipse.checkstyle.config>
+                    ${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
             </properties>
         </profile>
         <profile>
             <id>coding-style-in-workspace-parent1</id>
             <activation>
                 <file>
-                    <exists>${basedir}/../coding-style/eclipse/eclipse-formatter-config.xml</exists>
+                    <exists>
+                        ${basedir}/../coding-style/eclipse/eclipse-formatter-config.xml</exists>
                 </file>
             </activation>
             <properties>
                 <coding.style.skip.unpack>true</coding.style.skip.unpack>
                 <coding.style.eclipse.dir>${basedir}/../coding-style/eclipse</coding.style.eclipse.dir>
-                <eclipse.jdt.core.prefs>${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>
-                <eclipse.formatter.config>${coding.style.eclipse.dir}/eclipse-formatter-config.xml</eclipse.formatter.config>
-                <eclipse.formatter.js.config>${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
-                <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
+                <eclipse.jdt.core.prefs>
+                    ${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>
+                <eclipse.formatter.config>
+                    ${coding.style.eclipse.dir}/eclipse-formatter-config.xml</eclipse.formatter.config>
+                <eclipse.formatter.js.config>
+                    ${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
+                <eclipse.checkstyle.config>
+                    ${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
             </properties>
         </profile>
         <profile>
             <id>coding-style-in-workspace-parent2</id>
             <activation>
                 <file>
-                    <exists>${basedir}/../../coding-style/eclipse/eclipse-formatter-config.xml</exists>
+                    <exists>
+                        ${basedir}/../../coding-style/eclipse/eclipse-formatter-config.xml</exists>
                 </file>
             </activation>
             <properties>
                 <coding.style.skip.unpack>true</coding.style.skip.unpack>
                 <coding.style.eclipse.dir>${basedir}/../../coding-style/eclipse</coding.style.eclipse.dir>
-                <eclipse.jdt.core.prefs>${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>
-                <eclipse.formatter.config>${coding.style.eclipse.dir}/eclipse-formatter-config.xml</eclipse.formatter.config>
-                <eclipse.formatter.js.config>${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
-                <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
+                <eclipse.jdt.core.prefs>
+                    ${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>
+                <eclipse.formatter.config>
+                    ${coding.style.eclipse.dir}/eclipse-formatter-config.xml</eclipse.formatter.config>
+                <eclipse.formatter.js.config>
+                    ${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
+                <eclipse.checkstyle.config>
+                    ${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
             </properties>
         </profile>
         <profile>
@@ -560,7 +603,8 @@
                     <name>eclipse-compiler-checks</name>
                 </property>
             </activation>
-            <!-- invoke with: mvn clean integration-test -Declipse-compiler-checks -->
+            <!-- invoke with: mvn clean integration-test
+            -Declipse-compiler-checks -->
             <build>
                 <plugins>
                     <plugin>
@@ -568,7 +612,8 @@
                         <configuration>
                             <compilerId>eclipse</compilerId>
                             <compilerArguments>
-                                <!-- prefs should contain "org.eclipse.jdt.core.compiler.doc.comment.support=enabled" -->
+                                <!-- prefs should contain
+                                "org.eclipse.jdt.core.compiler.doc.comment.support=enabled" -->
                                 <properties>${eclipse.jdt.core.prefs}</properties>
                             </compilerArguments>
                             <fork>true</fork>
@@ -598,7 +643,8 @@
                         <executions>
                             <execution>
                                 <id>enforce</id>
-                                <!-- Prevents installation of ECJ-compiled classes -->
+                                <!-- Prevents installation of ECJ-compiled
+                                classes -->
                                 <goals>
                                     <goal>enforce</goal>
                                 </goals>
@@ -640,7 +686,8 @@
                                 </goals>
                                 <configuration>
                                     <propertyName>surefireJacocoArgLine</propertyName>
-                                    <destFile>${project.build.directory}/jacoco${jacoco.exec.name-extra}.exec</destFile>
+                                    <destFile>
+                                        ${project.build.directory}/jacoco${jacoco.exec.name-extra}.exec</destFile>
                                 </configuration>
                             </execution>
                             <execution>
@@ -656,7 +703,8 @@
                                                 <limit>
                                                     <counter>COMPLEXITY</counter>
                                                     <value>COVEREDRATIO</value>
-                                                    <minimum>${jacoco.coverage.min}</minimum>
+                                                    <minimum>
+                                                        ${jacoco.coverage.min}</minimum>
                                                 </limit>
                                             </limits>
                                         </rule>
@@ -669,8 +717,10 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
-                            <argLine>${surefireJacocoArgLine} -Dfile.encoding=UTF-8
-                -XX:+TieredCompilation -XX:TieredStopAtLevel=1 ${kohlschutter.surefire.patch.args}</argLine>
+                            <argLine>${surefireJacocoArgLine}
+                                -Dfile.encoding=UTF-8
+                                -XX:+TieredCompilation -XX:TieredStopAtLevel=1
+                                ${kohlschutter.surefire.patch.args}</argLine>
                             <detail>true</detail>
                         </configuration>
                         <executions>
@@ -728,7 +778,7 @@
                                     <skip>${spotbugs.disabled}</skip>
                                     <failOnError>${spotbugs.strict}</failOnError>
                                     <jvmArgs>-XX:+TieredCompilation
-                    -XX:TieredStopAtLevel=1</jvmArgs>
+                                        -XX:TieredStopAtLevel=1</jvmArgs>
                                 </configuration>
                             </execution>
                         </executions>
@@ -737,7 +787,8 @@
                         <groupId>de.thetaphi</groupId>
                         <artifactId>forbiddenapis</artifactId>
                         <configuration>
-                            <!-- if the used Java version is too new, don't fail, just
+                            <!-- if the used Java version is too new, don't
+                            fail, just
                 do nothing -->
                             <failOnUnsupportedJava>false</failOnUnsupportedJava>
                             <releaseVersion>${forbiddenapis.releaseVersion}</releaseVersion>
@@ -749,7 +800,8 @@
                                 <bundledSignature>jdk-deprecated</bundledSignature>
                                 <bundledSignature>jdk-non-portable</bundledSignature>
                             </bundledSignatures>
-                            <!-- <signaturesFiles> <signaturesFile>./rel/path/to/signatures.txt</signaturesFile>
+                            <!-- <signaturesFiles>
+                            <signaturesFile>./rel/path/to/signatures.txt</signaturesFile>
                 </signaturesFiles> -->
                         </configuration>
                         <executions>
@@ -788,7 +840,8 @@
                         <artifactId>maven-pmd-plugin</artifactId>
                         <configuration>
                             <rulesets>
-                                <ruleset>${coding.style.eclipse.dir}/pmd-ruleset.xml</ruleset>
+                                <ruleset>
+                                    ${coding.style.eclipse.dir}/pmd-ruleset.xml</ruleset>
                             </rulesets>
                             <failOnViolation>${pmd.strict}</failOnViolation>
                             <printFailingErrors>true</printFailingErrors>
@@ -809,6 +862,11 @@
                             </execution>
                         </executions>
                         <dependencies>
+                            <dependency>
+                                <groupId>net.sourceforge.pmd</groupId>
+                                <artifactId>pmd-compat6</artifactId>
+                                <version>${pmdVersion}</version>
+                            </dependency>
                             <dependency>
                                 <groupId>net.sourceforge.pmd</groupId>
                                 <artifactId>pmd-core</artifactId>
@@ -909,8 +967,11 @@
                                 </goals>
                                 <configuration>
                                     <!-- work-around for error message: -->
-                                    <!-- Error while generating Javadoc: Aggregator report contains named and unnamed modules -->
-                                    <!-- <sourceFileExcludes>**/module-info.java</sourceFileExcludes> -->
+                                    <!-- Error while generating Javadoc:
+                                    Aggregator report contains named and unnamed
+                                    modules -->
+                                    <!--
+                                    <sourceFileExcludes>**/module-info.java</sourceFileExcludes> -->
                                 </configuration>
                             </execution>
                         </executions>
@@ -1001,7 +1062,8 @@
             </build>
         </profile>
         <profile>
-            <!-- src/main/java-overlay: Code that should be used when building with Maven, but not in Eclipse -->
+            <!-- src/main/java-overlay: Code that should be used when building
+            with Maven, but not in Eclipse -->
             <id>source-java-overlay</id>
             <activation>
                 <file>
@@ -1012,7 +1074,8 @@
                 </property>
             </activation>
             <properties>
-                <kohlschutter.project.source.dir>${project.build.directory}/sources-java-overlay</kohlschutter.project.source.dir>
+                <kohlschutter.project.source.dir>
+                    ${project.build.directory}/sources-java-overlay</kohlschutter.project.source.dir>
             </properties>
             <build>
                 <plugins>
@@ -1027,17 +1090,20 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
-                                    <outputDirectory>${project.build.directory}/sources-java-overlay</outputDirectory>
+                                    <outputDirectory>
+                                        ${project.build.directory}/sources-java-overlay</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
                                     <resources>
                                         <resource>
-                                            <directory>${project.basedir}/src/main/java</directory>
+                                            <directory>
+                                                ${project.basedir}/src/main/java</directory>
                                             <includes>
                                                 <include>**</include>
                                             </includes>
                                         </resource>
                                         <resource>
-                                            <directory>${project.basedir}/src/main/java-overlay</directory>
+                                            <directory>
+                                                ${project.basedir}/src/main/java-overlay</directory>
                                             <includes>
                                                 <include>**</include>
                                             </includes>
@@ -1108,7 +1174,8 @@
             </build>
         </profile>
 
-        <!-- Resolve Maven property templates in files defined under src/main/java-unresolved-properties -->
+        <!-- Resolve Maven property templates in files defined under
+        src/main/java-unresolved-properties -->
         <profile>
             <id>java-template-not-eclipse</id>
             <activation>
@@ -1132,8 +1199,10 @@
                                     <goal>filter-sources</goal>
                                 </goals>
                                 <configuration>
-                                    <sourceDirectory>${basedir}/src/main/java-unresolved-properties</sourceDirectory>
-                                    <outputDirectory>${project.build.directory}/generated-sources/java-resolved-properties</outputDirectory>
+                                    <sourceDirectory>
+                                        ${basedir}/src/main/java-unresolved-properties</sourceDirectory>
+                                    <outputDirectory>
+                                        ${project.build.directory}/generated-sources/java-resolved-properties</outputDirectory>
                                 </configuration>
                             </execution>
                         </executions>
@@ -1141,7 +1210,8 @@
                 </plugins>
             </build>
         </profile>
-        <!-- For performance reasons, we won't replace templates when running from within Eclipse -->
+        <!-- For performance reasons, we won't replace templates when running
+        from within Eclipse -->
         <profile>
             <id>java-template-eclipse</id>
             <activation>
@@ -1154,21 +1224,22 @@
             </activation>
             <build>
                 <plugins>
-                     <plugin>
-                         <groupId>org.codehaus.mojo</groupId>
-                         <artifactId>build-helper-maven-plugin</artifactId>
-                         <executions>
-                             <execution>
-                                 <id>add-source</id>
-                                 <phase>generate-sources</phase>
-                                 <goals>
-                                     <goal>add-source</goal>
-                                 </goals>
-                                 <configuration>
-                                     <sources>
-                                         <source>src/main/java-unresolved-properties</source>
-                                     </sources>
-                                 </configuration>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>add-source</id>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>add-source</goal>
+                                </goals>
+                                <configuration>
+                                    <sources>
+                                        <source>
+                                            src/main/java-unresolved-properties</source>
+                                    </sources>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -1190,7 +1261,16 @@
                             <showWarnings>true</showWarnings>
                             <compilerArgs>
                                 <arg>-XDcompilePolicy=simple</arg>
-                                <arg>-Xplugin:ErrorProne -Xep:UnnecessaryParentheses:OFF -Xep:ObjectToString:OFF -Xep:StringSplitter:OFF -Xep:MissingOverride:OFF -Xep:EqualsGetClass:OFF -Xep:ReferenceEquality:OFF -Xep:MixedMutabilityReturnType:OFF -Xep:InlineMeSuggester:OFF ${errorprone.args}</arg>
+                                <arg>-Xplugin:ErrorProne
+                                    -Xep:UnnecessaryParentheses:OFF
+                                    -Xep:ObjectToString:OFF
+                                    -Xep:StringSplitter:OFF
+                                    -Xep:MissingOverride:OFF
+                                    -Xep:EqualsGetClass:OFF
+                                    -Xep:ReferenceEquality:OFF
+                                    -Xep:MixedMutabilityReturnType:OFF
+                                    -Xep:InlineMeSuggester:OFF
+                                    ${errorprone.args}</arg>
                             </compilerArgs>
                             <annotationProcessorPaths>
                                 <annotationProcessorPath>
@@ -1249,10 +1329,12 @@
                     <failOnNoGitDirectory>false</failOnNoGitDirectory>
                     <failOnUnableToExtractRepoInfo>false</failOnUnableToExtractRepoInfo>
                     <generateGitPropertiesFile>true</generateGitPropertiesFile>
-                    <generateGitPropertiesFilename>${project.build.outputDirectory}/META-INF/maven/${project.groupId}/${project.artifactId}/git.properties</generateGitPropertiesFilename>
+                    <generateGitPropertiesFilename>
+                        ${project.build.outputDirectory}/META-INF/maven/${project.groupId}/${project.artifactId}/git.properties</generateGitPropertiesFilename>
                     <includeOnlyProperties>
                         <includeOnlyProperty>^git.build.version$</includeOnlyProperty>
-                        <includeOnlyProperty>^git.commit.id.(abbrev|full|describe)$</includeOnlyProperty>
+                        <includeOnlyProperty>
+                            ^git.commit.id.(abbrev|full|describe)$</includeOnlyProperty>
                         <includeOnlyProperty>^git.commit.time$</includeOnlyProperty>
                         <includeOnlyProperty>^git.dirty$</includeOnlyProperty>
                     </includeOnlyProperties>
@@ -1279,7 +1361,8 @@
                                     <version>${kohlschutter.maven.version.min}</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
-                                    <version>${kohlschutter.maven.java-version.min}</version>
+                                    <version>
+                                        ${kohlschutter.maven.java-version.min}</version>
                                 </requireJavaVersion>
                             </rules>
                         </configuration>
@@ -1299,12 +1382,18 @@
                         <configuration>
                             <target>
                                 <mkdir dir="${project.build.sourceDirectory}" />
-                                <mkdir dir="${project.build.sourceDirectory}/../resources" />
-                                <mkdir dir="${project.build.testSourceDirectory}" />
-                                <mkdir dir="${project.build.testSourceDirectory}/../resources" />
-                                <mkdir dir="${project.build.directory}/generated-test-sources/test-annotations" />
-                                <mkdir dir="${project.build.directory}/generated-sources/annotations" />
-                                <mkdir dir="${project.build.directory}/generated-test-sources/test-annotations" />
+                                <mkdir
+                                    dir="${project.build.sourceDirectory}/../resources" />
+                                <mkdir
+                                    dir="${project.build.testSourceDirectory}" />
+                                <mkdir
+                                    dir="${project.build.testSourceDirectory}/../resources" />
+                                <mkdir
+                                    dir="${project.build.directory}/generated-test-sources/test-annotations" />
+                                <mkdir
+                                    dir="${project.build.directory}/generated-sources/annotations" />
+                                <mkdir
+                                    dir="${project.build.directory}/generated-test-sources/test-annotations" />
                             </target>
                         </configuration>
                     </execution>
@@ -1317,7 +1406,8 @@
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
                     <compilerArgs>
-                        <!-- Prevent recompilation due to "Stale source detected: .../package-info.java" -->
+                        <!-- Prevent recompilation due to "Stale source
+                        detected: .../package-info.java" -->
                         <arg>-Xpkginfo:always</arg>
                         <arg>${xlint.compiler.arg}</arg>
                     </compilerArgs>
@@ -1326,7 +1416,8 @@
                     <execution>
                         <id>default-testCompile</id>
                         <configuration>
-                            <!-- don't use module path during testing: lots of false positive warnings -->
+                            <!-- don't use module path during testing: lots of
+                            false positive warnings -->
                             <useModulePath>false</useModulePath>
                         </configuration>
                     </execution>
@@ -1380,7 +1471,8 @@
                     <version>3.3.1</version>
                     <dependencies>
                         <dependency>
-                            <!-- We should use the same checkstyle version as in eclipse-cs -->
+                            <!-- We should use the same checkstyle version as in
+                            eclipse-cs -->
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
                             <version>${checkstyle.version}</version>
@@ -1408,7 +1500,7 @@
                     <artifactId>spotbugs-maven-plugin</artifactId>
                     <version>${spotbugs.plugin.version}</version>
                     <dependencies>
-                            <!--
+                        <!--
                         <dependency>
                             <groupId>com.github.spotbugs</groupId>
                             <artifactId>spotbugs</artifactId>
@@ -1440,7 +1532,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.3.1</version>
+                    <version>3.3.2-SNAPSHOT</version>
                     <configuration>
                         <propertiesEncoding>UTF-8</propertiesEncoding>
                     </configuration>
@@ -1516,10 +1608,14 @@
                             <licenseSet>
                                 <header>${kohlschutter.project.notice.file}</header>
                                 <includes>
-                                    <include>src/main/java*/${kohlschutter.custom.package.folder}/**/*.java</include>
-                                    <include>src/test/java*/${kohlschutter.custom.package.folder}/**/*.java</include>
-                                    <include>src/main/java*/com/kohlschutter/**/*.java</include>
-                                    <include>src/test/java*/com/kohlschutter/**/*.java</include>
+                                    <include>
+                                        src/main/java*/${kohlschutter.custom.package.folder}/**/*.java</include>
+                                    <include>
+                                        src/test/java*/${kohlschutter.custom.package.folder}/**/*.java</include>
+                                    <include>
+                                        src/main/java*/com/kohlschutter/**/*.java</include>
+                                    <include>
+                                        src/test/java*/com/kohlschutter/**/*.java</include>
                                 </includes>
                                 <excludes>
                                     <exclude>**/package-info.java</exclude>
@@ -1539,7 +1635,8 @@
                     <version>2.16.2</version>
                     <configuration>
                         <generateBackupPoms>false</generateBackupPoms>
-                        <rulesUri>classpath:///com/kohlschutter/maven-version-rules.xml</rulesUri>
+                        <rulesUri>
+                            classpath:///com/kohlschutter/maven-version-rules.xml</rulesUri>
                     </configuration>
                     <dependencies>
                         <dependency>
@@ -1571,7 +1668,8 @@
                     <configuration>
                         <skip>${jacoco.disabled}</skip>
                         <excludes>
-                            <!-- Do not instrument classes that are outside of our control -->
+                            <!-- Do not instrument classes that are outside of
+                            our control -->
                             <exclude>org/apache/maven/**</exclude>
                             <exclude>org/junit/**</exclude>
                             <exclude>org/apiguardian/**</exclude>
@@ -1641,7 +1739,8 @@
                         <includes>
                             <include>com/kohlschutter/**/*.java</include>
                             <include>org/kohlschutter/**/*.java</include>
-                            <include>${kohlschutter.custom.package.folder}/**/*.java</include>
+                            <include>
+                                ${kohlschutter.custom.package.folder}/**/*.java</include>
                             <!--
                                 <include>com/kohlschutter/**/*.js</include>
                                 <include>org/kohlschutter/**/*.js</include>
@@ -1705,7 +1804,8 @@
                         <includes>
                             <include>com/kohlschutter/**/*.java</include>
                             <include>org/kohlschutter/**/*.java</include>
-                            <include>${kohlschutter.custom.package.folder}/**/*.java</include>
+                            <include>
+                                ${kohlschutter.custom.package.folder}/**/*.java</include>
                         </includes>
                     </configuration>
                 </plugin>
@@ -1776,7 +1876,7 @@
                 <version>3.3.1</version>
                 <!--
           using "jxr-no-fork" prevents "module not found" errors:
-          https://maven.apache.org/components/jxr-archives/jxr-LATEST/maven-jxr-plugin/examples/nofork.html
+                https://maven.apache.org/components/jxr-archives/jxr-LATEST/maven-jxr-plugin/examples/nofork.html
         -->
                 <reportSets>
                     <reportSet>

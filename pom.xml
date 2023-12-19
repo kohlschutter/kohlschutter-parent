@@ -792,6 +792,7 @@
                             </rulesets>
                             <failOnViolation>${pmd.strict}</failOnViolation>
                             <printFailingErrors>true</printFailingErrors>
+                            <targetJdk>${kohlschutter.java.release}</targetJdk>
                         </configuration>
                         <executions>
                             <execution>

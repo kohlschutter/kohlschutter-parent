@@ -20,13 +20,24 @@ package com.kohlschutter.util;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
+/**
+ * Some {@link Path}-related helper methods.
+ * 
+ * @author Christian Kohlschütter
+ */
 public final class PathUtil {
   private PathUtil() {
     throw new IllegalStateException("No instances");
   }
 
+  /**
+   * Gets the file name of the given path as a string.
+   * 
+   * @param p The path.
+   * @return The filename
+   * @throws IllegalStateException if the filename is null.
+   */
   public static String getFilename(Path p) {
     Path filename = p.getFileName();
     if (filename == null) {
@@ -35,17 +46,38 @@ public final class PathUtil {
     return filename.toString();
   }
 
+  /**
+   * Resolves a sibling path that is identical to the given path, but a suffix string is appended,
+   * keeping existing "file suffixes" intact.
+   * 
+   * @param path The original path.
+   * @param suffix The extra suffix.
+   * @return The new sibling path with the additional suffix.
+   */
   public static Path resolveSiblingAppendingSuffix(Path path, String suffix) {
     return path.resolveSibling(getFilename(path) + suffix);
   }
 
-  public static void createAncestorDirectories(Path generatedCssPath) throws IOException {
-    Path parent = generatedCssPath.getParent();
+  /**
+   * Creates ancestor directories for the given path.
+   * 
+   * @param path The path to create ancestor directories for.
+   * @throws IOException on error.
+   */
+  public static void createAncestorDirectories(Path path) throws IOException {
+    Path parent = path.getParent();
     if (parent != null) {
       Files.createDirectories(parent);
     }
   }
 
+  /**
+   * Relativize a sibling path, using the base's parent directory.
+   * 
+   * @param base The base path.
+   * @param path The other path.
+   * @return The relativized path.
+   */
   public static Path relativizeSibling(Path base, Path path) {
     Path parent = base.getParent();
     if (parent == null) {
@@ -66,10 +98,14 @@ public final class PathUtil {
     try {
       return p.toRealPath();
     } catch (IOException e) {
-      Path newPath = Paths.get("/");
+      Path newPath = p.getRoot();
       boolean exists = true;
       for (int i = 0, n = p.getNameCount(); i < n; i++) {
-        newPath = newPath.resolve(p.getName(i));
+        if (i == 0 && newPath == null) {
+          newPath = p.getName(i);
+        } else {
+          newPath = newPath.resolve(p.getName(i));
+        }
         if (exists && Files.exists(newPath)) {
           try {
             newPath = newPath.toRealPath();

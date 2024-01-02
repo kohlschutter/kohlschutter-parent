@@ -18,8 +18,11 @@
 package com.kohlschutter.util;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Some {@link Path}-related helper methods.
@@ -118,6 +121,23 @@ public final class PathUtil {
       }
 
       return newPath;
+    }
+  }
+
+  /**
+   * Converts the given URL to a Path, if possible.
+   * 
+   * @param url The URL to convert to.
+   * @return The Path, or {@code null} if not convertible.
+   */
+  public static Path toPathIfPossible(URL url) {
+    if (url == null) {
+      return null;
+    }
+    try {
+      return Paths.get(url.toURI());
+    } catch (URISyntaxException e) {
+      return null;
     }
   }
 }

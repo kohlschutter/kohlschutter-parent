@@ -73,7 +73,7 @@
         <eclipse.formatter.js.config>${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
         <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
         <kohlschutter.surefire.patch.args></kohlschutter.surefire.patch.args>
-        <checkstyle.version>10.12.6</checkstyle.version>
+        <checkstyle.version>10.12.7</checkstyle.version>
         <checkstyle.disabled>false</checkstyle.disabled>
         <checkstyle.strict>false</checkstyle.strict>
         <spotbugs.exclude.file>${coding.style.eclipse.dir}/spotbugs-exclude.xml</spotbugs.exclude.file>
@@ -100,7 +100,7 @@
         <xlint.compiler.arg>-Xlint:all,-classfile,-try,-module,-requires-automatic</xlint.compiler.arg>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
         <eclipsejdt.annotations.version>2.2.800</eclipsejdt.annotations.version>
-        <errorprone.version>2.23.0</errorprone.version>
+        <errorprone.version>2.24.0</errorprone.version>
         <errorprone.annotations.version>${errorprone.version}</errorprone.annotations.version>
         <errorprone.args></errorprone.args>
     </properties>
@@ -1473,12 +1473,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.11.0</version>
+                    <version>3.12.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.2.2</version>
+                    <version>3.2.3</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -1773,7 +1773,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
-                <version>3.3.1</version>
+                <version>3.3.2</version>
                 <!--
           using "jxr-no-fork" prevents "module not found" errors:
           https://maven.apache.org/components/jxr-archives/jxr-LATEST/maven-jxr-plugin/examples/nofork.html

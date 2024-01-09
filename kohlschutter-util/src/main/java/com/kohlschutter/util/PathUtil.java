@@ -26,7 +26,7 @@ import java.nio.file.Paths;
 
 /**
  * Some {@link Path}-related helper methods.
- * 
+ *
  * @author Christian Kohlschütter
  */
 public final class PathUtil {
@@ -36,7 +36,7 @@ public final class PathUtil {
 
   /**
    * Gets the file name of the given path as a string.
-   * 
+   *
    * @param p The path.
    * @return The filename
    * @throws IllegalStateException if the filename is null.
@@ -52,7 +52,7 @@ public final class PathUtil {
   /**
    * Resolves a sibling path that is identical to the given path, but a suffix string is appended,
    * keeping existing "file suffixes" intact.
-   * 
+   *
    * @param path The original path.
    * @param suffix The extra suffix.
    * @return The new sibling path with the additional suffix.
@@ -63,7 +63,7 @@ public final class PathUtil {
 
   /**
    * Creates ancestor directories for the given path.
-   * 
+   *
    * @param path The path to create ancestor directories for.
    * @throws IOException on error.
    */
@@ -76,7 +76,7 @@ public final class PathUtil {
 
   /**
    * Relativize a sibling path, using the base's parent directory.
-   * 
+   *
    * @param base The base path.
    * @param path The other path.
    * @return The relativized path.
@@ -126,7 +126,7 @@ public final class PathUtil {
 
   /**
    * Converts the given URL to a Path, if possible.
-   * 
+   *
    * @param url The URL to convert to.
    * @return The Path, or {@code null} if not convertible.
    */

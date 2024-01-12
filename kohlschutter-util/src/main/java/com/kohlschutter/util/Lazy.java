@@ -20,6 +20,7 @@ package com.kohlschutter.util;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
@@ -31,13 +32,71 @@ import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
  * @author Christian Kohlschütter
  */
 @SuppressWarnings("PMD.ShortClassName")
-public final class Lazy<V> {
-  private final CompletableFuture<V> future = new CompletableFuture<V>();
-  private final AtomicBoolean supplied = new AtomicBoolean();
-  private final Supplier<V> supplier;
+public interface Lazy<V> extends Supplier<V>, Consumer<V> {
+  /**
+   * A {@link Lazy} implementation for values supplied by a {@link Supplier}.
+   * 
+   * @param <V> The object type.
+   * @author Christian Kohlschütter
+   */
+  final class FromSupplier<V> implements Lazy<V> {
+    private final CompletableFuture<V> future = new CompletableFuture<V>();
+    private final AtomicBoolean supplied = new AtomicBoolean();
+    private final Supplier<V> supplier;
 
-  private Lazy(Supplier<V> supplier) {
-    this.supplier = supplier;
+    private FromSupplier(Supplier<V> supplier) {
+      this.supplier = supplier;
+    }
+
+    @Override
+    public V get() {
+      if (!future.isDone() && supplied.compareAndSet(false, true)) {
+        future.complete(supplier.get());
+      }
+      try {
+        return future.get();
+      } catch (InterruptedException | ExecutionException e) {
+        throw new IllegalStateException(e);
+      }
+    }
+
+    @Override
+    public boolean complete(V value) {
+      supplied.set(true); // NOTE: We do not compareAndSet here to allow #set from within
+                          // supplier.get
+      return future.complete(value);
+    }
+
+    @SuppressWarnings("null")
+    @Override
+    @SuppressFBWarnings("NP_NONNULL_PARAM_VIOLATION")
+    public String toString() {
+      return super.toString() + "[supplied=" + supplied + "; value=" + future.getNow(null) + "]";
+    }
+  }
+
+  /**
+   * A {@link Lazy} implementation for values supplied immediately.
+   * 
+   * @param <V> The object type.
+   * @author Christian Kohlschütter
+   */
+  final class WithSupplied<V> implements Lazy<V> {
+    private final V supplied;
+
+    private WithSupplied(V supplied) {
+      this.supplied = supplied;
+    }
+
+    @Override
+    public V get() {
+      return supplied;
+    }
+
+    @Override
+    public boolean complete(V value) {
+      return false;
+    }
   }
 
   /**
@@ -49,44 +108,46 @@ public final class Lazy<V> {
    * @return The wrapper instance.
    */
   @SuppressWarnings("PMD.ShortMethodName")
-  public static <V> Lazy<V> of(Supplier<V> supplier) {
-    return new Lazy<>(supplier);
+  static <V> Lazy<V> of(Supplier<V> supplier) {
+    return new FromSupplier<>(supplier);
+  }
+
+  /**
+   * Creates a {@link Lazy} wrapper, using the given value, which is regarded as instantly supplied.
+   *
+   * @param <V> The object type.
+   * @param supplied The supplied object.
+   * @return The wrapper instance.
+   */
+  static <V> Lazy<V> ofSupplied(V supplied) {
+    return new WithSupplied<>(supplied);
   }
 
   /**
    * Returns the object. If this is the first call, the object is retrieved from the configured
-   * supplier, and transitions this instance to a completed satate.
+   * supplier, and this instance transitions to a completed state.
    *
    * @return The object.
    */
-  public V get() {
-    if (!future.isDone() && supplied.compareAndSet(false, true)) {
-      future.complete(supplier.get());
-    }
-    try {
-      return future.get();
-    } catch (InterruptedException | ExecutionException e) {
-      throw new IllegalStateException(e);
-    }
-  }
+  @Override
+  V get();
 
   /**
    * If not already completed, sets the value returned by {@link #get()} and related methods to the
-   * given value, side-stepping the value that would be retrieved from the supplier.
+   * given value, side-stepping the value that would be retrieved from the supplier. If already
+   * completed, nothing is changed and {@code false} is returned.
    *
    * @param value the result value
    * @return {@code true} if this invocation caused this instance to transition to a completed
    *         state, else {@code false}
    */
-  public boolean complete(V value) {
-    supplied.set(true); // NOTE: We do not compareAndSet here to allow #set from within supplier.get
-    return future.complete(value);
-  }
+  boolean complete(V value);
 
-  @SuppressWarnings("null")
+  /**
+   * Calls {@link #complete(Object)}, disregarding the return value.
+   */
   @Override
-  @SuppressFBWarnings("NP_NONNULL_PARAM_VIOLATION")
-  public String toString() {
-    return super.toString() + "[supplied=" + supplied + "; value=" + future.getNow(null) + "]";
+  default void accept(V value) {
+    complete(value);
   }
 }

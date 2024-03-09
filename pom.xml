@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.kohlschutter</groupId>
     <artifactId>kohlschutter-parent</artifactId>
@@ -46,7 +48,7 @@
     </issueManagement>
     <properties>
         <!-- Please keep this version in lockstep with the version declared above -->
-        <kohlschutter.parent.version>1.6.7</kohlschutter.parent.version>
+        <kohlschutter.parent.version>1.7.0-SNAPSHOT</kohlschutter.parent.version>
         <project.build.outputTimestamp>${git.commit.time}</project.build.outputTimestamp>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
@@ -73,7 +75,7 @@
         <eclipse.formatter.js.config>${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
         <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
         <kohlschutter.surefire.patch.args></kohlschutter.surefire.patch.args>
-        <checkstyle.version>10.13.0</checkstyle.version>
+        <checkstyle.version>10.14.0</checkstyle.version>
         <checkstyle.disabled>false</checkstyle.disabled>
         <checkstyle.strict>false</checkstyle.strict>
         <spotbugs.exclude.file>${coding.style.eclipse.dir}/spotbugs-exclude.xml</spotbugs.exclude.file>
@@ -104,6 +106,19 @@
         <errorprone.annotations.version>${errorprone.version}</errorprone.annotations.version>
         <errorprone.args></errorprone.args>
         <junit.version>5.10.2</junit.version>
+
+        <jetty.version>12.0.7</jetty.version>
+        <slf4j.version>2.0.12</slf4j.version>
+        <graal.plugin.version>0.10.1</graal.plugin.version>
+
+        <!-- Current versions of select kohlschutter projects -->
+        <!-- Override these properties in your project as necessary -->
+        <junixsocket.version>2.9.1-SNAPSHOT</junixsocket.version>
+        <dumbo.version>1.1.0-SNAPSHOT</dumbo.version>
+        <jacline.version>1.0.2-SNAPSHOT</jacline.version>
+        <efesnitch.version>1.0.1-SNAPSHOT</efesnitch.version>
+        <stringhold.version>1.0.3-SNAPSHOT</stringhold.version>
+        <liqp.version>0.8.5.4.1-SNAPSHOT</liqp.version>
     </properties>
     <profiles>
         <profile>
@@ -1368,7 +1383,7 @@
                 <plugin>
                     <groupId>io.github.git-commit-id</groupId>
                     <artifactId>git-commit-id-maven-plugin</artifactId>
-                    <version>7.0.0</version>
+                    <version>8.0.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -1715,11 +1730,36 @@
                     <artifactId>templating-maven-plugin</artifactId>
                     <version>3.0.0</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>3.2.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.kohlschutter.jacline</groupId>
+                    <artifactId>jacline-maven-plugin</artifactId>
+                    <version>${jacline.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.graalvm.buildtools</groupId>
+                    <artifactId>native-maven-plugin</artifactId>
+                    <version>${graal.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>io.helidon.build-tools</groupId>
+                    <artifactId>helidon-services-plugin</artifactId>
+                    <version>4.0.5</version>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.kohlschutter</groupId>
+                <artifactId>maven-plugin-config</artifactId>
+                <version>${kohlschutter.parent.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.kohlschutter</groupId>
                 <artifactId>compiler-annotations</artifactId>
@@ -1762,6 +1802,70 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>animal-sniffer-annotations</artifactId>
                 <version>1.23</version>
+            </dependency>
+
+            <!-- Below are dependencies commonly used by kohlschutter projects -->
+            <!-- We want to keep these versions as up-to-date as possible -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty.ee10</groupId>
+                <artifactId>jetty-ee10</artifactId>
+                <version>${jetty.version}</version>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty.ee10</groupId>
+                <artifactId>jetty-ee10-webapp</artifactId>
+                <version>${jetty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty.ee10</groupId>
+                <artifactId>jetty-ee10-servlet</artifactId>
+                <version>${jetty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty.ee10.websocket</groupId>
+                <artifactId>jetty-ee10-websocket-jakarta-server</artifactId>
+                <version>${jetty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty.ee10</groupId>
+                <artifactId>jetty-ee10-apache-jsp</artifactId>
+                <version>${jetty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-server</artifactId>
+                <version>${jetty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-session</artifactId>
+                <version>${jetty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-client</artifactId>
+                <version>${jetty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty.http2</groupId>
+                <artifactId>jetty-http2-server</artifactId>
+                <version>${jetty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty.http3</groupId>
+                <artifactId>jetty-http3-server</artifactId>
+                <version>${jetty.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

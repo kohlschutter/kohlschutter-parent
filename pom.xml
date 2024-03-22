@@ -67,7 +67,7 @@
         <kohlschutter.maven.java-version.min>11</kohlschutter.maven.java-version.min>
         <kohlschutter.target.name>target</kohlschutter.target.name>
         <kohlschutter.custom.package.folder>org/newsclub</kohlschutter.custom.package.folder>
-        <coding.style.version>1.2.13</coding.style.version>
+        <coding.style.version>1.2.14</coding.style.version>
         <coding.style.dirname>coding-style/${coding.style.version}</coding.style.dirname>
         <coding.style.eclipse.dir>${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse</coding.style.eclipse.dir>
         <eclipse.jdt.core.prefs>${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>
@@ -75,7 +75,7 @@
         <eclipse.formatter.js.config>${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
         <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
         <kohlschutter.surefire.patch.args></kohlschutter.surefire.patch.args>
-        <checkstyle.version>10.14.0</checkstyle.version>
+        <checkstyle.version>10.14.2</checkstyle.version>
         <checkstyle.disabled>false</checkstyle.disabled>
         <checkstyle.strict>false</checkstyle.strict>
         <spotbugs.exclude.file>${coding.style.eclipse.dir}/spotbugs-exclude.xml</spotbugs.exclude.file>
@@ -101,8 +101,8 @@
         <pmd.plugin.version>3.21.2</pmd.plugin.version>
         <xlint.compiler.arg>-Xlint:all,-classfile,-try,-module,-requires-automatic,-requires-transitive-automatic,-exports</xlint.compiler.arg>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-        <eclipsejdt.annotations.version>2.2.800</eclipsejdt.annotations.version>
-        <errorprone.version>2.25.0</errorprone.version>
+        <eclipsejdt.annotations.version>2.3.0</eclipsejdt.annotations.version>
+        <errorprone.version>2.26.1</errorprone.version>
         <errorprone.annotations.version>${errorprone.version}</errorprone.annotations.version>
         <errorprone.args></errorprone.args>
         <junit.version>5.10.2</junit.version>
@@ -1379,7 +1379,7 @@
                 <plugin>
                     <groupId>io.github.git-commit-id</groupId>
                     <artifactId>git-commit-id-maven-plugin</artifactId>
-                    <version>7.0.0</version><!-- 8.0.0 is broken -->
+                    <version>8.0.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -1485,7 +1485,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.12.1</version>
+                    <version>3.13.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -1515,7 +1515,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-gpg-plugin</artifactId>
-                    <version>3.1.0</version>
+                    <version>3.2.1</version>
                 </plugin>
                 <plugin>
                     <groupId>com.mycila</groupId>
@@ -1622,7 +1622,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.6.0</version>
+                    <version>3.7.1</version>
                 </plugin>
                 <plugin>
                     <groupId>de.thetaphi</groupId>
@@ -1739,7 +1739,7 @@
                 <plugin>
                     <groupId>io.helidon.build-tools</groupId>
                     <artifactId>helidon-services-plugin</artifactId>
-                    <version>4.0.5</version>
+                    <version>4.0.6</version>
                 </plugin>
             </plugins>
         </pluginManagement>

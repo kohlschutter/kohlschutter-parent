@@ -56,6 +56,13 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>animal-sniffer-maven-plugin</artifactId>
                     <version>1.23</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.ow2.asm</groupId>
+                            <artifactId>asm</artifactId>
+                            <version>9.7</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <!-- This plugin's configuration is used to store Eclipse m2e
@@ -92,7 +99,7 @@
             <id>retrolambda-check</id>
             <activation>
                 <file>
-                    <exists>${kohlschutter.project.base.directory}/src/main/java7/multirelease.md</exists>
+                    <exists>src/main/java7/multirelease.md</exists>
                 </file>
             </activation>
             <build>
@@ -127,7 +134,7 @@
             <id>retrolambda</id>
             <activation>
                 <file>
-                    <exists>${kohlschutter.project.base.directory}/src/main/java7/multirelease.md</exists>
+                    <exists>src/main/java7/multirelease.md</exists>
                 </file>
                 <property>
                     <name>retrolambda</name>

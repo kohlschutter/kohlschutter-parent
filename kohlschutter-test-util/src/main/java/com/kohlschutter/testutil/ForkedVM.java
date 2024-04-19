@@ -54,7 +54,10 @@ public class ForkedVM {
   private static final boolean SUPPORTED;
 
   static {
-    if (!SystemPropertyUtil.getBooleanSystemProperty("com.kohlschutter.ForkedVM.enabled", true)) {
+    if ("Substrate VM".equals(System.getProperty("java.vm.name"))) {
+      SUPPORTED = false; // native-image
+    } else if (!SystemPropertyUtil.getBooleanSystemProperty("com.kohlschutter.ForkedVM.enabled",
+        true)) {
       SUPPORTED = false;
     } else if (ProcessUtil.getJavaCommand() == null || ProcessUtil
         .getJavaCommandArguments() == null) {

@@ -20,6 +20,7 @@ package com.kohlschutter.testutil;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.logging.LogManager;
 
 /**
@@ -41,6 +42,7 @@ public final class LoggerUtil {
    *
    * @param classRef The class reference.
    * @param loggingPropertiesFilePath The relative path (e.g., {@code logging.properties}).
+   * @throws IllegalStateException on error.
    */
   public static void overrideDefaultConfiguration(Class<?> classRef,
       String loggingPropertiesFilePath) {
@@ -50,10 +52,15 @@ public final class LoggerUtil {
       return;
     }
 
-    try (InputStream in = classRef.getResource(loggingPropertiesFilePath).openStream()) {
+    URL resource = classRef.getResource(loggingPropertiesFilePath);
+    if (resource == null) {
+      throw new IllegalStateException("Could not get logging properties resource",
+          new FileNotFoundException(loggingPropertiesFilePath));
+    }
+    try (InputStream in = resource.openStream()) {
       LogManager.getLogManager().readConfiguration(in);
     } catch (IOException e) {
-      throw new IllegalStateException(e);
+      throw new IllegalStateException("Could not get logging properties resource", e);
     }
   }
 

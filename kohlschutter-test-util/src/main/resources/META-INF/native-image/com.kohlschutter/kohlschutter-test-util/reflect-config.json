@@ -1,0 +1,40 @@
+[
+{
+  "name":"com.kohlschutter.testutil.AvailabilityExecutionCondition",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.kohlschutter.testutil.AvailabilityRequirement",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.kohlschutter.testutil.ExecutionEnvironmentExecutionCondition",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.kohlschutter.testutil.ExecutionEnvironmentRequirement",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.kohlschutter.testutil.ForkedVMExecutionCondition",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.kohlschutter.testutil.ForkedVMRequirement",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.kohlschutter.testutil.ProcessUtilCondition",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.kohlschutter.testutil.ProcessUtilRequirement",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.ProcessBuilder$RedirectPipeImpl"
+},
+{
+  "name":"java.lang.ProcessHandle"
+}
+]

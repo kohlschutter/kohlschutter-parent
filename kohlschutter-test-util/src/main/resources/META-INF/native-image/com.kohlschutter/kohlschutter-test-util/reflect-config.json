@@ -32,6 +32,14 @@
   "queryAllPublicMethods":true
 },
 {
+  "name":"com.kohlschutter.testutil.SystemPropertyExecutionCondition",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.kohlschutter.testutil.SystemPropertyRequirement",
+  "queryAllPublicMethods":true
+},
+{
   "name":"java.lang.ProcessBuilder$RedirectPipeImpl"
 },
 {

@@ -897,7 +897,7 @@
             </reporting>
         </profile>
         <profile>
-            <id>documentation</id>
+            <id>javadoc</id>
             <activation>
                 <property>
                     <name>ignorant</name>

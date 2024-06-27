@@ -981,6 +981,67 @@
             </build>
         </profile>
         <profile>
+            <id>deploy-javadoc</id>
+            <activation>
+                <property>
+                    <name>deploy</name>
+                    <value>true</value>
+                </property>
+                <file>
+                    <exists>src/main/java</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <!-- work-around for error message: -->
+                                    <!-- Error while generating Javadoc: Aggregator report contains named and unnamed modules -->
+                                    <!-- <sourceFileExcludes>**/module-info.java</sourceFileExcludes> -->
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>deploy-sources</id>
+            <activation>
+                <property>
+                    <name>deploy</name>
+                    <value>true</value>
+                </property>
+                <file>
+                    <exists>src</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <inherited>true</inherited>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
             <id>release</id>
             <activation>
                 <property>

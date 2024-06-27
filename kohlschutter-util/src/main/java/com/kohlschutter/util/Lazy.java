@@ -35,7 +35,7 @@ import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 public interface Lazy<V> extends Supplier<V>, Consumer<V> {
   /**
    * A {@link Lazy} implementation for values supplied by a {@link Supplier}.
-   * 
+   *
    * @param <V> The object type.
    * @author Christian Kohlschütter
    */
@@ -77,7 +77,7 @@ public interface Lazy<V> extends Supplier<V>, Consumer<V> {
 
   /**
    * A {@link Lazy} implementation for values supplied immediately.
-   * 
+   *
    * @param <V> The object type.
    * @author Christian Kohlschütter
    */

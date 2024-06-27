@@ -42,7 +42,7 @@ public final class ConsolePrintStream extends PrintStream {
   static {
     String forceConsole = System.getProperty("com.kohlschutter.util.console", "");
     if (!forceConsole.isEmpty()) {
-      NO_CONSOLE = !Boolean.valueOf(forceConsole);
+      NO_CONSOLE = !Boolean.parseBoolean(forceConsole);
     } else if (System.console() != null) {
       if ("z/OS".equals(System.getProperty("os.name"))) {
         NO_CONSOLE = true;

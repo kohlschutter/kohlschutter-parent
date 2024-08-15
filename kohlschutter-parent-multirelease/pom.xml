@@ -55,7 +55,8 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>animal-sniffer-maven-plugin</artifactId>
-                    <version>1.23</version>
+                    <version>1.24</version>
+                    <!--
                     <dependencies>
                         <dependency>
                             <groupId>org.ow2.asm</groupId>
@@ -63,6 +64,7 @@
                             <version>9.7</version>
                         </dependency>
                     </dependencies>
+                    -->
                 </plugin>
                 <plugin>
                     <!-- This plugin's configuration is used to store Eclipse m2e

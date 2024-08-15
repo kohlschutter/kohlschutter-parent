@@ -49,6 +49,7 @@
     <properties>
         <!-- Please keep this version in lockstep with the version declared above -->
         <kohlschutter.parent.version>1.7.3</kohlschutter.parent.version>
+        <kohlschutter.sources.classifier>sources</kohlschutter.sources.classifier>
         <project.build.outputTimestamp>${git.commit.time}</project.build.outputTimestamp>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
@@ -968,6 +969,10 @@
                                 <goals>
                                     <goal>jar-no-fork</goal>
                                 </goals>
+                                <configuration>
+                                    <classifier>
+                                        ${kohlschutter.sources.classifier}</classifier>
+                                </configuration>
                             </execution>
                         </executions>
                         <inherited>true</inherited>
@@ -1029,6 +1034,9 @@
                                 <goals>
                                     <goal>jar-no-fork</goal>
                                 </goals>
+                                <configuration>
+                                    <classifier>${kohlschutter.sources.classifier}</classifier>
+                                </configuration>
                             </execution>
                         </executions>
                         <inherited>true</inherited>

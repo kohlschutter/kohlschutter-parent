@@ -378,6 +378,7 @@
                                 </goals>
                                 <phase>${kohlschutter.multirelease.jar.phase}</phase>
                                 <configuration>
+                                    <skipIfEmpty>true</skipIfEmpty>
                                     <archive>
                                         <manifestEntries>
                                             <Multi-Release>true</Multi-Release>
@@ -387,6 +388,28 @@
                                 </configuration>
                             </execution>
                         </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>disable-jar-plugin-for-pom</id>
+            <activation>
+                <property>
+                    <name>packaging</name>
+                    <value>pom</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <configuration>
+                            <skipIfEmpty>true</skipIfEmpty>
+                            <classifier>disabled</classifier><!-- just in case -->
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>

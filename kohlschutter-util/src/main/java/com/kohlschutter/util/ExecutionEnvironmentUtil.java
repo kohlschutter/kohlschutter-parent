@@ -85,7 +85,7 @@ public final class ExecutionEnvironmentUtil {
   /**
    * Checks whether the code is being in in an environment that does not perform garbage collection
    * (e.g., Epsilon GC).
-   * 
+   *
    * @return {@code true} if knowingly so.
    */
   public static boolean isEpsilonGC() {

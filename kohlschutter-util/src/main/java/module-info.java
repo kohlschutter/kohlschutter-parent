@@ -7,4 +7,5 @@ module com.kohlschutter.util {
   exports com.kohlschutter.util;
 
   requires org.eclipse.jdt.annotation;
+  requires static java.management;
 }

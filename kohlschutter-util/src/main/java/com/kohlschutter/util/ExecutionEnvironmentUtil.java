@@ -17,7 +17,13 @@
  */
 package com.kohlschutter.util;
 
+import java.lang.management.ManagementFactory;
 import java.util.Locale;
+
+import javax.management.MBeanServer;
+import javax.management.ObjectName;
+
+import org.eclipse.jdt.annotation.Nullable;
 
 /**
  * Utility class to check which environment we run in.
@@ -35,6 +41,11 @@ public final class ExecutionEnvironmentUtil {
 
   private static final boolean SELFTEST = //
       !System.getProperty("com.kohlschutter.selftest", "").isEmpty();
+
+  private static final Lazy<@Nullable String> VM_FLAGS = Lazy.of(
+      ExecutionEnvironmentUtil::obtainVMFlags);
+
+  private static final Lazy<Boolean> EPSILON_GC = Lazy.of(ExecutionEnvironmentUtil::initEpsilonGC);
 
   private ExecutionEnvironmentUtil() {
     throw new IllegalStateException("No instances");
@@ -69,5 +80,33 @@ public final class ExecutionEnvironmentUtil {
    */
   public static boolean isSelftest() {
     return SELFTEST;
+  }
+
+  /**
+   * Checks whether the code is being in in an environment that does not perform garbage collection
+   * (e.g., Epsilon GC).
+   * 
+   * @return {@code true} if knowingly so.
+   */
+  public static boolean isEpsilonGC() {
+    return EPSILON_GC.get();
+  }
+
+  private static boolean initEpsilonGC() {
+    String vmFlags = VM_FLAGS.get();
+    return (vmFlags != null && vmFlags.contains("+UseEpsilonGC"));
+  }
+
+  private static @Nullable String obtainVMFlags() {
+    try {
+      MBeanServer server = ManagementFactory.getPlatformMBeanServer();
+      ObjectName on = new ObjectName("com.sun.management:type=DiagnosticCommand");
+      String result = (String) server.invoke(on, "vmFlags", new Object[] {null}, new String[] {
+          String[].class.getName()});
+      return result;
+    } catch (Exception e) { // NOPMD
+      // ignore
+    }
+    return null;
   }
 }

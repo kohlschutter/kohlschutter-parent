@@ -52,8 +52,8 @@ public final class ExecutionEnvironmentExecutionCondition implements ExecutionCo
         + ruleValue);
   }
 
-  private static ConditionEvaluationResult checkRule(String ruleName, Rule rule,
-      Supplier<Boolean> positiveCheck) {
+  private static ConditionEvaluationResult checkRule(Rule rule, Supplier<Boolean> positiveCheck) {
+    String ruleName = rule.name();
     switch (rule) {
       case ALLOWED:
         return null;
@@ -85,18 +85,22 @@ public final class ExecutionEnvironmentExecutionCondition implements ExecutionCo
 
     ConditionEvaluationResult res;
 
-    res = checkRule("eclipse", requirement.eclipse(), ExecutionEnvironmentUtil::isInEclipse);
+    res = checkRule(requirement.eclipse(), ExecutionEnvironmentUtil::isInEclipse);
     if (res != null) {
       return res;
     }
 
-    res = checkRule("root", requirement.root(), () -> "root".equals(System.getProperty("user.name",
-        "")));
+    res = checkRule(requirement.root(), () -> "root".equals(System.getProperty("user.name", "")));
     if (res != null) {
       return res;
     }
 
-    res = checkRule("windows", requirement.windows(), ExecutionEnvironmentUtil::isWindows);
+    res = checkRule(requirement.windows(), ExecutionEnvironmentUtil::isWindows);
+    if (res != null) {
+      return res;
+    }
+
+    res = checkRule(requirement.epsilonGC(), ExecutionEnvironmentUtil::isEpsilonGC);
     if (res != null) {
       return res;
     }

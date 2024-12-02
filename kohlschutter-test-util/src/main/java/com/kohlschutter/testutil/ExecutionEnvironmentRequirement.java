@@ -79,4 +79,12 @@ public @interface ExecutionEnvironmentRequirement {
    * @return The rule.
    */
   Rule selftest() default Rule.ALLOWED;
+
+  /**
+   * Controls whether the test should be run when running in an environment that does not perform
+   * garbage collection (e.g., epsilon-GC).
+   * 
+   * @return The rule.
+   */
+  Rule epsilonGC() default Rule.ALLOWED;
 }

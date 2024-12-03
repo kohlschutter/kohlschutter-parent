@@ -232,6 +232,18 @@
                                             </includes>
                                         </resource>
                                         <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java23</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
                                             <directory>src/main/java22</directory>
                                             <includes>
                                                 <include>**</include>
@@ -448,6 +460,18 @@
                                             </includes>
                                         </resource>
                                         <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java23</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
                                             <directory>src/main/java22</directory>
                                             <includes>
                                                 <include>**</include>
@@ -592,6 +616,18 @@
                                             </includes>
                                         </resource>
                                         <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java23</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
                                             <directory>src/main/java22</directory>
                                             <includes>
                                                 <include>**</include>
@@ -730,6 +766,18 @@
                                             </includes>
                                         </resource>
                                         <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java23</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
                                             <directory>src/main/java22</directory>
                                             <includes>
                                                 <include>**</include>
@@ -862,6 +910,18 @@
                                             </includes>
                                         </resource>
                                         <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java23</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
                                             <directory>src/main/java22</directory>
                                             <includes>
                                                 <include>**</include>
@@ -989,6 +1049,18 @@
                                             </includes>
                                         </resource>
                                         <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java23</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
                                             <directory>src/main/java22</directory>
                                             <includes>
                                                 <include>**</include>
@@ -1109,6 +1181,18 @@
                                             </includes>
                                         </resource>
                                         <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java23</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
                                             <directory>src/main/java22</directory>
                                             <includes>
                                                 <include>**</include>
@@ -1223,6 +1307,18 @@
                                             </includes>
                                         </resource>
                                         <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java23</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
                                             <directory>src/main/java22</directory>
                                             <includes>
                                                 <include>**</include>
@@ -1327,6 +1423,18 @@
                                     <resources>
                                         <resource>
                                             <directory>${kohlschutter.project.source.dir}</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java23</directory>
                                             <includes>
                                                 <include>**</include>
                                             </includes>
@@ -1440,6 +1548,18 @@
                                             </includes>
                                         </resource>
                                         <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java23</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
                                             <directory>src/main/java22</directory>
                                             <includes>
                                                 <include>**</include>
@@ -1536,6 +1656,18 @@
                                             </includes>
                                         </resource>
                                         <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java23</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
                                             <directory>src/main/java22</directory>
                                             <includes>
                                                 <include>**</include>
@@ -1626,6 +1758,18 @@
                                             </includes>
                                         </resource>
                                         <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java23</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
                                             <directory>src/main/java22</directory>
                                             <includes>
                                                 <include>**</include>
@@ -1710,6 +1854,18 @@
                                             </includes>
                                         </resource>
                                         <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java23</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
                                             <directory>src/main/java22</directory>
                                             <includes>
                                                 <include>**</include>
@@ -1788,6 +1944,18 @@
                                             </includes>
                                         </resource>
                                         <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java23</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
                                             <directory>src/main/java22</directory>
                                             <includes>
                                                 <include>**</include>
@@ -1860,6 +2028,18 @@
                                             </includes>
                                         </resource>
                                         <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java23</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
                                             <directory>src/main/java22</directory>
                                             <includes>
                                                 <include>**</include>
@@ -1887,6 +2067,154 @@
                                     <compileSourceRoots>
                                         <compileSourceRoot>${project.build.directory}/sources-java22</compileSourceRoot>
                                         <compileSourceRoot>${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
+                                    </compileSourceRoots>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>multirelease-java23</id>
+            <activation>
+                <file>
+                    <exists>src/main/java23</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy-source-files-java23</id>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>
+                                        ${project.build.directory}/sources-java23</outputDirectory>
+                                    <includeEmptyDirs>true</includeEmptyDirs>
+                                    <resources>
+                                        <resource>
+                                            <directory>
+                                                ${kohlschutter.project.source.dir}</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java23</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
+                                    <overwrite>true</overwrite>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>java23-compile</id>
+                                <goals>
+                                    <goal>compile</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>
+                                        ${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/23</outputDirectory>
+                                    <target>23</target>
+                                    <release>23</release>
+                                    <multiReleaseOutput>false</multiReleaseOutput>
+                                    <compileSourceRoots>
+                                        <compileSourceRoot>
+                                            ${project.build.directory}/sources-java23</compileSourceRoot>
+                                        <compileSourceRoot>
+                                            ${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
+                                    </compileSourceRoots>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>multirelease-java24</id>
+            <activation>
+                <file>
+                    <exists>src/main/java24</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy-source-files-java24</id>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>
+                                        ${project.build.directory}/sources-java24</outputDirectory>
+                                    <includeEmptyDirs>true</includeEmptyDirs>
+                                    <resources>
+                                        <resource>
+                                            <directory>
+                                                ${kohlschutter.project.source.dir}</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/java24</directory>
+                                            <includes>
+                                                <include>**</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
+                                    <overwrite>true</overwrite>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>java24-compile</id>
+                                <goals>
+                                    <goal>compile</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>
+                                        ${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/24</outputDirectory>
+                                    <target>24</target>
+                                    <release>24</release>
+                                    <multiReleaseOutput>false</multiReleaseOutput>
+                                    <compileSourceRoots>
+                                        <compileSourceRoot>
+                                            ${project.build.directory}/sources-java24</compileSourceRoot>
+                                        <compileSourceRoot>
+                                            ${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
                                     </compileSourceRoots>
                                 </configuration>
                             </execution>

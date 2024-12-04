@@ -102,7 +102,7 @@
         <pmd.plugin.version>3.26.0</pmd.plugin.version>
         <xlint.compiler.arg>-Xlint:all,-classfile,-try,-module,-requires-automatic,-requires-transitive-automatic,-exports</xlint.compiler.arg>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-        <eclipsejdt.annotations.version>2.3.0</eclipsejdt.annotations.version>
+        <eclipsejdt.annotations.version>2.3.100</eclipsejdt.annotations.version>
         <errorprone.version>2.36.0</errorprone.version>
         <errorprone.annotations.version>${errorprone.version}</errorprone.annotations.version>
         <errorprone.args></errorprone.args>

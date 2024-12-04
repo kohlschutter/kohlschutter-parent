@@ -1543,6 +1543,9 @@
                         <detectJavaApiLink>false</detectJavaApiLink>
                         <quiet>true</quiet>
                         <failOnWarnings>${javadoc.strict}</failOnWarnings>
+                        <sourceFileExcludes>
+                            <sourceFileExclude>**/*UtilInternal.java</sourceFileExclude>
+                        </sourceFileExcludes>
                     </configuration>
                 </plugin>
                 <plugin>

@@ -107,6 +107,7 @@
         <errorprone.annotations.version>${errorprone.version}</errorprone.annotations.version>
         <errorprone.args></errorprone.args>
         <junit.version>5.11.3</junit.version>
+        <javadoc.plugin.version>3.11.1</javadoc.plugin.version>
 
         <slf4j.version>2.0.16</slf4j.version>
         <graal.plugin.version>0.10.4</graal.plugin.version>
@@ -1537,7 +1538,7 @@
             If you get an error like "The code being documented uses modules
             but the packages defined in ... are in the unnamed module", then
             update your Java SDK -->
-                    <version>3.11.1</version>
+                    <version>${javadoc.plugin.version}</version>
                     <configuration>
                         <detectOfflineLinks>false</detectOfflineLinks>
                         <detectJavaApiLink>false</detectJavaApiLink>

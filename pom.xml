@@ -111,6 +111,7 @@
 
         <slf4j.version>2.0.16</slf4j.version>
         <graal.plugin.version>0.10.4</graal.plugin.version>
+        <site.plugin.version>4.0.0-M17-SNAPSHOT</site.plugin.version><!-- workaround for bug in M16 -->
     </properties>
     <profiles>
         <profile>
@@ -1473,14 +1474,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>4.0.0-M16</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.apache.maven.skins</groupId>
-                            <artifactId>maven-fluido-skin</artifactId>
-                            <version>2.0.0</version>
-                        </dependency>
-                    </dependencies>
+                    <version>${site.plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>

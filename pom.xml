@@ -1469,7 +1469,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>4.0.0-M11</version>
+                    <version>4.0.0-M16</version>
                     <dependencies>
                         <dependency>
                             <groupId>org.apache.maven.skins</groupId>

@@ -188,6 +188,9 @@
                             <artifactId>maven-javadoc-plugin</artifactId>
                             <configuration>
                                 <failOnError>true</failOnError>
+                                <sourceFileExcludes>
+                                    <sourceFileExclude>**/*UtilInternal.java</sourceFileExclude>
+                                </sourceFileExcludes>
                             </configuration>
                         </plugin>
                     </plugins>

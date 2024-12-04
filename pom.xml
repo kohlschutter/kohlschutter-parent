@@ -82,7 +82,6 @@
         <spotbugs.exclude.file>${coding.style.eclipse.dir}/spotbugs-exclude.xml</spotbugs.exclude.file>
         <spotbugs.disabled>false</spotbugs.disabled>
         <spotbugs.strict>false</spotbugs.strict>
-        <!--<spotbugs.version>4.8.5-SNAPSHOT</spotbugs.version>-->
         <spotbugs.plugin.version>4.8.6.6</spotbugs.plugin.version>
         <forbiddenapis.version>3.8</forbiddenapis.version>
         <forbiddenapis.strict>false</forbiddenapis.strict>
@@ -1284,6 +1283,30 @@
                 </plugins>
             </build>
         </profile>
+
+        <profile>
+            <id>spotbugs-version-override</id>
+            <activation>
+                <property>
+                    <name>spotbugs.version</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs-maven-plugin</artifactId>
+                        <dependencies>
+                            <dependency>
+                                <groupId>com.github.spotbugs</groupId>
+                                <artifactId>spotbugs</artifactId>
+                                <version>${spotbugs.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
     <!-- The main build tag -->
@@ -1480,15 +1503,6 @@
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
                     <version>${spotbugs.plugin.version}</version>
-                    <dependencies>
-                        <!--
-                        <dependency>
-                            <groupId>com.github.spotbugs</groupId>
-                            <artifactId>spotbugs</artifactId>
-                            <version>${spotbugs.version}</version>
-                        </dependency>
-                        -->
-                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

@@ -1655,6 +1655,8 @@
                             <exclude>org/junit/**</exclude>
                             <exclude>org/apiguardian/**</exclude>
                             <exclude>sun/**</exclude>
+                            <exclude>com/sun/**</exclude>
+                            <exclude>org/jcp/**</exclude>
                         </excludes>
                     </configuration>
                     <dependencies>

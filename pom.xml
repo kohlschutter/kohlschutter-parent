@@ -76,6 +76,7 @@
         <eclipse.formatter.js.config>${coding.style.eclipse.dir}/eclipse-formatter-config-js.xml</eclipse.formatter.js.config>
         <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
         <kohlschutter.surefire.patch.args></kohlschutter.surefire.patch.args>
+        <kohlschutter.surefire.access.args></kohlschutter.surefire.access.args>
         <checkstyle.version>10.20.2</checkstyle.version>
         <checkstyle.disabled>false</checkstyle.disabled>
         <checkstyle.strict>false</checkstyle.strict>
@@ -681,7 +682,7 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <argLine>${surefireJacocoArgLine} -Dfile.encoding=UTF-8
-                -XX:+TieredCompilation -XX:TieredStopAtLevel=1 ${kohlschutter.surefire.patch.args}</argLine>
+                -XX:+TieredCompilation -XX:TieredStopAtLevel=1 ${kohlschutter.surefire.patch.args} ${kohlschutter.surefire.access.args}</argLine>
                             <detail>true</detail>
                         </configuration>
                         <executions>

@@ -712,6 +712,60 @@
             </reporting>
         </profile>
         <profile>
+            <id>code-quality-setup</id>
+            <activation>
+                <property>
+                    <name>strict</name>
+                    <value>!true</value>
+                </property>
+                <file>
+                    <exists>src/main/java</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs-maven-plugin</artifactId>
+                        <configuration>
+                            <excludeFilterFile>${spotbugs.exclude.file}</excludeFilterFile>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>code-quality-setup-strict</id>
+            <activation>
+                <property>
+                    <name>strict</name>
+                    <value>true</value>
+                </property>
+                <file>
+                    <exists>src/main/java</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs-maven-plugin</artifactId>
+                        <configuration>
+                            <excludeFilterFile>${spotbugs.exclude.file}</excludeFilterFile>
+                            <effort>Max</effort>
+                            <plugins>
+                                <plugin>
+                                    <groupId>com.h3xstream.findsecbugs</groupId>
+                                    <artifactId>findsecbugs-plugin</artifactId>
+                                    <version>1.13.0</version>
+                                </plugin>
+                            </plugins>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
             <id>code-quality</id>
             <activation>
                 <property>
@@ -727,9 +781,6 @@
                     <plugin>
                         <groupId>com.github.spotbugs</groupId>
                         <artifactId>spotbugs-maven-plugin</artifactId>
-                        <configuration>
-                            <excludeFilterFile>${spotbugs.exclude.file}</excludeFilterFile>
-                        </configuration>
                         <executions>
                             <execution>
                                 <id>spotbugs-during-install</id>

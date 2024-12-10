@@ -1271,7 +1271,7 @@
                             <compilerArgs>
                                 <arg>--should-stop=ifError=FLOW</arg>
                                 <arg>-XDcompilePolicy=simple</arg>
-                                <arg>-Xplugin:ErrorProne -Xep:UnnecessaryParentheses:OFF -Xep:ObjectToString:OFF -Xep:StringSplitter:OFF -Xep:MissingOverride:OFF -Xep:EqualsGetClass:OFF -Xep:ReferenceEquality:OFF -Xep:MixedMutabilityReturnType:OFF -Xep:InlineMeSuggester:OFF ${errorprone.args}</arg>
+                                <arg>-Xplugin:ErrorProne -Xep:UnnecessaryParentheses:OFF -Xep:ObjectToString:OFF -Xep:StringSplitter:OFF -Xep:MissingOverride:OFF -Xep:EqualsGetClass:OFF -Xep:ReferenceEquality:OFF -Xep:MixedMutabilityReturnType:OFF -Xep:InlineMeSuggester:OFF -Xep:RedundantControlFlow:OFF ${errorprone.args}</arg>
                             </compilerArgs>
                             <annotationProcessorPaths>
                                 <annotationProcessorPath>

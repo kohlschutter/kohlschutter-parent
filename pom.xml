@@ -84,6 +84,7 @@
         <spotbugs.disabled>false</spotbugs.disabled>
         <spotbugs.strict>false</spotbugs.strict>
         <spotbugs.plugin.version>4.8.6.6</spotbugs.plugin.version>
+        <findsecbugs.version>1.13.0</findsecbugs.version>
         <forbiddenapis.version>3.8</forbiddenapis.version>
         <forbiddenapis.strict>false</forbiddenapis.strict>
         <jacoco.disabled>false</jacoco.disabled>
@@ -108,7 +109,6 @@
         <errorprone.args></errorprone.args>
         <junit.version>5.11.3</junit.version>
         <javadoc.plugin.version>3.11.2</javadoc.plugin.version>
-
         <slf4j.version>2.0.16</slf4j.version>
         <graal.plugin.version>0.10.4</graal.plugin.version>
         <site.plugin.version>4.0.0-M17-SNAPSHOT</site.plugin.version><!-- workaround for bug in M16 -->
@@ -757,7 +757,7 @@
                                 <plugin>
                                     <groupId>com.h3xstream.findsecbugs</groupId>
                                     <artifactId>findsecbugs-plugin</artifactId>
-                                    <version>1.13.0</version>
+                                    <version>${findsecbugs.version}</version>
                                 </plugin>
                             </plugins>
                         </configuration>

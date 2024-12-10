@@ -22,7 +22,6 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
@@ -42,8 +41,7 @@ public final class TestAsyncUtil {
    * @param run The code to run.
    */
   public static void runAsync(Runnable run) {
-    @SuppressWarnings("unused")
-    CompletableFuture<Void> unused = CompletableFuture.runAsync(run);
+    trackFuture(CompletableFuture.runAsync(run));
   }
 
   /**
@@ -63,7 +61,9 @@ public final class TestAsyncUtil {
    * @return The future.
    */
   public static Future<Void> supplyAsync(Runnable run) {
-    return CompletableFuture.runAsync(run);
+    CompletableFuture<Void> future = CompletableFuture.runAsync(run);
+    trackFuture(future);
+    return future;
   }
 
   /**
@@ -74,7 +74,9 @@ public final class TestAsyncUtil {
    * @return The future.
    */
   public static <U> Future<U> supplyAsync(Supplier<U> run) {
-    return CompletableFuture.supplyAsync(run);
+    CompletableFuture<U> future = CompletableFuture.supplyAsync(run);
+    trackFuture(future);
+    return future;
   }
 
   /**
@@ -99,7 +101,15 @@ public final class TestAsyncUtil {
    */
   public static void runAsyncDelayed(ScheduledExecutorService ses, long delay, TimeUnit unit,
       Runnable run) {
-    @SuppressWarnings("unused")
-    ScheduledFuture<?> unused = ses.schedule(run, delay, unit);
+    trackFuture(ses.schedule(run, delay, unit));
+  }
+
+  /**
+   * Tracks the given future.
+   * 
+   * @param future The future.
+   */
+  public static void trackFuture(Future<?> future) {
+    // Currently does nothing
   }
 }

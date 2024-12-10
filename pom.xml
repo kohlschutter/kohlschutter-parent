@@ -269,6 +269,7 @@
                 <!-- Ignore Eclipse's nar-maven-plugin integration -->
                 <nar.skip>true</nar.skip>
                 <kohlschutter.target.name>target-eclipse</kohlschutter.target.name>
+                <surefireJacocoArgLine></surefireJacocoArgLine>
             </properties>
             <build>
                 <directory>target-eclipse</directory>

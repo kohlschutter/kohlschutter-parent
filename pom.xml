@@ -107,7 +107,7 @@
         <errorprone.annotations.version>${errorprone.version}</errorprone.annotations.version>
         <errorprone.args></errorprone.args>
         <junit.version>5.11.3</junit.version>
-        <javadoc.plugin.version>3.11.1</javadoc.plugin.version>
+        <javadoc.plugin.version>3.11.2</javadoc.plugin.version>
 
         <slf4j.version>2.0.16</slf4j.version>
         <graal.plugin.version>0.10.4</graal.plugin.version>
@@ -1536,7 +1536,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-invoker-plugin</artifactId>
-                    <version>3.8.1</version>
+                    <version>3.9.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

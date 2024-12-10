@@ -28,6 +28,7 @@ import java.nio.charset.Charset;
  *
  * @author Christian Kohlschütter
  */
+@SuppressWarnings("SystemConsoleNull") // ErrorProne
 public final class ConsolePrintStream extends PrintStream {
   private static final byte[] NEWLINE_BYTES = System.lineSeparator().getBytes(Charset
       .defaultCharset());

@@ -91,7 +91,9 @@ public class OutputBridge implements Runnable, Closeable {
     }
   }
 
-  @SuppressWarnings({"NoFinalizer" /* checkstyle */, "PMD.EmptyFinalizer"})
+  @SuppressWarnings({
+      "NoFinalizer" /* checkstyle */, "Finalize", // ErrorProne
+      "PMD.EmptyFinalizer"})
   @Deprecated
   @Override
   protected final void finalize() {

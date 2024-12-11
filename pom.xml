@@ -682,8 +682,7 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
-                            <argLine>${surefireJacocoArgLine} -Dfile.encoding=UTF-8
-                -XX:+TieredCompilation -XX:TieredStopAtLevel=1 ${kohlschutter.surefire.patch.args} ${kohlschutter.surefire.access.args}</argLine>
+                            <argLine>${surefireJacocoArgLine} -Dfile.encoding=UTF-8 ${kohlschutter.surefire.patch.args} ${kohlschutter.surefire.access.args}</argLine>
                             <detail>true</detail>
                         </configuration>
                         <executions>
@@ -791,8 +790,7 @@
                                 <configuration>
                                     <skip>${spotbugs.disabled}</skip>
                                     <failOnError>${spotbugs.strict}</failOnError>
-                                    <jvmArgs>-XX:+TieredCompilation
-                    -XX:TieredStopAtLevel=1</jvmArgs>
+                                    <jvmArgs>-XX:+TieredCompilation -XX:TieredStopAtLevel=1</jvmArgs>
                                 </configuration>
                             </execution>
                         </executions>

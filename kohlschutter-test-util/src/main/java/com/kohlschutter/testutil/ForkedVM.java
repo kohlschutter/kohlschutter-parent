@@ -35,6 +35,7 @@ import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 import com.kohlschutter.util.ProcessUtil;
 import com.kohlschutter.util.SystemPropertyUtil;
 
@@ -45,6 +46,7 @@ import com.kohlschutter.util.SystemPropertyUtil;
  *
  * @author Christian Kohlschütter
  */
+@SuppressFBWarnings({"COMMAND_INJECTION", "PATH_TRAVERSAL_IN"})
 public class ForkedVM {
   private static final Set<String> HAS_PARAMETER = new HashSet<>(Arrays.asList("--add-opens", "-p",
       "-cp", "--module-path", "--upgrade-module-path", "-classpath", "--class-path",

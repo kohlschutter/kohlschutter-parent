@@ -24,6 +24,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
+
 /**
  * Some {@link Path}-related helper methods.
  *
@@ -130,6 +132,7 @@ public final class PathUtil {
    * @param url The URL to convert to.
    * @return The Path, or {@code null} if not convertible.
    */
+  @SuppressFBWarnings("PATH_TRAVERSAL_IN")
   public static Path toPathIfPossible(URL url) {
     if (url == null) {
       return null;

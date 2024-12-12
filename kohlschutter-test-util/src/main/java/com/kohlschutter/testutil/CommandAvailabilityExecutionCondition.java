@@ -25,6 +25,8 @@ import org.junit.jupiter.api.extension.ConditionEvaluationResult;
 import org.junit.jupiter.api.extension.ExecutionCondition;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
+
 /**
  * A JUnit {@link ExecutionCondition} for {@link CommandAvailabilityRequirement}.
  *
@@ -40,6 +42,7 @@ public final class CommandAvailabilityExecutionCondition implements ExecutionCon
   }
 
   @Override
+  @SuppressFBWarnings("COMMAND_INJECTION")
   public ConditionEvaluationResult evaluateExecutionCondition(ExtensionContext context) {
     String[] commands = null;
 

@@ -224,7 +224,7 @@
                         <groupId>com.kohlschutter.mavenplugins</groupId>
                         <artifactId>copy-rename-maven-plugin</artifactId>
                         <executions>
-                            <execution>
+                            <execution><?m2e ignore?>
                                 <id>copy-readme</id>
                                 <phase>pre-site</phase>
                                 <goals>
@@ -300,7 +300,7 @@
             <build>
                 <pluginManagement>
                     <plugins>
-                        <plugin>
+                        <plugin><?m2e ignore?>
                             <!--This plugin's configuration is used to store Eclipse m2e
                 settings only. It has no influence on the Maven build itself. -->
                             <groupId>org.eclipse.m2e</groupId>

@@ -77,7 +77,7 @@
         <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
         <kohlschutter.surefire.patch.args></kohlschutter.surefire.patch.args>
         <kohlschutter.surefire.access.args></kohlschutter.surefire.access.args>
-        <checkstyle.version>10.20.2</checkstyle.version>
+        <checkstyle.version>10.23.0</checkstyle.version>
         <checkstyle.disabled>false</checkstyle.disabled>
         <checkstyle.strict>false</checkstyle.strict>
         <spotbugs.exclude.file>${coding.style.eclipse.dir}/spotbugs-exclude.xml</spotbugs.exclude.file>
@@ -99,18 +99,18 @@
         <formatter.skip>false</formatter.skip>
         <!-- Only upgrade to the latest version you can have in Eclipse, no later
       versions; otherwise, you may not be able to run checks in Eclipse -->
-        <pmdVersion>7.8.0</pmdVersion>
+        <pmdVersion>7.12.0</pmdVersion>
         <pmd.plugin.version>3.26.0</pmd.plugin.version>
         <xlint.compiler.arg>-Xlint:all,-classfile,-try,-module,-requires-automatic,-requires-transitive-automatic,-exports</xlint.compiler.arg>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
         <eclipsejdt.annotations.version>2.3.100</eclipsejdt.annotations.version>
-        <errorprone.version>2.36.0</errorprone.version>
+        <errorprone.version>2.37.0</errorprone.version>
         <errorprone.annotations.version>${errorprone.version}</errorprone.annotations.version>
         <errorprone.args></errorprone.args>
-        <junit.version>5.11.3</junit.version>
+        <junit.version>5.12.1</junit.version>
         <javadoc.plugin.version>3.11.2</javadoc.plugin.version>
-        <slf4j.version>2.0.16</slf4j.version>
-        <graal.plugin.version>0.10.4</graal.plugin.version>
+        <slf4j.version>2.0.17</slf4j.version>
+        <graal.plugin.version>0.10.6</graal.plugin.version>
         <site.plugin.version>4.0.0-M17-SNAPSHOT</site.plugin.version><!-- workaround for bug in M16 -->
     </properties>
     <profiles>

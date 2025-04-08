@@ -23,6 +23,25 @@
 
         <kohlschutter.java.release>${kohlschutter.multirelease.java.release}</kohlschutter.java.release>
 
+        <!-- Allow skipping compilation/inclusion of classes for certain older Java releases -->
+        <kohlschutter.multirelease.java8.skip>false</kohlschutter.multirelease.java8.skip>
+        <kohlschutter.multirelease.java9.skip>false</kohlschutter.multirelease.java9.skip>
+        <kohlschutter.multirelease.java10.skip>false</kohlschutter.multirelease.java10.skip>
+        <kohlschutter.multirelease.java11.skip>false</kohlschutter.multirelease.java11.skip>
+        <kohlschutter.multirelease.java12.skip>false</kohlschutter.multirelease.java12.skip>
+        <kohlschutter.multirelease.java13.skip>false</kohlschutter.multirelease.java13.skip>
+        <kohlschutter.multirelease.java14.skip>false</kohlschutter.multirelease.java14.skip>
+        <kohlschutter.multirelease.java15.skip>false</kohlschutter.multirelease.java15.skip>
+        <kohlschutter.multirelease.java16.skip>false</kohlschutter.multirelease.java16.skip>
+        <kohlschutter.multirelease.java17.skip>false</kohlschutter.multirelease.java17.skip>
+        <kohlschutter.multirelease.java18.skip>false</kohlschutter.multirelease.java18.skip>
+        <kohlschutter.multirelease.java19.skip>false</kohlschutter.multirelease.java19.skip>
+        <kohlschutter.multirelease.java20.skip>false</kohlschutter.multirelease.java20.skip>
+        <kohlschutter.multirelease.java21.skip>false</kohlschutter.multirelease.java21.skip>
+        <kohlschutter.multirelease.java22.skip>false</kohlschutter.multirelease.java22.skip>
+        <kohlschutter.multirelease.java23.skip>false</kohlschutter.multirelease.java23.skip>
+        <kohlschutter.multirelease.java24.skip>false</kohlschutter.multirelease.java24.skip>
+
         <!-- The Java release we should use for Java 8 (usually 8, but use any
       lower version to force compiling against something ancient, e.g., 7) -->
         <kohlschutter.multirelease.java8.release>8</kohlschutter.multirelease.java8.release>
@@ -196,6 +215,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java8.skip}</skipMain>
                                     <compileSourceRoots>
                                         <compileSourceRoot>${project.build.directory}/sources-java8</compileSourceRoot>
                                         <compileSourceRoot>${project.build.directory}/generated-sources/java-resolved-properties</compileSourceRoot>
@@ -222,6 +242,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java8.skip}</skip>
                                     <outputDirectory>${project.build.directory}/sources-java8</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
                                     <resources>
@@ -450,6 +471,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java9.skip}</skip>
                                     <outputDirectory>${project.build.directory}/sources-java9</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
                                     <resources>
@@ -570,6 +592,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java9.skip}</skipMain>
                                     <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/9</outputDirectory>
                                     <target>9</target>
                                     <release>9</release>
@@ -606,6 +629,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java10.skip}</skip>
                                     <outputDirectory>${project.build.directory}/sources-java10</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
                                     <resources>
@@ -720,6 +744,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java10.skip}</skipMain>
                                     <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/10</outputDirectory>
                                     <target>10</target>
                                     <release>10</release>
@@ -756,6 +781,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java11.skip}</skip>
                                     <outputDirectory>${project.build.directory}/sources-java11</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
                                     <resources>
@@ -864,6 +890,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java11.skip}</skipMain>
                                     <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/11</outputDirectory>
                                     <target>11</target>
                                     <release>11</release>
@@ -900,6 +927,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java12.skip}</skip>
                                     <outputDirectory>${project.build.directory}/sources-java12</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
                                     <resources>
@@ -1002,6 +1030,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java12.skip}</skipMain>
                                     <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/12</outputDirectory>
                                     <target>12</target>
                                     <release>12</release>
@@ -1039,6 +1068,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java13.skip}</skip>
                                     <outputDirectory>${project.build.directory}/sources-java13</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
                                     <resources>
@@ -1135,6 +1165,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java13.skip}</skipMain>
                                     <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/13</outputDirectory>
                                     <target>13</target>
                                     <release>13</release>
@@ -1171,6 +1202,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java14.skip}</skip>
                                     <outputDirectory>${project.build.directory}/sources-java14</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
                                     <resources>
@@ -1261,6 +1293,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java14.skip}</skipMain>
                                     <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/14</outputDirectory>
                                     <target>14</target>
                                     <release>14</release>
@@ -1297,6 +1330,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java15.skip}</skip>
                                     <outputDirectory>${project.build.directory}/sources-java15</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
                                     <resources>
@@ -1381,6 +1415,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java15.skip}</skipMain>
                                     <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/15</outputDirectory>
                                     <target>15</target>
                                     <release>15</release>
@@ -1418,6 +1453,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java16.skip}</skip>
                                     <outputDirectory>${project.build.directory}/sources-java16</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
                                     <resources>
@@ -1502,6 +1538,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java16.skip}</skipMain>
                                     <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/16</outputDirectory>
                                     <target>16</target>
                                     <release>16</release>
@@ -1538,6 +1575,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java17.skip}</skip>
                                     <outputDirectory>${project.build.directory}/sources-java17</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
                                     <resources>
@@ -1610,6 +1648,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java17.skip}</skipMain>
                                     <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/17</outputDirectory>
                                     <target>17</target>
                                     <release>17</release>
@@ -1646,6 +1685,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java18.skip}</skip>
                                     <outputDirectory>${project.build.directory}/sources-java18</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
                                     <resources>
@@ -1712,6 +1752,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java18.skip}</skipMain>
                                     <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/18</outputDirectory>
                                     <target>18</target>
                                     <release>18</release>
@@ -1748,6 +1789,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java19.skip}</skip>
                                     <outputDirectory>${project.build.directory}/sources-java19</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
                                     <resources>
@@ -1808,6 +1850,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java19.skip}</skipMain>
                                     <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/19</outputDirectory>
                                     <target>19</target>
                                     <release>19</release>
@@ -1844,6 +1887,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java20.skip}</skip>
                                     <outputDirectory>${project.build.directory}/sources-java20</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
                                     <resources>
@@ -1898,6 +1942,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java20.skip}</skipMain>
                                     <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/20</outputDirectory>
                                     <target>20</target>
                                     <release>20</release>
@@ -1934,6 +1979,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java21.skip}</skip>
                                     <outputDirectory>${project.build.directory}/sources-java21</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
                                     <resources>
@@ -1982,6 +2028,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java21.skip}</skipMain>
                                     <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/21</outputDirectory>
                                     <target>21</target>
                                     <release>21</release>
@@ -2018,6 +2065,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java22.skip}</skip>
                                     <outputDirectory>${project.build.directory}/sources-java22</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
                                     <resources>
@@ -2060,6 +2108,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java22.skip}</skipMain>
                                     <outputDirectory>${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/22</outputDirectory>
                                     <target>22</target>
                                     <release>22</release>
@@ -2096,6 +2145,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java23.skip}</skip>
                                     <outputDirectory>
                                         ${project.build.directory}/sources-java23</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
@@ -2134,6 +2184,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java23.skip}</skipMain>
                                     <outputDirectory>
                                         ${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/23</outputDirectory>
                                     <target>23</target>
@@ -2173,6 +2224,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
+                                    <skip>${kohlschutter.multirelease.java24.skip}</skip>
                                     <outputDirectory>
                                         ${project.build.directory}/sources-java24</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
@@ -2205,6 +2257,7 @@
                                     <goal>compile</goal>
                                 </goals>
                                 <configuration>
+                                    <skipMain>${kohlschutter.multirelease.java24.skip}</skipMain>
                                     <outputDirectory>
                                         ${project.build.outputDirectory}/../classes-multirelease/META-INF/versions/24</outputDirectory>
                                     <target>24</target>

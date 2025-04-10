@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Simplifies running some test code concurrently.
- * 
+ *
  * @author Christian Kohlschütter
  */
 public final class ConcurrentTestHelper implements AutoCloseable {
@@ -37,14 +37,14 @@ public final class ConcurrentTestHelper implements AutoCloseable {
 
   /**
    * Some job that can be submitted to this helper.
-   * 
+   *
    * @author Christian Kohlschütter
    */
   @FunctionalInterface
   public interface CTHRunnableWithException {
     /**
      * Runs the job.
-     * 
+     *
      * @param cth The helper this will be run on.
      * @throws Exception on error; these will be collected and thrown upon
      *           {@link ConcurrentTestHelper#close()}.
@@ -60,7 +60,7 @@ public final class ConcurrentTestHelper implements AutoCloseable {
 
   /**
    * Submits a job to be executed once.
-   * 
+   *
    * @param op The job.
    * @return The future.
    */
@@ -79,7 +79,7 @@ public final class ConcurrentTestHelper implements AutoCloseable {
 
   /**
    * Submits a job to be executed in a loop, which is run until this instance is shut down.
-   * 
+   *
    * @param op The job.
    * @return The future.
    */
@@ -100,7 +100,7 @@ public final class ConcurrentTestHelper implements AutoCloseable {
 
   /**
    * Returns {@code true} until shut down.
-   * 
+   *
    * @return The state.
    */
   public boolean isKeepRunning() {
@@ -117,7 +117,7 @@ public final class ConcurrentTestHelper implements AutoCloseable {
 
   /**
    * Stops the execution of jobs, and waits until they're finished or the given timeout expires.
-   * 
+   *
    * @param timeout The timeout.
    * @param unit The timeout unit.
    * @throws InterruptedException if the timeout expired.
@@ -152,7 +152,7 @@ public final class ConcurrentTestHelper implements AutoCloseable {
 
   /**
    * Awaits termination of this instance.
-   * 
+   *
    * @param timeout The timeout.
    * @param unit The timeout unit.
    * @throws InterruptedException if the timeout expired.

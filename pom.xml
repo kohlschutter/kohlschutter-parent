@@ -67,7 +67,7 @@
         <kohlschutter.maven.java-version.min>11</kohlschutter.maven.java-version.min>
         <kohlschutter.target.name>target</kohlschutter.target.name>
         <kohlschutter.custom.package.folder>org/newsclub</kohlschutter.custom.package.folder>
-        <coding.style.version>1.2.15</coding.style.version>
+        <coding.style.version>1.2.16</coding.style.version>
         <coding.style.dirname>coding-style/${coding.style.version}</coding.style.dirname>
         <coding.style.eclipse.dir>${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse</coding.style.eclipse.dir>
         <eclipse.jdt.core.prefs>${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>

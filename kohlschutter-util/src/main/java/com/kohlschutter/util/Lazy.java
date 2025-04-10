@@ -69,7 +69,6 @@ public interface Lazy<V> extends Supplier<V>, Consumer<V> {
 
     @SuppressWarnings("null")
     @Override
-    @SuppressFBWarnings("NP_NONNULL_PARAM_VIOLATION")
     public String toString() {
       return super.toString() + "[supplied=" + supplied + "; value=" + future.getNow(null) + "]";
     }

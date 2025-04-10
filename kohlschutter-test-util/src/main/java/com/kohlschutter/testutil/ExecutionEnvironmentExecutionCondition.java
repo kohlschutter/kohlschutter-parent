@@ -67,7 +67,7 @@ public final class ExecutionEnvironmentExecutionCondition implements ExecutionCo
           return notSatisfied(ruleName, rule);
         }
         break;
-      default:
+      default: // unexpected
         throw new IllegalStateException(ruleName);
     }
     return null;

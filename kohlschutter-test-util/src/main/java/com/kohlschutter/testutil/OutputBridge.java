@@ -24,6 +24,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Forwards output (stdout/stderr) from another process.
@@ -34,8 +36,8 @@ public class OutputBridge implements Runnable, Closeable {
   private final byte[] prefix;
   private final InputStream in;
   private final OutputStream out;
-  private int numRead = 0;
-  private boolean closed = false;
+  private final AtomicInteger numRead = new AtomicInteger();
+  private final AtomicBoolean closed = new AtomicBoolean(false);
 
   private ByteArrayOutputStream bos;
 
@@ -111,8 +113,8 @@ public class OutputBridge implements Runnable, Closeable {
     }
     try {
       int x;
-      while (!closed && (x = in.read()) != -1) {
-        ++numRead;
+      while (!closed.get() && (x = in.read()) != -1) {
+        numRead.incrementAndGet();
         bos.write(x);
         if (x == '\n') {
           flush();
@@ -152,11 +154,11 @@ public class OutputBridge implements Runnable, Closeable {
    * @return The number of bytes received.
    */
   public final int numBytesRead() {
-    return numRead;
+    return numRead.get();
   }
 
   @Override
   public void close() {
-    closed = true;
+    closed.set(true);
   }
 }

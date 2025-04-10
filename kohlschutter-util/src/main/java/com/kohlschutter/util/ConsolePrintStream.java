@@ -23,6 +23,8 @@ import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
+
 /**
  * A {@code System.out} wrapper that knows a little bit about the system console.
  *
@@ -120,6 +122,7 @@ public final class ConsolePrintStream extends PrintStream {
 
   private static final class ConsoleFilterOut extends FilterOutputStream {
     private int numBytes = 0;
+    @SuppressFBWarnings("AT_STALE_THREAD_WRITE_OF_PRIMITIVE") // false-positive
     private int lastNewline = 0;
     private int markedPosition = 0;
     private int lastUpdate = 0;

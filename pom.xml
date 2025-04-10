@@ -58,7 +58,6 @@
         <kohlschutter.java.release>1.8</kohlschutter.java.release>
         <maven.compiler.source>${kohlschutter.java.release}</maven.compiler.source>
         <maven.compiler.target>${kohlschutter.java.release}</maven.compiler.target>
-        <forbiddenapis.releaseVersion>${kohlschutter.java.release}</forbiddenapis.releaseVersion>
         <!-- Projects must define the following property -->
         <kohlschutter.project.base.directory>${project.basedir}</kohlschutter.project.base.directory>
         <kohlschutter.parent.directory>${project.basedir}</kohlschutter.parent.directory>
@@ -83,9 +82,10 @@
         <spotbugs.exclude.file>${coding.style.eclipse.dir}/spotbugs-exclude.xml</spotbugs.exclude.file>
         <spotbugs.disabled>false</spotbugs.disabled>
         <spotbugs.strict>false</spotbugs.strict>
-        <spotbugs.plugin.version>4.8.6.6</spotbugs.plugin.version>
+        <spotbugs.plugin.version>4.9.3.0</spotbugs.plugin.version>
         <findsecbugs.version>1.13.0</findsecbugs.version>
-        <forbiddenapis.version>3.8</forbiddenapis.version>
+        <forbiddenapis.version>3.9</forbiddenapis.version>
+        <forbiddenapis.releaseVersion>${kohlschutter.java.release}</forbiddenapis.releaseVersion>
         <forbiddenapis.strict>false</forbiddenapis.strict>
         <jacoco.disabled>false</jacoco.disabled>
         <jacoco.strict>false</jacoco.strict>
@@ -1604,7 +1604,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>3.8.0</version>
+                    <version>3.9.0</version>
                     <configuration>
                         <pluginManagementExcludes>
                             <pluginManagementExclude>org.eclipse.m2e:lifecycle-mapping</pluginManagementExclude>
@@ -1632,17 +1632,17 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.13.0</version>
+                    <version>3.14.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.5.2</version>
+                    <version>3.5.3</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
-                    <version>3.4.0</version>
+                    <version>3.4.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -1657,7 +1657,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-install-plugin</artifactId>
-                    <version>3.1.3</version>
+                    <version>3.1.4</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -1667,7 +1667,7 @@
                 <plugin>
                     <groupId>com.mycila</groupId>
                     <artifactId>license-maven-plugin</artifactId>
-                    <version>4.6</version>
+                    <version>5.0.0</version>
                     <configuration>
                         <skip>${license.skip}</skip>
                         <failIfMissing>${license.strict}</failIfMissing>
@@ -1716,7 +1716,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>3.1.3</version>
+                    <version>3.1.4</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -1726,7 +1726,7 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.12</version>
+                    <version>0.8.13</version>
                     <configuration>
                         <skip>${jacoco.disabled}</skip>
                         <excludes>
@@ -1791,7 +1791,7 @@
                 <plugin>
                     <groupId>net.revelc.code.formatter</groupId>
                     <artifactId>formatter-maven-plugin</artifactId>
-                    <version>2.24.1</version>
+                    <version>2.26.0</version>
                     <configuration>
                         <compilerCompliance>${maven.compiler.target}</compilerCompliance>
                         <compilerSource>${maven.compiler.source}</compilerSource>
@@ -1888,7 +1888,7 @@
                 <plugin>
                     <groupId>io.helidon.build-tools</groupId>
                     <artifactId>helidon-services-plugin</artifactId>
-                    <version>4.0.14</version>
+                    <version>4.0.16</version>
                 </plugin>
             </plugins>
         </pluginManagement>

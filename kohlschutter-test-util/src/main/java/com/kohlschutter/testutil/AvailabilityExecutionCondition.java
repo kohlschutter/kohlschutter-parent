@@ -66,7 +66,7 @@ public final class AvailabilityExecutionCondition implements ExecutionCondition 
       try {
         Class.forName(requiredClass, false, null);
       } catch (Exception e) {
-        unsupported.add(requiredClass); // NOPMD
+        unsupported.add(requiredClass);
       }
     }
 

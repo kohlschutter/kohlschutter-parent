@@ -46,7 +46,7 @@ import com.kohlschutter.util.SystemPropertyUtil;
  *
  * @author Christian Kohlschütter
  */
-@SuppressFBWarnings({"COMMAND_INJECTION", "PATH_TRAVERSAL_IN"})
+@SuppressFBWarnings("PATH_TRAVERSAL_IN")
 public class ForkedVM {
   private static final Set<String> HAS_PARAMETER = new HashSet<>(Arrays.asList("--add-opens", "-p",
       "-cp", "--module-path", "--upgrade-module-path", "-classpath", "--class-path",
@@ -136,6 +136,7 @@ public class ForkedVM {
    * @throws IOException on error.
    * @throws UnsupportedOperationException if the operation was not supported.
    */
+  @SuppressFBWarnings("COMMAND_INJECTION")
   public Process fork() throws IOException, UnsupportedOperationException {
     cmd = new ArrayList<>();
     parse();
@@ -189,7 +190,6 @@ public class ForkedVM {
     }
   }
 
-  @SuppressWarnings("PMD.CognitiveComplexity")
   private boolean parseArg(List<String> args, String arg) throws FileNotFoundException,
       IOException {
     if (HAS_PARAMETER.contains(arg)) {

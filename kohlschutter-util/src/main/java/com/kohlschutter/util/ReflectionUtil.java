@@ -103,16 +103,16 @@ public final class ReflectionUtil {
     try {
       Class<?> klazz = Class.forName(className);
       if (!desiredType.isAssignableFrom(klazz)) {
-        return null; // NOPMD.ReturnEmptyCollectionRatherThanNull
+        return null;
       }
       Method m = klazz.getMethod(methodName);
       if ((m.getModifiers() & Modifier.STATIC) == 0) {
-        return null; // NOPMD.ReturnEmptyCollectionRatherThanNull
+        return null;
       }
       return desiredType.cast(m.invoke(null));
     } catch (ClassNotFoundException | NoSuchMethodException | SecurityException
         | IllegalAccessException | InvocationTargetException | ClassCastException e) {
-      return null; // NOPMD.ReturnEmptyCollectionRatherThanNull
+      return null;
     }
   }
 
@@ -201,7 +201,7 @@ public final class ReflectionUtil {
         | InvocationTargetException | NoSuchMethodException | SecurityException
         | ClassNotFoundException | ClassCastException e) {
       // e.printStackTrace();
-      return null; // NOPMD.ReturnEmptyCollectionRatherThanNull
+      return null;
     }
   }
 }

@@ -33,6 +33,6 @@ public final class TestStackTraceUtil {
    * @param t The throwable to log.
    */
   public static void printStackTrace(Throwable t) {
-    t.printStackTrace(); // NOPMD
+    t.printStackTrace();
   }
 }

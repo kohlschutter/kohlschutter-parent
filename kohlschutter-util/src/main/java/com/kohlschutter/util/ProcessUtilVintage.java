@@ -57,7 +57,7 @@ final class ProcessUtilVintage {
         IllegalStateException ise = new IllegalStateException(
             "Unable to determine current process PID", e);
         ise.addSuppressed(e2);
-        throw ise; // NOPMD.PreserveStackTrace
+        throw ise;
       }
     }
     try {

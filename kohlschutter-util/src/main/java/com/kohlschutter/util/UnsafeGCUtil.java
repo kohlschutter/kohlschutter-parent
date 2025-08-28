@@ -81,7 +81,11 @@ public final class UnsafeGCUtil {
         StringBuilder sb = new StringBuilder("bigboombaddaboom");
         int count = 0;
         while (!Boolean.TRUE.equals(done.get())) {
-          sb.append(sb);
+          try {
+            sb.append(sb);
+          } catch (OutOfMemoryError e) {
+            sb = new StringBuilder("bigboombaddaboom");
+          }
           // Only ask for garbage collection every 4th append; makes things a bit faster
           // done
           if (++count == 4) {
@@ -95,7 +99,11 @@ public final class UnsafeGCUtil {
         oomeConsumer.accept(e);
         return;
       }
-      oomeConsumer.accept(null); // no error, or thrown elsewhere
+      try {
+        oomeConsumer.accept(null); // no error, or thrown elsewhere
+      } catch (Exception e) {
+        // ignore
+      }
     });
     t.setDaemon(true);
     t.start();

@@ -104,7 +104,7 @@ public final class ExecutionEnvironmentUtil {
       String result = (String) server.invoke(on, "vmFlags", new Object[] {null}, new String[] {
           String[].class.getName()});
       return result;
-    } catch (Exception e) { // NOPMD
+    } catch (Exception e) {
       // ignore
     }
     return null;

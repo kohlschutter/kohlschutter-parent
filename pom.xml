@@ -67,7 +67,7 @@
         <kohlschutter.maven.java-version.min>11</kohlschutter.maven.java-version.min>
         <kohlschutter.target.name>target</kohlschutter.target.name>
         <kohlschutter.custom.package.folder>org/newsclub</kohlschutter.custom.package.folder>
-        <coding.style.version>1.2.16</coding.style.version>
+        <coding.style.version>1.2.17</coding.style.version>
         <coding.style.dirname>coding-style/${coding.style.version}</coding.style.dirname>
         <coding.style.eclipse.dir>${kohlschutter.project.base.directory}/${coding.style.dirname}/eclipse</coding.style.eclipse.dir>
         <eclipse.jdt.core.prefs>${coding.style.eclipse.dir}/java7-strict-org.eclipse.jdt.core.prefs</eclipse.jdt.core.prefs>
@@ -82,8 +82,8 @@
         <spotbugs.exclude.file>${coding.style.eclipse.dir}/spotbugs-exclude.xml</spotbugs.exclude.file>
         <spotbugs.disabled>false</spotbugs.disabled>
         <spotbugs.strict>false</spotbugs.strict>
-        <spotbugs.plugin.version>4.9.4.0</spotbugs.plugin.version>
-        <findsecbugs.version>1.13.0</findsecbugs.version>
+        <spotbugs.plugin.version>4.9.4.2</spotbugs.plugin.version>
+        <findsecbugs.version>1.14.0</findsecbugs.version>
         <forbiddenapis.version>3.9</forbiddenapis.version>
         <forbiddenapis.releaseVersion>${kohlschutter.java.release}</forbiddenapis.releaseVersion>
         <forbiddenapis.strict>false</forbiddenapis.strict>
@@ -103,7 +103,7 @@
         <pmd.plugin.version>3.27.0</pmd.plugin.version>
         <xlint.compiler.arg>-Xlint:all,-classfile,-try,-module,-requires-automatic,-requires-transitive-automatic,-exports</xlint.compiler.arg>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-        <eclipsejdt.annotations.version>2.3.100</eclipsejdt.annotations.version>
+        <eclipsejdt.annotations.version>2.4.0</eclipsejdt.annotations.version>
         <errorprone.version>2.41.0</errorprone.version>
         <errorprone.annotations.version>${errorprone.version}</errorprone.annotations.version>
         <errorprone.args></errorprone.args>
@@ -1695,7 +1695,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>versions-maven-plugin</artifactId>
-                    <version>2.18.0</version>
+                    <version>2.19.0</version>
                     <configuration>
                         <generateBackupPoms>false</generateBackupPoms>
                         <rulesUri>classpath:///com/kohlschutter/maven-version-rules.xml</rulesUri>
@@ -1791,7 +1791,7 @@
                 <plugin>
                     <groupId>net.revelc.code.formatter</groupId>
                     <artifactId>formatter-maven-plugin</artifactId>
-                    <version>2.27.0</version>
+                    <version>2.28.0</version>
                     <configuration>
                         <compilerCompliance>${maven.compiler.target}</compilerCompliance>
                         <compilerSource>${maven.compiler.source}</compilerSource>

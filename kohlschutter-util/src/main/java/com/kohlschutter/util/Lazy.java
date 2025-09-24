@@ -23,8 +23,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
-
 /**
  * Wrapper for a lazy-initialized object.
  *
@@ -34,30 +32,24 @@ import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 @SuppressWarnings("PMD.ShortClassName")
 public interface Lazy<V> extends Supplier<V>, Consumer<V> {
   /**
-   * A {@link Lazy} implementation for values supplied by a {@link Supplier}.
+   * A {@link Lazy} implementation that can be set via {@link #complete(Object)}.
    *
    * @param <V> The object type.
    * @author Christian Kohlschütter
    */
-  final class FromSupplier<V> implements Lazy<V> {
-    private final CompletableFuture<V> future = new CompletableFuture<V>();
-    private final AtomicBoolean supplied = new AtomicBoolean();
-    private final Supplier<V> supplier;
+  class BaseImpl<V> implements Lazy<V> {
+    final CompletableFuture<V> future = new CompletableFuture<V>();
+    final AtomicBoolean supplied = new AtomicBoolean();
 
-    private FromSupplier(Supplier<V> supplier) {
-      this.supplier = supplier;
+    private BaseImpl() {
     }
 
     @Override
     public V get() {
-      if (!future.isDone() && supplied.compareAndSet(false, true)) {
-        future.complete(supplier.get());
-      }
-      try {
-        return future.get();
-      } catch (InterruptedException | ExecutionException e) {
-        throw new IllegalStateException(e);
-      }
+      @SuppressWarnings("null")
+      V val = future.getNow(null);
+      future.complete(val);
+      return val;
     }
 
     @Override
@@ -71,6 +63,33 @@ public interface Lazy<V> extends Supplier<V>, Consumer<V> {
     @Override
     public String toString() {
       return super.toString() + "[supplied=" + supplied + "; value=" + future.getNow(null) + "]";
+    }
+  }
+
+  /**
+   * A {@link Lazy} implementation for values supplied by a {@link Supplier}.
+   *
+   * @param <V> The object type.
+   * @author Christian Kohlschütter
+   */
+  final class FromSupplier<V> extends BaseImpl<V> {
+    private final Supplier<V> supplier;
+
+    private FromSupplier(Supplier<V> supplier) {
+      super();
+      this.supplier = supplier;
+    }
+
+    @Override
+    public V get() {
+      if (!future.isDone() && supplied.compareAndSet(false, true)) {
+        future.complete(supplier.get());
+      }
+      try {
+        return future.get();
+      } catch (InterruptedException | ExecutionException e) {
+        throw new IllegalStateException(e);
+      }
     }
   }
 
@@ -112,6 +131,17 @@ public interface Lazy<V> extends Supplier<V>, Consumer<V> {
   }
 
   /**
+   * Creates a lazy-load wrapper, only allowing setting the value via {@link #complete(Object)}.
+   *
+   * @param <V> The object type.
+   * @return The wrapper instance.
+   */
+  @SuppressWarnings("PMD.ShortMethodName")
+  static <V> Lazy<V> of() {
+    return new BaseImpl<>();
+  }
+
+  /**
    * Creates a {@link Lazy} wrapper, using the given value, which is regarded as instantly supplied.
    *
    * @param <V> The object type.
@@ -133,7 +163,7 @@ public interface Lazy<V> extends Supplier<V>, Consumer<V> {
 
   /**
    * If not already completed, sets the value returned by {@link #get()} and related methods to the
-   * given value, side-stepping the value that would be retrieved from the supplier. If already
+   * given value, side-stepping the value that would be retrieved through other means. If already
    * completed, nothing is changed and {@code false} is returned.
    *
    * @param value the result value

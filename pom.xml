@@ -79,6 +79,7 @@
         <checkstyle.version>10.26.1</checkstyle.version>
         <checkstyle.disabled>false</checkstyle.disabled>
         <checkstyle.strict>false</checkstyle.strict>
+        <checkstyle.excludes></checkstyle.excludes>
         <spotbugs.exclude.file>${coding.style.eclipse.dir}/spotbugs-exclude.xml</spotbugs.exclude.file>
         <spotbugs.disabled>false</spotbugs.disabled>
         <spotbugs.strict>false</spotbugs.strict>
@@ -95,6 +96,7 @@
         <license.strict>false</license.strict>
         <license.skip>false</license.skip>
         <pmd.strict>false</pmd.strict>
+        <pmd.excludes></pmd.excludes>
         <impsort.skip>false</impsort.skip>
         <formatter.skip>false</formatter.skip>
         <!-- Only upgrade to the latest version you can have in Eclipse, no later
@@ -853,6 +855,7 @@
                                     <consoleOutput>true</consoleOutput>
                                     <skip>${checkstyle.disabled}</skip>
                                     <failOnViolation>${checkstyle.strict}</failOnViolation>
+                                    <excludes>${checkstyle.excludes}</excludes>
                                 </configuration>
                             </execution>
                         </executions>
@@ -867,6 +870,7 @@
                             <failOnViolation>${pmd.strict}</failOnViolation>
                             <printFailingErrors>true</printFailingErrors>
                             <targetJdk>${kohlschutter.java.release}</targetJdk>
+                            <excludes>${pmd.excludes}</excludes>
                         </configuration>
                         <executions>
                             <execution>

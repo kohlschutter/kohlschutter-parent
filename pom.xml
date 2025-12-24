@@ -1674,7 +1674,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>3.3.0</version>
+                    <version>3.3.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -1971,7 +1971,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
-                    <version>3.6.2</version>
+                    <version>3.6.3</version>
                 </plugin>
                 <plugin>
                     <groupId>org.graalvm.buildtools</groupId>

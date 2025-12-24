@@ -856,7 +856,6 @@
                                 <configuration>
                                     <skip>${spotbugs.disabled}</skip>
                                     <failOnError>${spotbugs.strict}</failOnError>
-                                    <jvmArgs>-XX:+TieredCompilation -XX:TieredStopAtLevel=1</jvmArgs>
                                 </configuration>
                             </execution>
                         </executions>

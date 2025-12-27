@@ -76,7 +76,7 @@
         <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
         <kohlschutter.surefire.patch.args></kohlschutter.surefire.patch.args>
         <kohlschutter.surefire.access.args></kohlschutter.surefire.access.args>
-        <checkstyle.version>10.26.1</checkstyle.version>
+        <checkstyle.version>12.3.0</checkstyle.version>
         <checkstyle.disabled>false</checkstyle.disabled>
         <checkstyle.strict>false</checkstyle.strict>
         <checkstyle.excludes></checkstyle.excludes>

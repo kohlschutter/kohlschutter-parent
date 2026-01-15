@@ -114,6 +114,7 @@
         <slf4j.version>2.0.17</slf4j.version>
         <graal.plugin.version>0.11.3</graal.plugin.version>
         <site.plugin.version>4.0.0-M17-SNAPSHOT</site.plugin.version><!-- workaround for bug in M16 -->
+        <jetty.version>12.1.5</jetty.version>
     </properties>
     <profiles>
         <profile>

@@ -76,7 +76,7 @@
         <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
         <kohlschutter.surefire.patch.args></kohlschutter.surefire.patch.args>
         <kohlschutter.surefire.access.args></kohlschutter.surefire.access.args>
-        <checkstyle.version>12.3.0</checkstyle.version>
+        <checkstyle.version>13.0.0</checkstyle.version>
         <checkstyle.disabled>false</checkstyle.disabled>
         <checkstyle.strict>false</checkstyle.strict>
         <checkstyle.excludes></checkstyle.excludes>
@@ -101,15 +101,15 @@
         <formatter.skip>false</formatter.skip>
         <!-- Only upgrade to the latest version you can have in Eclipse, no later
       versions; otherwise, you may not be able to run checks in Eclipse -->
-        <pmdVersion>7.19.0</pmdVersion>
+        <pmdVersion>7.20.0</pmdVersion>
         <pmd.plugin.version>3.28.0</pmd.plugin.version>
         <xlint.compiler.arg>-Xlint:all,-classfile,-try,-module,-requires-automatic,-requires-transitive-automatic,-exports</xlint.compiler.arg>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
         <eclipsejdt.annotations.version>2.4.100</eclipsejdt.annotations.version>
-        <errorprone.version>2.45.0</errorprone.version>
+        <errorprone.version>2.46.0</errorprone.version>
         <errorprone.annotations.version>${errorprone.version}</errorprone.annotations.version>
         <errorprone.args></errorprone.args>
-        <junit.version>5.14.1</junit.version>
+        <junit.version>5.14.2</junit.version>
         <javadoc.plugin.version>3.12.0</javadoc.plugin.version>
         <slf4j.version>2.0.17</slf4j.version>
         <graal.plugin.version>0.11.3</graal.plugin.version>
@@ -1783,7 +1783,7 @@
                 <plugin>
                     <groupId>org.sonatype.central</groupId>
                     <artifactId>central-publishing-maven-plugin</artifactId>
-                    <version>0.9.0</version>
+                    <version>0.10.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -1948,7 +1948,7 @@
                 <plugin>
                     <groupId>net.revelc.code</groupId>
                     <artifactId>impsort-maven-plugin</artifactId>
-                    <version>1.12.0</version>
+                    <version>1.13.0</version>
                     <configuration>
                         <groups>java.,javax.,org.,com.</groups>
                         <staticGroups>java,*</staticGroups>

@@ -21,6 +21,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@SuppressWarnings("PMD.PublicMemberInNonPublicType")
 final class ProcessUtilVintage {
   private static final Pattern PAT_PID_IN_MX_BEAN_NAME = Pattern.compile("^([0-9]+)\\@");
 

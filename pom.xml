@@ -874,6 +874,9 @@
                             <excludes>
                                 <exclude>**/module-info.class</exclude>
                             </excludes>
+                            <suppressAnnotations>
+                                <suppressAnnotation>com.kohlschutter.annotations.compiletime.SuppressForbidden</suppressAnnotation>
+                            </suppressAnnotations>
                             <bundledSignatures>
                                 <bundledSignature>jdk-unsafe</bundledSignature>
                                 <bundledSignature>jdk-deprecated</bundledSignature>

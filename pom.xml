@@ -65,7 +65,7 @@
         <kohlschutter.parent.directory>${project.basedir}</kohlschutter.parent.directory>
         <kohlschutter.project.notice.file>${kohlschutter.project.base.directory}/NOTICE</kohlschutter.project.notice.file>
         <kohlschutter.project.source.dir>${basedir}/src/main/java</kohlschutter.project.source.dir>
-        <kohlschutter.maven.version.min>3.8.8</kohlschutter.maven.version.min>
+        <kohlschutter.maven.version.min>3.8.9</kohlschutter.maven.version.min>
         <kohlschutter.maven.java-version.min>11</kohlschutter.maven.java-version.min>
         <kohlschutter.target.name>target</kohlschutter.target.name>
         <kohlschutter.custom.package.folder>org/newsclub</kohlschutter.custom.package.folder>
@@ -78,14 +78,14 @@
         <eclipse.checkstyle.config>${coding.style.eclipse.dir}/checkstyle-configuration.xml</eclipse.checkstyle.config>
         <kohlschutter.surefire.patch.args></kohlschutter.surefire.patch.args>
         <kohlschutter.surefire.access.args></kohlschutter.surefire.access.args>
-        <checkstyle.version>13.9.0</checkstyle.version>
+        <checkstyle.version>13.11.0</checkstyle.version>
         <checkstyle.disabled>false</checkstyle.disabled>
         <checkstyle.strict>false</checkstyle.strict>
         <checkstyle.excludes></checkstyle.excludes>
         <spotbugs.exclude.file>${coding.style.eclipse.dir}/spotbugs-exclude.xml</spotbugs.exclude.file>
         <spotbugs.disabled>false</spotbugs.disabled>
         <spotbugs.strict>false</spotbugs.strict>
-        <spotbugs.plugin.version>4.10.2.0</spotbugs.plugin.version>
+        <spotbugs.plugin.version>4.10.4.0</spotbugs.plugin.version>
         <findsecbugs.version>1.14.0</findsecbugs.version>
         <forbiddenapis.version>3.10</forbiddenapis.version>
         <forbiddenapis.releaseVersion>${kohlschutter.java.release}</forbiddenapis.releaseVersion>
@@ -103,7 +103,7 @@
         <formatter.skip>false</formatter.skip>
         <!-- Only upgrade to the latest version you can have in Eclipse, no later
       versions; otherwise, you may not be able to run checks in Eclipse -->
-        <pmdVersion>7.26.0</pmdVersion>
+        <pmdVersion>7.27.0</pmdVersion>
         <pmd.plugin.version>3.28.0</pmd.plugin.version>
         <xlint.compiler.arg>-Xlint:all,-classfile,-try,-module,-requires-automatic,-requires-transitive-automatic,-exports</xlint.compiler.arg>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
@@ -114,7 +114,7 @@
         <junit.version>5.14.4</junit.version>
         <javadoc.plugin.version>3.12.0</javadoc.plugin.version>
         <slf4j.version>2.0.18</slf4j.version>
-        <graal.plugin.version>1.1.3</graal.plugin.version>
+        <graal.plugin.version>1.1.11</graal.plugin.version>
         <site.plugin.version>4.0.0-M17-SNAPSHOT</site.plugin.version><!-- workaround for bug in M16 -->
         <jetty.version>12.1.10</jetty.version>
     </properties>
@@ -1628,7 +1628,7 @@
                 <plugin>
                     <groupId>io.github.git-commit-id</groupId>
                     <artifactId>git-commit-id-maven-plugin</artifactId>
-                    <version>10.0.0</version>
+                    <version>10.0.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -1746,7 +1746,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.5.0</version>
+                    <version>3.5.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -1761,7 +1761,7 @@
                 <plugin>
                     <groupId>com.mycila</groupId>
                     <artifactId>license-maven-plugin</artifactId>
-                    <version>5.0.0</version>
+                    <version>5.1.2</version>
                     <configuration>
                         <skip>${license.skip}</skip>
                         <failIfMissing>${license.strict}</failIfMissing>
@@ -1987,7 +1987,7 @@
                 <plugin>
                     <groupId>io.helidon.build-tools</groupId>
                     <artifactId>helidon-services-plugin</artifactId>
-                    <version>4.0.27</version>
+                    <version>4.0.29</version>
                 </plugin>
             </plugins>
         </pluginManagement>

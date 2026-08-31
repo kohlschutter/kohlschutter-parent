@@ -71,6 +71,11 @@ public class ForkedVM {
 
   private List<String> cmd;
 
+  /**
+   * Handle the case of "java -jar --other-option file.jar".
+   */
+  private boolean jarWithoutArg = false;
+
   private final String overrideMainClass;
   private final String[] overrideArgs;
 
@@ -199,6 +204,13 @@ public class ForkedVM {
         addExtraArgsFromFile(args, new File(arg.substring(1)));
         return true;
       } else {
+        if (jarWithoutArg) {
+          jarWithoutArg = false;
+          cmd.add("-cp");
+          cmd.add(arg);
+          return true;
+        }
+
         onJavaMainClass(arg);
         onArguments(args);
         return false;
@@ -314,7 +326,13 @@ public class ForkedVM {
    */
   protected void onJavaOption(String option, String arg) {
     if ("-jar".equals(option)) {
+      if (arg.startsWith("-")) {
+        jarWithoutArg = true;
+        return;
+      }
       option = "-cp";
+    } else if ("-cp".equals(option)) {
+      jarWithoutArg = false;
     }
     cmd.add(option);
     cmd.add(arg);

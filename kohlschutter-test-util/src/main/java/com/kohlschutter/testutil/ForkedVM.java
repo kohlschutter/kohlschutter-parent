@@ -195,10 +195,14 @@ public class ForkedVM {
     }
   }
 
+  @SuppressWarnings("PMD.CognitiveComplexity")
   private boolean parseArg(List<String> args, String arg) throws FileNotFoundException,
       IOException {
     if (HAS_PARAMETER.contains(arg)) {
-      onJavaOption(arg, unescapeJavaArg(args.remove(0)));
+      String arg1 = args.remove(0);
+      if (!onJavaOption(arg, unescapeJavaArg(arg1))) {
+        args.add(0, arg1);
+      }
     } else if (!arg.startsWith("-")) {
       if (arg.startsWith("@") && arg.length() > 1) {
         addExtraArgsFromFile(args, new File(arg.substring(1)));
@@ -323,12 +327,14 @@ public class ForkedVM {
    * @param option The java option.
    * @param arg The option argument.
    * @see #onJavaOption(String)
+   * @return {@code true} if handled by this method. If {@code false}, {@code arg} will be handled
+   *         later separately.
    */
-  protected void onJavaOption(String option, String arg) {
+  protected boolean onJavaOption(String option, String arg) {
     if ("-jar".equals(option)) {
       if (arg.startsWith("-")) {
         jarWithoutArg = true;
-        return;
+        return false;
       }
       option = "-cp";
     } else if ("-cp".equals(option)) {
@@ -336,6 +342,7 @@ public class ForkedVM {
     }
     cmd.add(option);
     cmd.add(arg);
+    return true;
   }
 
   /**
